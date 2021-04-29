@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AccountDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/user', function () {
+    return view('user_profile');
+});
+
+Route::post('/test', [AccountDetailController::class, 'store']);
