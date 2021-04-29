@@ -10002,3 +10002,217 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.landing-section {
+  background-image: url(/images/people_couch.jpeg?188295816a8675a0b9698dc78a51330c);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+.landing-section .left-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30%;
+}
+.landing-section .left-column .search-card {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  min-width: 90vw;
+  height: auto;
+}
+.landing-section .left-column .search-card .search-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+.landing-section .left-column .search-card .search-form {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+}
+.landing-section .left-column .search-card .search-form .search-icons {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  margin-bottom: 1rem;
+}
+.landing-section .left-column .search-card .search-form .form-control {
+  width: 100%;
+}
+.landing-section .left-column .search-card .search-form .search-btn {
+  margin-top: 35px;
+}
+
+.second-section {
+  background-image: url(/images/woman_laptop.jpeg?62b64c83dcaca72361183245f67ec16f);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+#cities .city-card {
+  padding: 0;
+  margin-top: 15px;
+}
+#cities .city-card .hover-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#cities .city-card .hover-img .img-overlay {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  letter-spacing: 4px;
+  z-index: 2;
+}
+#cities .city-card .hover-img .city-img {
+  width: 100vw;
+  opacity: 0.75;
+  z-index: 1;
+}
+#cities .city-card .hover-img .city-img:hover {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  #cities {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #cities .city-card .city-img {
+    max-width: 35vw;
+    height: 20vh;
+    opacity: 0.75;
+  }
+}
+@media (min-width: 992px) {
+  .landing-section .left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
+  .landing-section .search-card {
+    min-width: 35vw !important;
+    height: auto !important;
+  }
+  .landing-section .search-card .search-title {
+    font-size: 20px !important;
+  }
+  .landing-section .search-card .search-form {
+    width: 35vw !important;
+  }
+  .landing-section .search-card .search-icons {
+    margin-right: 20px;
+  }
+  .landing-section .search-card .form-control {
+    width: 80%;
+  }
+  .landing-section .search-card .search-btn {
+    margin-top: 42.5px !important;
+    width: 100% !important;
+  }
+
+  #cities {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #cities .city-card .city-img {
+    min-width: 25vw;
+    min-height: 25vh;
+    max-width: 30vw;
+    max-height: 30vh;
+  }
+}
+.account-detail-wrapper #upload {
+  opacity: 0;
+}
+.account-detail-wrapper #upload-label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+.account-detail-wrapper .image-area {
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  position: relative;
+}
+.account-detail-wrapper .image-area::before {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  z-index: 1;
+}
+.account-detail-wrapper .image-area img {
+  z-index: 2;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .account-detail-wrapper {
+    display: flex;
+  }
+}
+.search-btn {
+  background-color: black;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  background-image: url(/images/loupe.png?912206d4ca715b523c9a74daa8127628);
+  background-position: 15px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+.search-btn:hover {
+  color: white;
+  font-weight: 800;
+}
+
+.login-btn {
+  background: transparent;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid black;
+  min-width: 100px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  z-index: 1500;
+}
+.white-text {
+  color: white !important;
+}
+
+.black-text {
+  color: black !important;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .black-text {
+    margin-top: 0;
+  }
+}
