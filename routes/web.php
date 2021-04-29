@@ -19,12 +19,14 @@ use App\Http\Controllers\AccountDetailController;
 
 Auth::routes();
 
+// HOMEPAGE
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/user', function () {
-    return view('user_profile');
-})->middleware('auth')->name('user');
-
-Route::post('/test', [AccountDetailController::class, 'store']);
+// USER ACCOUNT DETAILS
+Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');
+Route::post('/birthplace', [AccountDetailController::class, 'updateBirthPlace'])->middleware('auth');
+Route::post('/introtext', [AccountDetailController::class, 'updateIntroText'])->middleware('auth');
+Route::post('/hobbies', [AccountDetailController::class, 'updateHobbies'])->middleware('auth');
+Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middleware('auth');

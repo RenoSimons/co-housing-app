@@ -13,7 +13,7 @@ class CreateAccountDetails extends Migration
      */
     public function up()
     {
-        Schema::create('account_details', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

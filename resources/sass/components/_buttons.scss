@@ -22,3 +22,15 @@
     border: 1px solid black;
     min-width: 100px;
 }
+
+.save-btn {
+    background-color: rgba(0,0,0,0.8); 
+    color:white;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    &:hover {
+        color:white;
+        font-weight: lighter;
+    }
+}

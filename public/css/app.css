@@ -10168,6 +10168,14 @@ h3 {
     display: flex;
   }
 }
+.red-border {
+  border: 0.5px dashed red;
+}
+
+.green-border {
+  border: 0.5px dashed green;
+}
+
 .search-btn {
   background-color: black;
   color: white;
@@ -10190,6 +10198,17 @@ h3 {
   border-radius: 20px;
   border: 1px solid black;
   min-width: 100px;
+}
+
+.save-btn {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.save-btn:hover {
+  color: white;
+  font-weight: lighter;
 }
 
 .sticky {

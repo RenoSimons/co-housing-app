@@ -10,8 +10,14 @@ class UserDetails extends Model
 {
     use HasFactory;
 
-    public function userDetails()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public $timestamps = false;
+
+    protected $fillable = [
+        'user_id',
+        'birthplace',
+        'intro_text',
+        'hobby_text',
+        'status',
+        'img_url'
+    ];
 }
