@@ -1869,6 +1869,48 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/account_detail.js":
+/*!****************************************!*\
+  !*** ./resources/js/account_detail.js ***!
+  \****************************************/
+/***/ (() => {
+
+console.log('test'); // Show uploaded image
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#imageResult').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$(function () {
+  $('#upload').on('change', function () {
+    readURL(input);
+  });
+}); // Show uploaded image name
+
+var input = document.getElementById('upload');
+var infoArea = document.getElementById('upload-label');
+input.addEventListener('change', showFileName);
+
+function showFileName(event) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
+}
+
+function test() {
+  console.log('testes');
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -1883,6 +1925,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./nav */ "./resources/js/nav.js");
+
+__webpack_require__(/*! ./account_detail */ "./resources/js/account_detail.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 /**

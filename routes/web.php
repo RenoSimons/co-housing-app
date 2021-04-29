@@ -25,6 +25,6 @@ Route::get('/', function () {
 
 Route::get('/user', function () {
     return view('user_profile');
-});
+})->middleware('auth')->name('user');
 
 Route::post('/test', [AccountDetailController::class, 'store']);

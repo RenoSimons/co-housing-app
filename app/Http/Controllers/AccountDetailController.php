@@ -15,6 +15,6 @@ class AccountDetailController extends Controller
     }
 
     public function store (Request $request) {
-        dd($request);
+        dd($request->all());
     }
 }

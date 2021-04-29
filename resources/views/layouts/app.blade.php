@@ -71,7 +71,7 @@
                                         {{ __('Mijn applicaties') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('user') }}">
                                         {{ __('Mijn profiel') }}
                                     </a>
 

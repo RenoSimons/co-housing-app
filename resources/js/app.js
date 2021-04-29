@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./nav');
+require('./account_detail');
 
 window.Vue = require('vue').default;
 
