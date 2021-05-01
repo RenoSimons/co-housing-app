@@ -7,7 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Pages
 @import './pages/landing.scss';
 @import './pages/accountDetail.scss';
+@import './pages/application.scss';
+
+// Components
 @import './components/buttons.scss';
 @import './components/nav.scss';
+

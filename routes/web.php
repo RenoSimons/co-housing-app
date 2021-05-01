@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AccountDetailController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::post('/birthplace', [AccountDetailController::class, 'updateBirthPlace'])
 Route::post('/introtext', [AccountDetailController::class, 'updateIntroText'])->middleware('auth');
 Route::post('/hobbies', [AccountDetailController::class, 'updateHobbies'])->middleware('auth');
 Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middleware('auth');
+
+// APPLICATION
+Route::get('/application', [ApplicationController::class, 'index'])->middleware('auth')->name('application');

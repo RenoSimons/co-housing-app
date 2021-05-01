@@ -16,7 +16,7 @@
 
     <div class="container account-detail-wrapper mt-3 ">
         <div class="col-md-4">
-            <div class="row shadow-lg p-3 mt-2">
+            <div class="row shadow-lg p-3 mt-sm-0 mt-lg-2">
                 <h4>Upload een foto</h4>
                 <!-- Uploaded image area-->
                 <div class="image-area mt-2">
@@ -69,14 +69,14 @@
         </div>
 
         <div class="col-md-8 ml-md-5">
-            <div class="row shadow-lg p-3 mt-5 mt-lg-2">
+            <div class="row shadow-lg p-3 mt-sm-5 mt-lg-2">
                 <h4>Schrijf een aantrekkelijke intro tekst over jezelf voor latere applicaties</h4>
                 <div class="form-outline w-100">
                     <form action="{{ url('/introtext') }}" method="post" >
                         @csrf
                         {{ method_field('POST') }}
                         <label for="intro-form">Promoot en verkoop jezelf op een eerlijke manier voor meer succes</label>
-                        <textarea class="form-control" placeholder="{{ $user_details->intro_text }}" name="intro_text" id="intro-form" rows="10"></textarea>
+                        <textarea class="form-control" placeholder="{{ $user_details->intro_text }}" name="intro_text" id="intro-form" rows="12"></textarea>
                         <div>
                             <button disabled id="save-intro" class='btn save-btn mt-3' type="submit">Opslaan</button>
                         </div>
