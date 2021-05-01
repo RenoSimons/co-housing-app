@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 // USER ACCOUNT DETAILS
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');
+Route::post('/store', [AccountDetailController::class, 'storeUserImage'])->middleware('auth');
 Route::post('/birthplace', [AccountDetailController::class, 'updateBirthPlace'])->middleware('auth');
 Route::post('/introtext', [AccountDetailController::class, 'updateIntroText'])->middleware('auth');
 Route::post('/hobbies', [AccountDetailController::class, 'updateHobbies'])->middleware('auth');

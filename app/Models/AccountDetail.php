@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class UserDetails extends Model
+class AccountDetail extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,6 @@ class UserDetails extends Model
         'intro_text',
         'hobby_text',
         'status',
-        'img_url'
+        'img_url',
     ];
 }

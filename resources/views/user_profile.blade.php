@@ -6,7 +6,7 @@
             <h1>Account details</h1>
             <h4>Vervolledig je account om later snellere applicaties te kunnen doen</h4>
             <small class="form-text text-muted">Het vervolledigen van uw account is niet verplicht maar optioneel. Het verhoogt echter de slaagkans van sollicitaties en uw gegevens zullen niet gedeeld worden met derde partijen</small>
-            <small>OPGELET! Uw gegevens die u hier invult zullen publiek op uw profiel worden weergegeven</small>
+            <small> <b> OPGELET! Uw gegevens die u hier invult zullen publiek op uw profiel worden weergegeven </b></small>
             
             <div>
                 <x-feedback-msg />
@@ -20,17 +20,27 @@
                 <h4>Upload een foto</h4>
                 <!-- Uploaded image area-->
                 <div class="image-area mt-2">
-                    <img id="imageResult" src="{{URL::asset('/images/upload_img.png')}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    @if (strlen($user_details->img_url) > 0)
+                        <img id="output" src="{{ URL::asset('storage/user_images/'. $user_details->img_url) }}" alt="empty image" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    @else 
+                        <img id="output" src="{{URL::asset('/images/upload_img.png')}}" alt="empty image" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    @endif
                 </div>
                 
                 <!-- Upload image input-->
-                <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Open bestand...</label>
-                    <div class="input-group-append">
-                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Open bestand</small></label>
+                <form action="{{ url('/store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    {{ method_field('POST') }}
+                    <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload" type="file" name="file" onchange="loadFile(event)" class="form-control border-0">
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Open bestand...</label>
+                        <div class="input-group-append">
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Open bestand</small></label>
+                        </div>
                     </div>
-                </div>  
+                    
+                    <button disabled id="save-image" class='btn save-btn mt-3' type="submit">Opslaan</button>
+                </form> 
             </div>
             
             <div class="row shadow-lg p-3 mt-5">
@@ -108,4 +118,16 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+            $('#save-image').removeAttr("disabled"); 
+        };
+    </script>
 @endsection

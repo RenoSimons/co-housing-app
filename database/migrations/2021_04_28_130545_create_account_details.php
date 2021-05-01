@@ -13,16 +13,15 @@ class CreateAccountDetails extends Migration
      */
     public function up()
     {
-        Schema::create('user_details', function (Blueprint $table) {
+        Schema::create('account_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('birthplace');
-            $table->string('intro_text');
-            $table->string('hobby_text');
-            $table->string('status');
-            $table->string('img_url');
-
+            $table->string('birthplace')->default('');
+            $table->string('intro_text')->default('');
+            $table->string('hobby_text')->default('');
+            $table->string('status')->default('');
+            $table->string('img_url')->default('');
         });
     }
 
