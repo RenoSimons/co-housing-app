@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\AccountDetail;
+use App\Models\Application;
+use App\Models\RentOffer;
+
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
@@ -46,5 +49,15 @@ class User extends Authenticatable
     public function details()
     {
         return $this->hasOne(AccountDetail::class);
+    }
+
+    public function application()
+    {
+        return $this->hasOne(Application::class);
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(RentOffer::class);
     }
 }

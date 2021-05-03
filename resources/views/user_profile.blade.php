@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>Geboorteplaats</label>
-                            <input type="text" placeholder="{{ $user_details->birthplace }}" name="birthplace" id="birthInput" class="form-control" >
+                            <input type="text" value="{{ $user_details->birthplace }}" name="birthplace" id="birthInput" class="form-control" >
                         </div>
                         <div>
                             <button disabled id="save-birth" class='btn save-btn' type="submit">Opslaan</button>
@@ -76,7 +76,7 @@
                         @csrf
                         {{ method_field('POST') }}
                         <label for="intro-form">Promoot en verkoop jezelf op een eerlijke manier voor meer succes</label>
-                        <textarea class="form-control" placeholder="{{ $user_details->intro_text }}" name="intro_text" id="intro-form" rows="12"></textarea>
+                        <textarea class="form-control" name="intro_text" id="intro-form" rows="12">{{ $user_details->intro_text }}</textarea>
                         <div>
                             <button disabled id="save-intro" class='btn save-btn mt-3' type="submit">Opslaan</button>
                         </div>
@@ -91,7 +91,7 @@
                         @csrf
                         {{ method_field('POST') }}
                         <label for="intro-form">Omschrijf je hobbies en interesses</label>
-                        <textarea class="form-control" placeholder="{{ $user_details->hobby_text }}" name="hobbies" id="hobby-form" rows="5"></textarea>
+                        <textarea class="form-control" name="hobbies" id="hobby-form" rows="5">{{ $user_details->hobby_text }}</textarea>
                         <div>
                             <button disabled id="save-hobbies" class='btn save-btn mt-3' type="submit">Opslaan</button>
                         </div>

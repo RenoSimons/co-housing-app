@@ -35,3 +35,4 @@ Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middle
 
 // APPLICATION
 Route::get('/application', [ApplicationController::class, 'index'])->middleware('auth')->name('application');
+Route::post('/publish', [ApplicationController::class, 'publish'])->middleware('auth')->name('publish');

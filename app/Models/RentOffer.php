@@ -5,19 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Application extends Model
+class RentOffer extends Model
 {
     use HasFactory;
 
-    public $timestamps = true;
-
     protected $fillable = [
         'user_id',
-        'location',
+        'title',
+        'start_date',
+        'province',
+        'city',
         'type_house',
         'surface',
         'budget',
         'housemates',
-        'intro',
+        'house_description',
+        'housemates_description',
+        'views',
+        'img_urls',
+    ];
+
+    protected $casts = [
+        'img_urls' => 'array'
     ];
 }
