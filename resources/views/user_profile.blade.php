@@ -77,7 +77,7 @@
                         {{ method_field('POST') }}
                         <label for="intro-form">Promoot en verkoop jezelf op een eerlijke manier voor meer succes</label>
                         <textarea class="form-control" name="intro_text" id="intro-form" rows="12">{{ $user_details->intro_text }}</textarea>
-                        <div>
+                        <div class="mb-md-2">
                             <button disabled id="save-intro" class='btn save-btn mt-3' type="submit">Opslaan</button>
                         </div>
                     </form>
