@@ -21,6 +21,7 @@
 
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
 <div id="app" class="overflow-hidden">
@@ -41,7 +42,7 @@
                             <a class="nav-link black-text btn login-btn" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a>
                         </li>
                         <li class="nav-item ml-md-5 mt-xs-2">
-                            <a class="nav-link black-text btn login-btn" href="">{{ __('Vind een roommate') }}</a>
+                            <a class="nav-link black-text btn login-btn" href="{{ route('findrenter') }}">{{ __('Vind een roommate') }}</a>
                         </li>
                     </ul>
 

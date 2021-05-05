@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <?php
 
 namespace App\Http\Controllers;
@@ -64,4 +62,4 @@ class FindRenterController extends Controller
         return view ('home');
     }
 }
->>>>>>> Stashed changes
+

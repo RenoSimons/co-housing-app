@@ -1,0 +1,18 @@
+.gallery {
+    .img-fluid {
+        max-width: 30% !important;
+        max-height: 30% !important;
+    }
+}
+
+.datepicker-days {
+    width: 250px;
+
+    .table-condensed {
+        width: 250px;
+
+        .datepicker-switch {
+            text-align: center;
+        }
+    }
+}
