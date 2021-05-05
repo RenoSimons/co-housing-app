@@ -7,7 +7,7 @@
         <h4>Vul onderstaande informatie in om in contact te komen met de juiste persoon die een plek heeft op basis van jouw benodigdheden</h4>
         
         <div class="mt-4">
-            <form action="{{ url('/publish') }}" method="post">
+            <form action="{{ url('/publishpost') }}" method="post">
                 @csrf
                 {{ method_field('POST') }}
                 <div class="d-md-flex">

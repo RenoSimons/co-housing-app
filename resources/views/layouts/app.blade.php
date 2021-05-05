@@ -39,6 +39,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link black-text btn login-btn" href="{{ route('zoekportaal') }}">{{ __('Zoekportaal') }}</a>
+                        </li>
+                        <li class="nav-item ml-md-5 mt-xs-2">
                             <a class="nav-link black-text btn login-btn" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a>
                         </li>
                         <li class="nav-item ml-md-5 mt-xs-2">
@@ -66,7 +69,7 @@
                                 @if (strlen(Auth::user()->avatar()) > 0)
                                     <img class="user-avatar" src="{{ URL::asset('storage/user_images/'. Auth::user()->avatar()) }}" alt="Avatar">
                                 @else   
-                                    <img class="unknown-user" src="{{URL::asset('/images/uknown-user.png')}}" alt="empty image">
+                                    <img class="unknown-user" src="{{URL::asset('/images/icons/unknown-user.png')}}" alt="empty image">
                                 @endif
                                 
                             </div>

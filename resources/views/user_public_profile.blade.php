@@ -52,7 +52,7 @@
                 @if (strlen($user_details[0]['hobby_text']) > 0)
                     <p>{{ $user_details[0]['hobby_text']}}</p>
                 @else
-                    <span>Deze gebruiker heeft nog geen intro tekst gepubliceerd</span>
+                    <span>Deze gebruiker heeft nog geen hobbies of interesses gepubliceerd</span>
                 @endif
             </div>
         </div>

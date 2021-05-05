@@ -40,7 +40,7 @@ Route::get('/profile/{id}', [PublicProfileController::class, 'showProfile']);
 
 // APPLICATION FORM
 Route::get('/application', [ApplicationController::class, 'index'])->middleware('auth')->name('application');
-Route::post('/publish', [ApplicationController::class, 'publish'])->middleware('auth')->name('publish');
+Route::post('/publishpost', [ApplicationController::class, 'publish'])->middleware('auth')->name('publish');
 
 // FIND A RENTER FORM
 Route::get('/findrenter', [FindRenterController::class, 'index'])->middleware('auth')->name('findrenter');
