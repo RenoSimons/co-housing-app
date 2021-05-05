@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AccountDetailController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\FindRenterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::post('/introtext', [AccountDetailController::class, 'updateIntroText'])->
 Route::post('/hobbies', [AccountDetailController::class, 'updateHobbies'])->middleware('auth');
 Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middleware('auth');
 
-// APPLICATION
+// APPLICATION FORM
 Route::get('/application', [ApplicationController::class, 'index'])->middleware('auth')->name('application');
 Route::post('/publish', [ApplicationController::class, 'publish'])->middleware('auth')->name('publish');
+
+// FIND A RENTER FORM
+Route::get('/findrenter', [FindRenterController::class, 'index'])->middleware('auth')->name('findrenter');
+Route::post('/publish', [FindRenterController::class, 'publish'])->middleware('auth')->name('publish');

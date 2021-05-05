@@ -100,9 +100,6 @@
                         <button  id="save-status" class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>
                     </div>
                 </div>
-
-
-               
             </form>
 
         </div>   
