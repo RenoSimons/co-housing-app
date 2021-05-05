@@ -7,7 +7,6 @@ use App\Models\AccountDetail;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class AccountDetailController extends Controller
@@ -15,6 +14,7 @@ class AccountDetailController extends Controller
     public function index()
     {  
         $user = Auth::user();
+
         $loginDetails = [ $user->name , $user->email ];
         $userDetails = $user->details;
 

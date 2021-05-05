@@ -1950,7 +1950,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // Only on homepage a sticky nav
 var currentUrl = window.location.pathname;
 
-if (currentUrl !== "/home") {
+if (currentUrl !== "/") {
   $('.navbar').removeClass('sticky');
 }
 

@@ -32,7 +32,7 @@
                 </button>
                 
                 <div class="title-left">
-                    <h3>Co-housing made easy</h3>
+                    <a href="{{url('/')}}" class="text-decoration-none black"><h3>Co-housing made easy</h3></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,12 +62,25 @@
                                 </li>
                             @endif
                         @else
+                            <div class="user-avatar">
+                                @if (strlen(Auth::user()->avatar()) > 0)
+                                    <img class="user-avatar" src="{{ URL::asset('storage/user_images/'. Auth::user()->avatar()) }}" alt="Avatar">
+                                @else   
+                                    <img class="unknown-user" src="{{URL::asset('/images/uknown-user.png')}}" alt="empty image">
+                                @endif
+                                
+                            </div>
                             <li class="nav-item dropdown">
+                                
                                 <a id="navbarDropdown" class="nav-link black-text dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ URL::to('/profile', Auth::user()->id) }}">
+                                        {{ __('Bekijk mijn online profiel') }}
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('application') }}">
                                         {{ __('Mijn applicaties') }}
                                     </a>

@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(RentOffer::class);
     }
+
+    public function avatar() {
+        return $this->details->img_url;
+    }
 }

@@ -15,6 +15,7 @@ class ApplicationController extends Controller
     }
 
     public function publish(Request $request) {
+        dd('ok');
         $request->validate([
             'location' => 'required',
             'type_building' => 'required',
@@ -23,6 +24,8 @@ class ApplicationController extends Controller
             'housemates' => 'required',
             'intro' => 'required',
         ]);
+
+        
 
         $Application = new Application([
             "user_id" => Auth::id(),
@@ -36,6 +39,6 @@ class ApplicationController extends Controller
 
         $Application->save();
 
-        return view ('home');
+        return view('home');
     }
 }

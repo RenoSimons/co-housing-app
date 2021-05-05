@@ -10260,3 +10260,18 @@ h3 {
 .hidden {
   display: none;
 }
+
+.user-avatar {
+  width: 50px;
+  border-radius: 60%;
+}
+
+.unknown-user {
+  width: 50px;
+  border-radius: 60%;
+  border: 1px solid black;
+}
+
+.black {
+  color: black;
+}
