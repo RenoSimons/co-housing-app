@@ -10217,9 +10217,15 @@ h3 {
 .login-btn {
   background: transparent;
   color: white;
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  width: 10px !important;
+  padding: 5px;
+  transition: 0.75s;
+}
+.login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black !important;
   border: 1px solid black;
-  min-width: 100px;
 }
 
 .save-btn {
@@ -10233,6 +10239,18 @@ h3 {
   font-weight: lighter;
 }
 
+.nav-btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: 0.5s;
+}
+.nav-btn:hover {
+  padding-bottom: 3px;
+  padding-top: 3px;
+  transform: scale(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -10240,16 +10258,30 @@ h3 {
 }
 
 .navbar {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
   z-index: 1500;
 }
 .white-text {
   color: white !important;
 }
 
+.nav-link {
+  min-width: 100px !important;
+  text-align: center;
+}
+
 .black-text {
-  color: black !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   margin-top: 20px;
+}
+
+.user-avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.unknown-user {
+  width: 35px;
 }
 
 @media (min-width: 768px) {
@@ -10259,15 +10291,6 @@ h3 {
 }
 .hidden {
   display: none;
-}
-
-.user-avatar {
-  width: 50px;
-  border-radius: 60%;
-}
-
-.unknown-user {
-  width: 35px;
 }
 
 .black {

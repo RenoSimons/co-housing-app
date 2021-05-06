@@ -22,7 +22,8 @@ class CreateApplications extends Migration
             $table->string('surface');
             $table->string('budget');
             $table->string('housemates');
-            $table->string('intro');
+            $table->string('start_date');
+            $table->longText('intro');
             $table->timestamps();
         });
     }

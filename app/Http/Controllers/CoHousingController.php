@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SearchController extends Controller
+class CoHousingController extends Controller
 {
     public function index() {
-        return view('search-landing');
+        return view('cohouses');
     }
 }

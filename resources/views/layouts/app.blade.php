@@ -25,27 +25,30 @@
 </head>
 <body>
 <div id="app" class="overflow-hidden">
-        <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3">
+        <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
                 <div class="title-left">
-                    <a href="{{url('/')}}" class="text-decoration-none black"><h3>Co-housing made easy</h3></a>
+                    <a href="{{url('/')}}" class="text-decoration-none black-text"><h3>Co-housing made easy</h3></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link black-text btn login-btn" href="{{ route('zoekportaal') }}">{{ __('Zoekportaal') }}</a>
+                            <a class="nav-link black-text nav-btn" href="{{ route('cohousings') }}">{{ __('Vind co-house') }}</a>
                         </li>
                         <li class="nav-item ml-md-5 mt-xs-2">
-                            <a class="nav-link black-text btn login-btn" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a>
+                            <a class="nav-link black-text nav-btn" href="{{ route('persons') }}">{{ __('Vind huurder') }}</a>
                         </li>
                         <li class="nav-item ml-md-5 mt-xs-2">
-                            <a class="nav-link black-text btn login-btn" href="{{ route('findrenter') }}">{{ __('Vind een roommate') }}</a>
+                            <a class="nav-link black-text nav-btn" href="{{ route('findrenter') }}">{{ __('Stel te huur') }}</a>
+                        </li>
+                        <li class="nav-item ml-md-5 mt-xs-2">
+                            <a class="nav-link black-text nav-btn" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a>
                         </li>
                     </ul>
 

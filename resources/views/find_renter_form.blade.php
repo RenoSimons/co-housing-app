@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <div class="d-flex align-items-center">
                                 <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
-                                <p class="search-title">Budget <small>(maandelijks in €)</small></p>
+                                <p class="search-title">Prijs <small>(maandelijks in €)</small></p>
                             </div>
                             <input type="number" name="budget" placeholder="€" class="form-control" required>
                         </div>

@@ -6,6 +6,8 @@ use App\Http\Controllers\AccountDetailController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FindRenterController;
 use App\Http\Controllers\PublicProfileController;
+use App\Http\Controllers\CoHousingController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('home');
 });
+
+// ZOEKPORTAAL
+Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
+Route::get('/personen', [PersonController::class, 'index'])->name('persons');
 
 // USER ACCOUNT DETAILS
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');

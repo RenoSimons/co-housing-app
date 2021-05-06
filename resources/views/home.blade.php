@@ -3,6 +3,7 @@
 @section('content')
 <div class="container-fluid vh-100 p-0">
     <div class="row d-flex landing-section">
+        <!-- <div class="svg"></div> -->
         <div class="col-md-12 col-lg-6 left-column">
             <div class="row">
                 <div class="search-card">
