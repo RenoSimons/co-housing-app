@@ -10198,6 +10198,10 @@ h3 {
   text-align: center;
 }
 
+#search-box {
+  transition: 0.25s;
+}
+
 .search-btn {
   background-color: black;
   color: white;
