@@ -28,6 +28,7 @@ class UserApplicationSeeder extends Seeder
                 'surface' => 'Eender',
                 'housemates' => '2',
                 'intro' => $intro,
+                'start_date' => '19-05-2021',
             ]);
         }
     }

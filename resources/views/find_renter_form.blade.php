@@ -4,6 +4,7 @@
 <div class="row mt-3 p-3">
     <div class="container">
         <h1>Plaats een zoekertje en vind je geschikte co-house partner</h1>
+        <hr>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -20,7 +21,7 @@
                 <h4 class="mb-2">Titel van je zoekertje</h4>
                 <input type="text" name="title" placeholder="titel" class="form-control" >
 
-                <h4 class="mb-2 mt-4">Specificaties woning</h4>
+                <h4 class="mb-2 mt-4">Specificaties woning die je ter verhuur stelt</h4>
                 <div class="d-md-flex">
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group">

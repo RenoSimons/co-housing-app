@@ -10232,7 +10232,7 @@ h3 {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.8);
 }
 .save-btn:hover {
   color: white;
@@ -10295,4 +10295,9 @@ h3 {
 
 .black {
   color: black;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 1px solid black;
 }

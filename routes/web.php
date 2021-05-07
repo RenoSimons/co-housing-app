@@ -31,7 +31,10 @@ Route::get('/', function () {
 
 // ZOEKPORTAAL
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
+
+// VIND PERSONEN
 Route::get('/personen', [PersonController::class, 'index'])->name('persons');
+Route::post('/personen/filter', [PersonController::class, 'searchPersons'])->name('searchPersons');
 
 // USER ACCOUNT DETAILS
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');

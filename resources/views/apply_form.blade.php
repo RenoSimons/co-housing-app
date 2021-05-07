@@ -4,8 +4,9 @@
 <div class="row mt-3 p-3">
     <div class="container">
         <h1>Stel jezelf voor als potentiële huurder</h1>
+        <hr>
         <h4>Vul onderstaande informatie in om in contact te komen met de juiste persoon die een plek heeft op basis van jouw benodigdheden</h4>
-        
+
         <div class="mt-4">
             <form action="{{ url('/publishpost') }}" method="post">
                 @csrf
@@ -89,6 +90,14 @@
                                 <option>> 5</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <div class="d-flex align-items-center">
+                                <img src="{{URL::asset('/images/icons/calendar.png')}}" class="search-icons">
+                                <p class="search-title">Intrekdatum</p>
+                            </div>
+                            <input class="date form-control" name="start_date" type="text" required>
+                        </div>
                     </div>
                 </div>
 
@@ -105,5 +114,11 @@
         </div>   
     </div>  
 </div>
+
+<script>
+    $('.date').datepicker({  
+       format: 'dd-mm-yyyy'
+    }); 
+</script>
 
 @endsection

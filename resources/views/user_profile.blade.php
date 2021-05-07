@@ -3,8 +3,9 @@
 @section('content')
 <div class="row mt-3 p-3">
         <div class="container">
-            <h1>Account details</h1>
-            <h4>Vervolledig je account om later snellere applicaties te kunnen doen</h4>
+            <h1>Profiel details</h1>
+            <hr>
+            <h4>Vervolledig je profiel om later snellere applicaties te kunnen doen</h4>
             <small class="form-text text-muted">Het vervolledigen van uw account is niet verplicht maar optioneel. Het verhoogt echter de slaagkans van sollicitaties en uw gegevens zullen niet gedeeld worden met derde partijen</small>
             <small> <b> OPGELET! Uw gegevens die u hier invult zullen publiek op uw profiel worden weergegeven </b></small>
             

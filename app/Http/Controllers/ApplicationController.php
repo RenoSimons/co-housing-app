@@ -22,6 +22,7 @@ class ApplicationController extends Controller
             'budget' => 'required',
             'housemates' => 'required',
             'intro' => 'required',
+            'start_date' => 'required',
         ]);
 
         $Application = new Application([
@@ -32,6 +33,7 @@ class ApplicationController extends Controller
             "budget" => $request->input('budget'),
             "housemates" => $request->input('housemates'),
             "intro" => $request->input('intro'),
+            "start_date" => $request->input('start_date'),
         ]);
 
         $Application->save();
