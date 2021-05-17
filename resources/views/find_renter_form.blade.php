@@ -19,7 +19,7 @@
                 @csrf
                 {{ method_field('POST') }}
                 <h4 class="mb-2">Titel van je zoekertje</h4>
-                <input type="text" name="title" placeholder="titel" class="form-control" >
+                <input type="text" name="title" placeholder="titel" class="form-control" required>
 
                 <h4 class="mb-2 mt-4">Specificaties woning die je ter verhuur stelt</h4>
                 <div class="d-md-flex">
@@ -46,7 +46,7 @@
                                 <img src="{{URL::asset('/images/icons/location.png')}}" class="search-icons">
                                 <p class="search-title">Gemeente</p>
                             </div>
-                            <input type="text" name="city" placeholder="Borgerhout" class="form-control" >
+                            <input type="text" name="city" placeholder="Borgerhout" class="form-control" required>
                         </div>
 
                         <div class="form-group">

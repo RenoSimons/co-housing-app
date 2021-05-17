@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\AccountDetail;
 use App\Models\Application;
 use App\Models\RentOffer;
+use App\Models\Favorite;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -63,5 +64,19 @@ class User extends Authenticatable
 
     public function avatar() {
         return $this->details->img_url;
+    }
+
+    public function favorites() {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function hasFavorited($id) {
+        $check = $this->favorites->where('offer_id', '=', $id)->first();
+
+        if ($check) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

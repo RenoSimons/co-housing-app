@@ -31,8 +31,9 @@ Route::get('/', function () {
 
 // ZOEKPORTAAL
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
+Route::post('/favorite', [CoHousingController::class, 'favoritePost'])->name('favorite');
 
-// VIND PERSONEN
+// FIND PERSONS
 Route::get('/personen', [PersonController::class, 'index'])->name('persons');
 Route::post('/personen/filter', [PersonController::class, 'searchPersons'])->name('searchPersons');
 

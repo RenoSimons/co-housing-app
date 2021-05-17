@@ -99,7 +99,11 @@
                         {{ $rentoffer->type_house }}
                     </span>
                     <span class="mr-2">
-                        <a href=""><img src="{{URL::asset('/images/icons/heart-empty.png')}}" class="heart-icon"></a>
+                        @if( ! Auth::user()->hasFavorited($rentoffer->id))
+                            <img src="{{URL::asset('/images/icons/heart-empty.png')}}" id="{{ $rentoffer->id }}" class="heart-icon">
+                        @else
+                            <img src="{{URL::asset('/images/icons/heart-full.png')}}" id="{{ $rentoffer->id }}" class="heart-icon">
+                        @endif
                     </span>
                 </div>
                     
@@ -131,4 +135,38 @@
         @endif
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".heart-icon").click(function(e) {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        e.preventDefault();
+        var id = $(this).attr('id');
+   
+        $.ajax({
+            type:'POST',
+            url: "/favorite",
+            data:{ id:id },
+
+            success:function(response) {
+                const id = response[0];
+                const isFavorited = response[1];
+                
+                if (isFavorited) {
+                    $('#'+id).attr("src", "{{URL::asset('/images/icons/heart-full.png')}}")
+                } else {
+                    $('#'+id).attr("src", "{{URL::asset('/images/icons/heart-empty.png')}}")
+                }
+                
+            }
+        });
+	});
+</script>
+
+
 @endsection
