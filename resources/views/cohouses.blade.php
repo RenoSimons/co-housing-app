@@ -137,6 +137,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(".heart-icon").click(function(e) {
 
         $.ajaxSetup({
@@ -162,7 +163,6 @@
                 } else {
                     $('#'+id).attr("src", "{{URL::asset('/images/icons/heart-empty.png')}}")
                 }
-                
             }
         });
 	});

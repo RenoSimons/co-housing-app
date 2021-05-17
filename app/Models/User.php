@@ -73,10 +73,6 @@ class User extends Authenticatable
     public function hasFavorited($id) {
         $check = $this->favorites->where('offer_id', '=', $id)->first();
 
-        if ($check) {
-            return true;
-        } else {
-            return false;
-        }
+        return $check ? true : false; 
     }
 }
