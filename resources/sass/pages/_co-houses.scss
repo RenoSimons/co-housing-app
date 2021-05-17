@@ -1,0 +1,21 @@
+#offer-wrapper {
+    .card-overlay {
+        position: absolute;
+        margin-top: 30px !important;
+        width: 100%;
+        
+        .house-type {
+            color:white;
+            padding: 10px;
+            background-color: black;
+            border-radius: 5px;
+            opacity:0.8;
+            margin-left: 20px;
+        }
+
+        .heart-icon {
+            width: 30px;
+        }
+    }
+
+}

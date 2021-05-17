@@ -19,6 +19,7 @@ class Application extends Model
         'surface',
         'budget',
         'housemates',
+        'start_date',
         'intro',
     ];
 

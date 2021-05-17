@@ -32,8 +32,8 @@ class ApplicationController extends Controller
             "surface" => $request->input('surface'),
             "budget" => $request->input('budget'),
             "housemates" => $request->input('housemates'),
-            "intro" => $request->input('intro'),
             "start_date" => $request->input('start_date'),
+            "intro" => $request->input('intro'),
         ]);
 
         $Application->save();

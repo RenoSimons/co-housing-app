@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Vind personen die zich kandidaat stellen om te co-housen</h1>
+        <h1>Vind hier jouw nieuwe co-houser</h1>
         <hr>
     </div>
     <div class="container d-md-flex p-0 mt-md-5 p-md-3">
@@ -149,7 +149,7 @@
             @endif
         </div>
     </div>
-
+    
     <script>
         
         let check = false;
@@ -160,7 +160,7 @@
                 let currentTop = $(this).scrollTop();
                 console.log(currentTop);
                 if(currentTop > 250) {
-                    $('#search-box').css('transform', 'translateY(' + (currentTop - 100) + 'px)');
+                    $('#search-box').css('transform', 'translateY(' + (currentTop - 230) + 'px)');
                 }
                 if(currentTop < 250) {
                     $('#search-box').css('transform', 'translateY(0px)');

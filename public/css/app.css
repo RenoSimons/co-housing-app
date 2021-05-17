@@ -10202,6 +10202,23 @@ h3 {
   transition: 0.25s;
 }
 
+#offer-wrapper .card-overlay {
+  position: absolute;
+  margin-top: 30px !important;
+  width: 100%;
+}
+#offer-wrapper .card-overlay .house-type {
+  color: white;
+  padding: 10px;
+  background-color: black;
+  border-radius: 5px;
+  opacity: 0.8;
+  margin-left: 20px;
+}
+#offer-wrapper .card-overlay .heart-icon {
+  width: 30px;
+}
+
 .search-btn {
   background-color: black;
   color: white;
@@ -10304,4 +10321,18 @@ h3 {
 .line {
   width: 100%;
   border-bottom: 1px solid black;
+}
+
+.black-bg {
+  background: #636465;
+}
+
+.w-49 {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .w-49 {
+    width: 49%;
+  }
 }

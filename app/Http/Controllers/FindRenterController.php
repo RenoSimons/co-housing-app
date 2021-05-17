@@ -45,6 +45,7 @@ class FindRenterController extends Controller
             "title" => $request->input('title'),
             "province" => $request->input('region'),
             "city" => $request->input('city'),
+            "type_house" => $request->input('type_building'),
             "surface" => $request->input('surface'),
             "budget" => $request->input('budget'),
             "housemates" => $request->input('housemates'),
