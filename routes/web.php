@@ -8,6 +8,7 @@ use App\Http\Controllers\FindRenterController;
 use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\CoHousingController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,11 @@ Route::get('/', function () {
 
 // ZOEKPORTAAL
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
-Route::post('/favorite', [CoHousingController::class, 'favoritePost'])->name('favorite');
+Route::get('/cohousings/filterhouses', [CoHousingController::class, 'searchHouses'])->name('searchHouses');
+Route::get('/cohousings/{id}', [CoHousingController::class, 'showHouseDetail']);
+
+// FAVORITE POST
+Route::post('/favorite', [FavoriteController::class, 'favoritePost'])->name('favorite');
 
 // FIND PERSONS
 Route::get('/personen', [PersonController::class, 'index'])->name('persons');

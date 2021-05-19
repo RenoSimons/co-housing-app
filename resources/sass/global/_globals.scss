@@ -14,13 +14,3 @@
 .black-bg {
     background: #636465;
 }
-
-.w-49 {
-    width: 100%;
-}
-
-@include media-breakpoint-up(md) {
-    .w-49 {
-        width: 49%;
-    }
-}

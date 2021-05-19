@@ -16,3 +16,27 @@
         }
     }
 }
+
+.progress-indicator {
+    .progress-element {
+        margin-right: 100px;
+        display: flex;
+        align-items: center;
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            background: $black
+        }
+
+        .progress-title {
+            margin-left: 30px;
+        }
+    }
+}
+

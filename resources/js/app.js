@@ -6,6 +6,10 @@
 
 require('./bootstrap');
 require('./nav');
-require('./account_detail');
-require('./test');
+require('./button_behaviour');
+require('./favorite');
+require('./cohouse_overview');
+require('./offerHouse');
+
+
 
