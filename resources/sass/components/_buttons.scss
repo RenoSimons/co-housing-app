@@ -15,6 +15,23 @@
     }
 }
 
+.filter-btn {
+    background-color: black;
+    color:$white;
+    padding: 5px 36px;
+    border-radius: 5px;
+    border: none;
+    background-image: url("../../../public/images/icons/filter-icon.png");
+    background-position: 15px;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    transition: 1s;
+    
+    &:hover {
+       color:white;
+    }
+}
+
 .login-btn {
     background:transparent; 
     color:white;
@@ -30,10 +47,10 @@
 }
 
 .save-btn {
-    background-color: rgba(0,0,0,0.8); 
+    background-color: $black; 
     color:white;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.8);
+    border: 1px solid $black;
 
     &:hover {
         color:white;
@@ -50,5 +67,26 @@
         transform: scale(1.2);
         border: 1px solid rgba(255,255,255,0.6);
         color: rgba(255,255,255,0.85) !important;
+    }
+}
+
+.read-more-btn {
+    text-decoration: none;
+    color: $white;
+    background-color: $black;
+    padding: 5px 10px;
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.action-link {
+    padding: 2.5px 10px;
+    text-decoration: none;
+    transition: 0.25s;
+    &:hover {
+        text-decoration: none;
+        transform:scale(1.2);
     }
 }

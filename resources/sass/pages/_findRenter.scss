@@ -16,3 +16,67 @@
         }
     }
 }
+
+.progress-indicator {
+    .progress-element {
+        margin-right: 100px;
+        display: flex;
+        align-items: center;
+
+
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            font-size: 12px;
+            text-align: center;
+            transition: 1s;
+        }
+
+        .light {
+            background: $white;
+            color: $black;
+            border: 1.5px solid black;
+        }
+
+        .dark {
+            background: $black;
+            color: white;
+        }
+
+        .progress-title {
+            margin-left: 30px;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 534px) and (max-width: 767px) {
+    .progress-indicator { 
+        .progress-element { 
+            margin-right: 40px;
+        }
+    }
+}
+
+@media only screen and (max-width: 533px) {
+    .progress-indicator { 
+        .progress-element { 
+            margin-right: 10px;
+
+            .circle {
+                width: 20px;
+                height: 20px;
+                color: transparent;
+            }
+
+            .progress-title {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+

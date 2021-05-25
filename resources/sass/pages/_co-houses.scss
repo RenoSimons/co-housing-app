@@ -1,21 +1,69 @@
 #offer-wrapper {
-    .card-overlay {
-        position: absolute;
-        margin-top: 30px !important;
-        width: 100%;
-        
-        .house-type {
-            color:white;
-            padding: 10px;
-            background-color: black;
-            border-radius: 5px;
-            opacity:0.8;
-            margin-left: 20px;
-        }
+    .sizing-icons {
+        width: 20px;
+        cursor: pointer;
+    }
 
-        .heart-icon {
-            width: 30px;
+    .collapse-icon {
+        width: 30px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .w-30 {
+        width: 30%;
+    }
+
+    .w-49 {
+        width: 100%;
+    }
+    
+    @include media-breakpoint-up(md) {
+        .w-49 {
+            width: 49%;
         }
     }
 
+    .small-view {
+        transform: scale(0.75) !important;
+        margin: 0;
+    }
+
+    @media only screen and (max-width: 767px)  {
+        hr {
+            margin: 0;
+        }
+        .collapser {
+            display:none;
+        }
+    }
+
+    @media only screen and (max-width: 989px)  {
+        .sizing-icons {
+            display:none;
+        }
+    }
+
+    .card {
+        transition: 0.5s;
+        .card-overlay {
+            position: absolute;
+            margin-top: 30px !important;
+            width: 100%;
+            
+            .house-type {
+                color:$white;
+                padding: 10px;
+                background-color: black;
+                border-radius: 5px;
+                opacity:0.8;
+                margin-left: 20px;
+            }
+
+            .heart-icon {
+                width: 30px;
+                cursor: pointer;
+            }
+        }
+    }
 }

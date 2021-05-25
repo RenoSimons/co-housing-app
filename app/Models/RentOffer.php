@@ -22,6 +22,12 @@ class RentOffer extends Model
         'house_description',
         'housemates_description',
         'views',
+        'own_toilet',
+        'shared_kitchen',
+        'own_bathroom',
+        'pets',
+        'washing_machine',
+        'wifi',
         'img_urls',
     ];
 

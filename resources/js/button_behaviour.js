@@ -1,5 +1,3 @@
-
-
 // Event listeners disabled btns
 $(function () {
     $('#birthInput').on('input', function () {
@@ -39,3 +37,8 @@ $(function () {
     });
 });
 
+$(function () {
+    $('.form-control').on('change', function () {
+        $('.filter-btn').removeAttr("disabled");
+    });
+});

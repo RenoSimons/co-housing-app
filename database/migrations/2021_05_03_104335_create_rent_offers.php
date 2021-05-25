@@ -27,6 +27,12 @@ class CreateRentOffers extends Migration
             $table->string('housemates');
             $table->string('house_description');
             $table->string('housemates_description');
+            $table->string('own_toilet');
+            $table->string('shared_kitchen');
+            $table->string('own_bathroom');
+            $table->string('pets');
+            $table->string('washing_machine');
+            $table->string('wifi');
             $table->integer('views');
             $table->json('img_urls');
             $table->timestamps();
