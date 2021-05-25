@@ -140,6 +140,7 @@
 
 
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyD22QUBGWvcXZHK8qHYTXo3qwyg6nUKoDM"></script>
 
 <script type="text/javascript">
     
