@@ -135,9 +135,11 @@
                             
                             <p>{{ $application->intro }}</p>
 
+
+
                             <div class="action-btns d-flex justify-content-between">
-                                <button class="save-btn">Bekijk profiel</button>
-                                <button class="save-btn">Contacteer</button>
+                                <a href="/profile/ {{ $application->user_id }}" class="save-btn action-link">Bekijk profiel</a>
+                                <button class="save-btn action-link">Contacteer</button>
                             </div>
                         </div>
                     </div>

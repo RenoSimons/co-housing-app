@@ -87,8 +87,8 @@
             <div class="form-group m-0 d-flex justify-content-between">
                 <button class="btn filter-btn" type="submit" disabled><span class="ml-3">Filter</span></button>
                 <div class="size-icons">
-                    <img src="{{URL::asset('/images/icons/small.png')}}" id="icon-small" class="sizing-icons" alt="Compact">
-                    <img src="{{URL::asset('/images/icons/large.png')}}" id="icon-big" class="sizing-icons hidden" alt="groot">
+                    <img src="{{URL::asset('/images/icons/small.png')}}" id="icon-small" class="sizing-icons hidden" alt="Compact">
+                    <img src="{{URL::asset('/images/icons/large.png')}}" id="icon-big" class="sizing-icons" alt="groot">
                     <img src="{{URL::asset('/images/icons/collapse.png')}}" id="icon-collapse" class="collapse-icon uncollapsed d-md-none" alt="groot">  
                 </div>
             </div>
@@ -97,7 +97,7 @@
     <div class="d-block d-md-flex flex-wrap justify-content-between mt-4 w-100">
         @if ( count($rentoffers) > 0)
             @foreach ($rentoffers as $rentoffer)
-            <div class="card w-49 mb-4">
+            <div class="card w-30 mb-4">
                 <img class="card-img-top" src="{{ URL::asset('storage/house_images/'. $rentoffer->img_urls[0]) }}" alt="Foto van huis">
                 <div class="card-overlay d-flex justify-content-between align-items-center">
                     <span class="house-type">
@@ -129,7 +129,7 @@
                             <h5 class="card-title">{{ $rentoffer->housemates }}</h5>
                         </div>
                     </div>
-                    <div class="text">
+                    <div class="text mt-2">
                         <p>{{ $rentoffer->title }}</p>
                     </div>
                     <div class="action-btn">

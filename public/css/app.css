@@ -10209,14 +10209,40 @@ h3 {
   line-height: 30px;
   border-radius: 50%;
   font-size: 12px;
-  color: #fff;
   text-align: center;
+  transition: 1s;
+}
+.progress-indicator .progress-element .light {
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  border: 1.5px solid black;
+}
+.progress-indicator .progress-element .dark {
   background: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 .progress-indicator .progress-element .progress-title {
   margin-left: 30px;
 }
 
+@media only screen and (min-width: 534px) and (max-width: 767px) {
+  .progress-indicator .progress-element {
+    margin-right: 40px;
+  }
+}
+@media only screen and (max-width: 533px) {
+  .progress-indicator .progress-element {
+    margin-right: 10px;
+  }
+  .progress-indicator .progress-element .circle {
+    width: 20px;
+    height: 20px;
+    color: transparent;
+  }
+  .progress-indicator .progress-element .progress-title {
+    margin-left: 10px;
+  }
+}
 #search-box {
   transition: 0.25s;
 }
@@ -10359,6 +10385,16 @@ h3 {
   text-decoration: none;
 }
 
+.action-link {
+  padding: 2.5px 10px;
+  text-decoration: none;
+  transition: 0.25s;
+}
+.action-link:hover {
+  text-decoration: none;
+  transform: scale(1.2);
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -10384,8 +10420,8 @@ h3 {
 }
 
 .user-avatar {
-  width: 50px;
-  border-radius: 50%;
+  width: 60px;
+  border-radius: 35%;
 }
 
 .unknown-user {
@@ -10412,4 +10448,8 @@ h3 {
 
 .black-bg {
   background: #636465;
+}
+
+.red-border {
+  border: 1px solid red;
 }

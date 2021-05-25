@@ -80,3 +80,13 @@
         text-decoration: none;
     }
 }
+
+.action-link {
+    padding: 2.5px 10px;
+    text-decoration: none;
+    transition: 0.25s;
+    &:hover {
+        text-decoration: none;
+        transform:scale(1.2);
+    }
+}

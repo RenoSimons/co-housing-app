@@ -8,15 +8,15 @@
 
         <div class="progress-indicator d-flex justify-content-center mt-5">
             <div class="progress-element">
-                <div class="circle">1</div>
+                <div class="circle dark font-weight-bold">1</div>
                 <span class="progress-title">Beschrijving</span>
             </div>
             <div class="progress-element">
-                <div class="circle">2</div>
+                <div class="circle light font-weight-bold" id="circle2">2</div>
                 <span class="progress-title">Specificaties</span>
             </div>
             <div class="progress-element">
-                <div class="circle">3</div>
+                <div class="circle light font-weight-bold" id="circle3">3</div>
                 <span class="progress-title">Foto's</span>
             </div>
         </div>
@@ -44,8 +44,8 @@
                 </div>
 
                 <div id="section2" class="hidden">
-                    <h4 class="mb-2 mt-4">Specificaties woning die je ter verhuur stelt</h4>
-                    <div class="d-md-flex">
+                    <h4 class="mb-4 mt-4">Specificaties woning</h4>
+                    <div class="d-md-flex mt-2">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <div class="d-flex align-items-center">
@@ -69,7 +69,7 @@
                                     <img src="{{URL::asset('/images/icons/location.png')}}" class="search-icons">
                                     <p class="search-title">Gemeente</p>
                                 </div>
-                                <input type="text" name="city" placeholder="Borgerhout" class="form-control" required>
+                                <input type="text" name="city" id="city-field" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -91,7 +91,7 @@
                                     <img src="{{URL::asset('/images/icons/measuring-tape.png')}}" class="search-icons">
                                     <p class="search-title">Oppervlakte <small>m²</small></p>
                                 </div>
-                                <input type="number" name="surface" placeholder="m²" class="form-control" required>
+                                <input type="number" name="surface" id="surface-field" placeholder="m²" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -99,7 +99,7 @@
                                     <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
                                     <p class="search-title">Prijs <small>(maandelijks in €)</small></p>
                                 </div>
-                                <input type="number" name="budget" placeholder="€" class="form-control" required>
+                                <input type="number" name="budget" id="budget-field" placeholder="€" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -122,17 +122,84 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="section3" class="hidden">
+                    <h4 class="mb-4 mt-4">Extra opties</h4>
+                    <div class="d-md-flex mt-2">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/toilet.png')}}" class="search-icons">
+                                    <p class="search-title">Eigen toilet</p>
+                                </div>
+                                <select class="form-control" name="toilet">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/kitchen.png')}}" class="search-icons">
+                                    <p class="search-title">Gedeelde keuken</p>
+                                </div>
+                                <select class="form-control" name="kitchen">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/shower.png')}}" class="search-icons">
+                                    <p class="search-title">Eigen badkamer</p>
+                                </div>
+                                <select class="form-control" name="own_bathroom">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/pets.png')}}" class="search-icons">
+                                    <p class="search-title">Huisdieren</p>
+                                </div>
+                                <select class="form-control" name="pets">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/wash-machine.png')}}" class="search-icons">
+                                    <p class="search-title">Wasmachine</p>
+                                </div>
+                                <select class="form-control" name="washing_machine">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/wifi.png')}}" class="search-icons">
+                                    <p class="search-title">Wi-Fi</p>
+                                </div>
+                                <select class="form-control" name="wifi">
+                                    <option>Ja</option>
+                                    <option>Nee</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <h4 class="mt-4">Startdatum verhuur</h4>
                     <div class="form-group w-50 w-md-25">
-                        <input class="date form-control" name="start_date" type="text">
+                        <input class="date form-control" name="start_date" id="date-field" type="text">
                     </div>
-
-                    <div id="error-msg" class="mt-4 hidden alert alert-danger">
-
-                    </div>
-
+                </div>
+                <div id="section3" class="hidden">
                     <h4 class="mt-4">Voeg foto's van de kamer en woning toe</h4>
                     <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                         <input id="gallery-photo-add" accept="image/*" multiple="multiple" name="photos[]" type="file" class="form-control border-0 hidden">
@@ -145,13 +212,13 @@
                     <div class="gallery mt-2 d-flex flex-wrap justify-content-center">
 
                     </div>
-
-                    
                 </div>
-                
-                <a class='btn save-btn mt-3 hidden' id="b1">Vorige</a>
-                <a class='btn save-btn mt-3' id="b2">Volgende</a>
-                <button type="submit" class='btn save-btn mt-3 hidden'>Publiceer</button>
+                <div class="mt-3">
+                    <a class='btn save-btn mt-3 hidden mr-3' id="b1">Vorige</a>
+                    <a class='btn save-btn mt-3' id="b2">Volgende</a>
+                    <a class='btn save-btn mt-3 hidden' id="b21">Volgende</a>
+                    <button type="submit" class='btn save-btn mt-3 hidden' id="b3">Publiceer</button>
+                </div>
             </form>
         </div>
     </div>

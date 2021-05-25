@@ -3,6 +3,8 @@ let check = false;
 
 if(check) {
     $('.sizing-icons').hide();
+    $('.card').removeClass('w-30');
+    $('.card').addClass('w-49');
 }
 
 $('.sizing-icons').click(function() {
