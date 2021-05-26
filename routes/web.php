@@ -34,6 +34,7 @@ Route::get('/', function () {
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
 Route::get('/cohousings/filterhouses', [CoHousingController::class, 'searchHouses'])->name('searchHouses');
 Route::get('/cohousings/{id}', [CoHousingController::class, 'showHouseDetail']);
+Route::post('/cohousings/getimages', [CoHousingController::class, 'getImages'])->name('getImages');
 
 // FAVORITE POST
 Route::post('/favorite', [FavoriteController::class, 'favoritePost'])->name('favorite');

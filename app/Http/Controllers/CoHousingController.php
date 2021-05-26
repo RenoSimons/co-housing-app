@@ -63,6 +63,15 @@ class CoHousingController extends Controller
     }
 
     public function showHouseDetail($id) {
-        return view('cohouse_detail');
+        $house_details = DB::table('rent_offers')->where('id', $id)->first();
+        $poster = DB::table('users')->where('id', $house_details->user_id)->get(['name', 'email', 'created_at']);
+
+        return view('cohouse_detail', ['house_details' => $house_details], ['poster' => $poster]);
+    }
+
+    public function getImages(Request $request) {
+        $images = DB::table('rent_offers')->where('id', $request->id)->get('img_urls');
+        //dd($images->toJson());
+        return response()->json($images);
     }
 }

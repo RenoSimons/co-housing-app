@@ -10,6 +10,8 @@ require('./button_behaviour');
 require('./favorite');
 require('./cohouse_overview');
 require('./offerHouse');
+require('./detect_mobile');
+require('./co_house_detail');
 
 
 
