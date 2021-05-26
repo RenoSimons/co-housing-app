@@ -21,6 +21,8 @@ class CreateRentOffers extends Migration
             $table->string('start_date');
             $table->string('province');
             $table->string('city');
+            $table->string('lat');
+            $table->string('long');
             $table->string('type_house');
             $table->string('surface');
             $table->string('budget');

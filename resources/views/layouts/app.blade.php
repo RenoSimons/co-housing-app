@@ -19,6 +19,9 @@
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+    <!-- MAPS -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAehWThfsI8HCI_LASIJkA3gJ-qED15i5E"></script>
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -32,7 +35,7 @@
                 </button>
                 
                 <div class="title-left">
-                    <a href="{{url('/')}}" class="text-decoration-none black-text"><h3>Co-housing made easy</h3></a>
+                    <a href="{{url('/')}}" class="text-decoration-none black-text"><img class="unknown-user" src="{{URL::asset('/images/icons/logo2.png')}}"> </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -17,7 +17,9 @@ class FindRenterController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'region' => 'required',
-            'city' => 'required',
+            'street' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
             'type_building' => 'required',
             'surface' => 'required',
             'budget' => 'required',
@@ -32,9 +34,7 @@ class FindRenterController extends Controller
             'washing_machine' => 'required',
             'wifi' => 'required'
         ]);
-
-        
-        
+      
         if ( !is_null ($request->file('photos')) ) {
 
             $photoUrls = [];
@@ -48,13 +48,13 @@ class FindRenterController extends Controller
             }
         }
 
-        
-
         $RentOffer = new RentOffer([
             "user_id" => Auth::id(),
             "title" => $request->input('title'),
             "province" => $request->input('region'),
-            "city" => $request->input('city'),
+            "street" => $request->input('street'),
+            "lat" => $request->input('lat'),
+            "long" => $request->input('long'),
             "type_house" => $request->input('type_building'),
             "surface" => $request->input('surface'),
             "budget" => $request->input('budget'),

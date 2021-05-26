@@ -67,9 +67,11 @@
                             <div class="form-group">
                                 <div class="d-flex align-items-center">
                                     <img src="{{URL::asset('/images/icons/location.png')}}" class="search-icons">
-                                    <p class="search-title">Gemeente</p>
+                                    <p class="search-title">Straatnaam</p>
                                 </div>
-                                <input type="text" name="city" id="city-field" class="form-control" required>
+                                <input type="text" name="street" id="city-field" class="form-control" required>
+                                <input type="hidden" name="lat" id="latitude_input" />
+                                <input type="hidden" name="long" id="longitude_input" />
                             </div>
 
                             <div class="form-group">
@@ -226,13 +228,35 @@
 
 
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyD22QUBGWvcXZHK8qHYTXo3qwyg6nUKoDM"></script>
+
 
 <script type="text/javascript">
-    $(function() {
+    //Google maps
+    var searchInput = 'city-field';
+    $(document).ready(function () {
+        var autocomplete;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode'],
+            componentRestrictions: {
+                country: "BE"
+            }
+        });
+        
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var near_place = autocomplete.getPlace();
+            document.getElementById('latitude_input').value = near_place.geometry.location.lat();
+            document.getElementById('longitude_input').value = near_place.geometry.location.lng();
+        });
+    });
 
-        // Multiple images preview in browser
-        var imagesPreview = function(input, placeToInsertImagePreview) {
+    $(document).on('change', '#'+searchInput, function () {
+        document.getElementById('latitude_input').value = '';
+        document.getElementById('longitude_input').value = '';
+    });
+    
+    // Multiple images preview in browser   
+    $(function() {
+        let imagesPreview = function(input, placeToInsertImagePreview) {
             if (input.files) {
                 var filesAmount = input.files.length;
 
@@ -266,6 +290,7 @@
         $('#error-msg').html(msg);
     }
 
+    // Datepicker
     $('.date').datepicker({
         format: 'dd-mm-yyyy'
     });

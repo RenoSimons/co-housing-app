@@ -10134,6 +10134,243 @@ h3 {
     max-height: 30vh;
   }
 }
+.svg {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  line-height: 200px;
+  text-align: center;
+  background-color: #FFF;
+  border-radius: 50%;
+}
+
+#svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: #2d2e30;
+}
+#svg path:nth-child(1) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.05s;
+          animation-delay: 0.05s;
+}
+#svg path:nth-child(1):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(2) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+#svg path:nth-child(2):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(3) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+#svg path:nth-child(3):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(4) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+#svg path:nth-child(4):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(5) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+#svg path:nth-child(5):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(6) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+#svg path:nth-child(6):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(7) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+#svg path:nth-child(7):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(8) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+#svg path:nth-child(8):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(9) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+#svg path:nth-child(9):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(10) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+#svg path:nth-child(10):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(11) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.55s;
+          animation-delay: 0.55s;
+}
+#svg path:nth-child(11):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(12) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+#svg path:nth-child(12):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(13) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.65s;
+          animation-delay: 0.65s;
+}
+#svg path:nth-child(13):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(14) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+#svg path:nth-child(14):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(15) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+#svg path:nth-child(15):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(16) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+#svg path:nth-child(16):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(17) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.85s;
+          animation-delay: 0.85s;
+}
+#svg path:nth-child(17):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#svg path:nth-child(18) {
+  -webkit-animation: pweek 0.9s linear infinite;
+          animation: pweek 0.9s linear infinite;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+#svg path:nth-child(18):hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+@-webkit-keyframes pweek {
+  0% {
+    fill: #2d2e30;
+  }
+  20% {
+    fill: #574e50;
+  }
+  40% {
+    fill: #a39f99;
+  }
+  60% {
+    fill: #383c3d;
+  }
+  80% {
+    fill: #1b1a1b;
+  }
+  100% {
+    fill: #2d2e30;
+  }
+}
+
+@keyframes pweek {
+  0% {
+    fill: #2d2e30;
+  }
+  20% {
+    fill: #574e50;
+  }
+  40% {
+    fill: #a39f99;
+  }
+  60% {
+    fill: #383c3d;
+  }
+  80% {
+    fill: #1b1a1b;
+  }
+  100% {
+    fill: #2d2e30;
+  }
+}
 .account-detail-wrapper #upload {
   opacity: 0;
 }
