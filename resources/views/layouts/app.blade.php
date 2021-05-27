@@ -23,7 +23,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="overflow-hidden">
+<body >
 <div id="app" class="overflow-hidden">
         <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
             <div class="container-fluid">

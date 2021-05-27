@@ -34,7 +34,7 @@ $.ajax({
         initCarousel()
         //shuffle(imagesArray);
 
-        $('.img-fluid').each(function(index) {
+        $('.carousel-thumbnail').each(function(index) {
             $(this).attr('src', urlString + imagesArray[index])
             console.log($(this).attr('src'))
         });

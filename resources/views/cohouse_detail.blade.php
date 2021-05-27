@@ -21,23 +21,23 @@
     <div class="row w-100" id="image-row">
         <div class="col-sm-12 col-md-12 col-lg-6 p-1">
             <div class="image-box pt-1" value="1">
-                <img src="" alt="foto van huis" id="main-img" class="img-fluid rounded">
+                <img src="" alt="foto van huis" id="main-img" class="img-fluid carousel-thumbnail rounded">
             </div>
         </div>
         <div class="col-sm-6 col-md-5 col-lg-3 p-1 space-evenly">
             <div class="image-box" id="box1" value="2">
-                <img src="" alt="foto van huis" class="img-fluid presentation-img">
+                <img src="" alt="foto van huis" class="img-fluid carousel-thumbnail presentation-img">
             </div>
             <div class="image-box" id="box2" value="3">
-                <img src="" alt="foto van huis" id="kak" class="img-fluid presentation-img pt-1">
+                <img src="" alt="foto van huis" id="kak" class="img-fluid carousel-thumbnail presentation-img pt-1">
             </div>
         </div>
         <div class="col-sm-6 col-md-5 col-lg-3 p-1 space-evenly">
             <div class="image-box" id="box3" value="4">
-                <img src="" alt="foto van huis" class="img-fluid presentation-img">
+                <img src="" alt="foto van huis" class="img-fluid carousel-thumbnail presentation-img">
             </div>
             <div class="dark-overlay image-box" value="5">
-                <img src="" alt="foto van huis" id="overlay-img" class="img-fluid presentation-img pt-1">
+                <img src="" alt="foto van huis" id="overlay-img" class="img-fluid carousel-thumbnail presentation-img pt-1">
                 <div class="centered">
                     <span class="overlay-text">Nog <span id="pics-left"></span> foto's</span>
                 </div>
