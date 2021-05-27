@@ -159,7 +159,6 @@
         if(! check) {
             $(document).scroll( function(evt) {
                 let currentTop = $(this).scrollTop();
-                console.log(currentTop);
                 if(currentTop > 250) {
                     $('#search-box').css('transform', 'translateY(' + (currentTop - 230) + 'px)');
                 }

@@ -19,14 +19,11 @@
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-
-    <!-- MAPS -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAehWThfsI8HCI_LASIJkA3gJ-qED15i5E"></script>
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+<body class="overflow-hidden">
 <div id="app" class="overflow-hidden">
         <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
             <div class="container-fluid">
@@ -118,6 +115,12 @@
                 </div>
             </div>
         </nav>
+        <div class="slider-box overflow-hidden">
+            <div id="message-slider" class="d-flex">
+                <img src="{{URL::asset('/images/icons/uitroepteken.png')}}" class="exclamation-mark" alt="uitroepteken">
+                <span class="ml-2" id="message-text"></span>
+            </div>
+        </div>
 
         <main>
             @yield('content')

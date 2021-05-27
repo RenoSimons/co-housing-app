@@ -117,16 +117,16 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex">
-                            <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons smaller">
-                            <h5 class="card-title">{{ $rentoffer->province }}</h5>
+                            <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons smaller small-view">
+                            <h5 class="card-title small-view">{{ $rentoffer->province }}</h5>
                         </div>
                         <div class="d-flex">
-                            <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons smaller">
-                            <h5 class="card-title">€{{ $rentoffer->budget }}/mnd</h5>
+                            <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons small-view smaller">
+                            <h5 class="card-title small-view">€{{ $rentoffer->budget }}/mnd</h5>
                         </div>
                         <div class="d-flex">
-                            <img src="{{URL::asset('/images/icons/multiple-users-silhouette.png')}}" class="search-icons smaller">
-                            <h5 class="card-title">{{ $rentoffer->housemates }}</h5>
+                            <img src="{{URL::asset('/images/icons/multiple-users-silhouette.png')}}" class="search-icons small-view smaller">
+                            <h5 class="card-title small-view smaller">{{ $rentoffer->housemates }}</h5>
                         </div>
                     </div>
                     <div class="text mt-2">

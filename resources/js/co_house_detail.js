@@ -54,21 +54,36 @@ $.ajax({
 });
 
 
-$('.dark-overlay').click(function() {
-    console.log('clik');
-    $('#carousel-modal').modal('toggle')
-});
-
 function appendCarousel(img) {
     let html = `
-        <div class="carousel-item">
-            <img class="d-block w-100" src="${img}">
+        <div class="carousel-item" id="img${imageId}">
+            <img class="d-block carousel-img w-100" src="${img}">
         </div>
     `;
 
     $('.carousel-inner').append(html)
+    imageId += 1;
 }
 
 function initCarousel() {
     $('.carousel-item:first').addClass('active');
 }
+
+// Handle carousel image on photo click
+let imageId = 1;
+let activeImage = 0;
+
+$('.dark-overlay, .image-box').click(function() {
+    $('.carousel-item').removeClass('active');
+
+    activeImage = $(this).attr('value');
+
+    let activeImageId = "#img" + $(this).attr('value');
+    $(activeImageId).addClass('active');
+
+    $('#carousel-modal').modal('toggle')
+});
+
+
+
+

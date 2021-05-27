@@ -2007,19 +2007,27 @@ $.ajax({
     $('#pics-left').html(picsLeft);
   }
 });
-$('.dark-overlay').click(function () {
-  console.log('clik');
-  $('#carousel-modal').modal('toggle');
-});
 
 function appendCarousel(img) {
-  var html = "\n        <div class=\"carousel-item\">\n            <img class=\"d-block w-100\" src=\"".concat(img, "\">\n        </div>\n    ");
+  var html = "\n        <div class=\"carousel-item\" id=\"img".concat(imageId, "\">\n            <img class=\"d-block carousel-img w-100\" src=\"").concat(img, "\">\n        </div>\n    ");
   $('.carousel-inner').append(html);
+  imageId += 1;
 }
 
 function initCarousel() {
   $('.carousel-item:first').addClass('active');
-}
+} // Handle carousel image on photo click
+
+
+var imageId = 1;
+var activeImage = 0;
+$('.dark-overlay, .image-box').click(function () {
+  $('.carousel-item').removeClass('active');
+  activeImage = $(this).attr('value');
+  var activeImageId = "#img" + $(this).attr('value');
+  $(activeImageId).addClass('active');
+  $('#carousel-modal').modal('toggle');
+});
 
 /***/ }),
 
@@ -2046,13 +2054,13 @@ $('.sizing-icons').click(function () {
     $('.card').addClass('w-30');
     $('#icon-big').removeClass('hidden');
     $('#icon-small').addClass('hidden');
-    $('.smaller , .card-title , .house-type').addClass('small-view');
+    $('.smaller , .card-title ').addClass('small-view');
   } else {
     $('.card').removeClass('w-30');
     $('.card').addClass('w-49');
     $('#icon-small').removeClass('hidden');
     $('#icon-big').addClass('hidden');
-    $('.smaller , .card-title , .house-type').removeClass('small-view');
+    $('.smaller , .card-title ').removeClass('small-view');
   }
 });
 $('#icon-collapse').click(function () {
@@ -2103,7 +2111,7 @@ var check = false;
   \**********************************/
 /***/ (() => {
 
-$(".heart-icon").click(function (e) {
+$(".heart-icon").click(function (e, currentTop) {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2120,13 +2128,34 @@ $(".heart-icon").click(function (e) {
     success: function success(response) {
       var id = response[0];
       var isFavorited = response[1];
+      var messageText = "";
 
       if (isFavorited) {
         $('#' + id).attr("src", "/images/icons/heart-full.png");
+        messageText = "Toegevoegd aan favorieten";
       } else {
         $('#' + id).attr("src", "/images/icons/heart-empty.png");
-      }
+        messageText = "Verwijderd van favorieten";
+      } // Show succes message
+
+
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(messageText);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 3000);
     }
+  });
+});
+var currentTop = 0;
+$(document).scroll(function (evt) {
+  currentTop = $(this).scrollTop();
+  $('.slider-box').css({
+    'margin-top': currentTop + 'px'
   });
 });
 

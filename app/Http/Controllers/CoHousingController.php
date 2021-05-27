@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\AccountDetail;
 use App\Models\RentOffer;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class CoHousingController extends Controller
@@ -64,9 +67,17 @@ class CoHousingController extends Controller
 
     public function showHouseDetail($id) {
         $house_details = DB::table('rent_offers')->where('id', $id)->first();
-        $poster = DB::table('users')->where('id', $house_details->user_id)->get(['name', 'email', 'created_at']);
-
-        return view('cohouse_detail', ['house_details' => $house_details], ['poster' => $poster]);
+        $poster = DB::table('users')->where('id', $house_details->user_id)->first();
+        $poster_details = AccountDetail::where('user_id', $house_details->user_id)->first();
+        
+        // Format dates
+        $poster->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $poster->created_at)->format('d-m-Y');
+        $house_details->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $house_details->created_at)->format('d-m-Y');
+        // Update view counter
+        $newViewCount = $house_details->views;
+        $newViewCount++;
+        DB::table('rent_offers')->where('id', $id)->update(['views' => $newViewCount]);
+        return view('cohouse_detail', ['house_details' => $house_details, 'poster' => $poster, 'poster_details' => $poster_details] );
     }
 
     public function getImages(Request $request) {

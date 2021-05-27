@@ -12,13 +12,13 @@ $('.sizing-icons').click(function() {
         $('.card').addClass('w-30');
         $('#icon-big').removeClass('hidden');
         $('#icon-small').addClass('hidden');
-        $('.smaller , .card-title , .house-type').addClass('small-view');
+        $('.smaller , .card-title ').addClass('small-view');
     } else {
         $('.card').removeClass('w-30');
         $('.card').addClass('w-49');
         $('#icon-small').removeClass('hidden');
         $('#icon-big').addClass('hidden');
-        $('.smaller , .card-title , .house-type').removeClass('small-view');
+        $('.smaller , .card-title ').removeClass('small-view');
     }
 });
 

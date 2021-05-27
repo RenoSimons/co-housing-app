@@ -90,3 +90,18 @@
         transform:scale(1.2);
     }
 }
+
+.contact-btn {
+    text-decoration: none;
+    color: $white;
+    background-color: $black;
+    padding: 10px;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    transition: 0.25s;
+    &:hover {
+        width: 100%;
+        color: white;
+    }
+}

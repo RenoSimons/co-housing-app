@@ -228,6 +228,8 @@
 
 
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- MAPS LOCATION PICKER -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAehWThfsI8HCI_LASIJkA3gJ-qED15i5E"></script>
 
 
 <script type="text/javascript">
