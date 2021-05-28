@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+.white {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10047,15 +10051,79 @@ h3 {
 .landing-section .left-column .search-card .search-form .search-btn {
   margin-top: 35px;
 }
+.landing-section .scroll-down {
+  position: absolute;
+  bottom: 30px;
+}
+.landing-section .scroll-down .scroll-img {
+  width: 30px;
+  transition: 0.5s;
+  -webkit-animation: breathing 2.5s ease-out infinite normal;
+  animation: breathing 2.5s ease-out infinite normal;
+}
+.landing-section .scroll-down .scroll-img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
 
-.second-section {
-  background-image: url(/images/woman_laptop.jpeg?62b64c83dcaca72361183245f67ec16f);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+.second-section .promo-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  width: 100px !important;
+  z-index: 999;
+}
+.second-section .promo-card .promo-logo .promo-logo-img {
+  width: 100px;
+  opacity: 0.9;
+}
+
+.third-section {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 150px;
+  align-items: center;
+}
+.third-section .make-account-box {
+  transition: 0.75s;
+  transform: translateX(-380%);
+  z-index: 999;
+  opacity: 1;
+}
+.third-section .make-account-box h4 {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+.third-section .make-account-box:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black !important;
+}
+.third-section .make-account-text {
+  transform: translateX(230%);
+  transition: 0.75s;
+}
+.third-section .make-account-text .arrows-text, .third-section .make-account-text .arrows-left {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.third-section #particles-js {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.fourth-section .stat-icon {
+  width: 50px;
+}
+.fourth-section .stat-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  width: 320px;
+  padding: 5px;
+}
+.fourth-section .stat-card .stats-logo-img {
+  width: 40px;
+  height: 30px;
 }
 
 @media (min-width: 992px) {
@@ -10085,253 +10153,33 @@ h3 {
     margin-top: 42.5px !important;
     width: 100% !important;
   }
-
-  #cities {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #cities .city-card .city-img {
-    min-width: 25vw;
-    min-height: 25vh;
-    max-width: 30vw;
-    max-height: 30vh;
-  }
 }
-.svg {
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-  line-height: 200px;
-  text-align: center;
-  background-color: #FFF;
-  border-radius: 50%;
-}
-
-#svg {
-  display: inline-block;
-  vertical-align: middle;
-  fill: #2d2e30;
-}
-#svg path:nth-child(1) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.05s;
-          animation-delay: 0.05s;
-}
-#svg path:nth-child(1):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(2) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
-}
-#svg path:nth-child(2):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(3) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
-}
-#svg path:nth-child(3):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(4) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-#svg path:nth-child(4):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(5) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.25s;
-          animation-delay: 0.25s;
-}
-#svg path:nth-child(5):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(6) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-}
-#svg path:nth-child(6):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(7) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.35s;
-          animation-delay: 0.35s;
-}
-#svg path:nth-child(7):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(8) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
-}
-#svg path:nth-child(8):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(9) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.45s;
-          animation-delay: 0.45s;
-}
-#svg path:nth-child(9):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(10) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-}
-#svg path:nth-child(10):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(11) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.55s;
-          animation-delay: 0.55s;
-}
-#svg path:nth-child(11):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(12) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
-}
-#svg path:nth-child(12):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(13) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.65s;
-          animation-delay: 0.65s;
-}
-#svg path:nth-child(13):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(14) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.7s;
-          animation-delay: 0.7s;
-}
-#svg path:nth-child(14):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(15) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.75s;
-          animation-delay: 0.75s;
-}
-#svg path:nth-child(15):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(16) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
-}
-#svg path:nth-child(16):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(17) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.85s;
-          animation-delay: 0.85s;
-}
-#svg path:nth-child(17):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-#svg path:nth-child(18) {
-  -webkit-animation: pweek 0.9s linear infinite;
-          animation: pweek 0.9s linear infinite;
-  -webkit-animation-delay: 0.9s;
-          animation-delay: 0.9s;
-}
-#svg path:nth-child(18):hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-
-@-webkit-keyframes pweek {
+@-webkit-keyframes breathing {
   0% {
-    fill: #2d2e30;
+    transform: scale(1);
   }
-  20% {
-    fill: #574e50;
-  }
-  40% {
-    fill: #a39f99;
+  25% {
+    transform: scale(1.2);
   }
   60% {
-    fill: #383c3d;
-  }
-  80% {
-    fill: #1b1a1b;
+    transform: scale(1);
   }
   100% {
-    fill: #2d2e30;
+    transform: scale(1);
   }
 }
-
-@keyframes pweek {
+@keyframes breathing {
   0% {
-    fill: #2d2e30;
+    transform: scale(1);
   }
-  20% {
-    fill: #574e50;
-  }
-  40% {
-    fill: #a39f99;
+  25% {
+    transform: scale(1.2);
   }
   60% {
-    fill: #383c3d;
-  }
-  80% {
-    fill: #1b1a1b;
+    transform: scale(1);
   }
   100% {
-    fill: #2d2e30;
+    transform: scale(1);
   }
 }
 .account-detail-wrapper #upload {
@@ -10775,6 +10623,21 @@ h3 {
   color: white;
 }
 
+.cta-white {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 40px !important;
+  border: none;
+  transition: 0.25s;
+  width: 190px;
+}
+.cta-white:hover {
+  transform: scale(1.1);
+  color: black;
+  background-color: white;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -10816,6 +10679,10 @@ h3 {
 }
 body {
   overflow-x: hidden !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .hidden {
@@ -10871,4 +10738,8 @@ body {
 .slider-box #message-slider .exclamation-mark {
   width: 20px;
   height: 20px;
+}
+
+.align-center {
+  align-items: center;
 }

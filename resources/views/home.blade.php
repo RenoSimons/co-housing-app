@@ -94,26 +94,108 @@
                 <!-- empty column -->
             </div>
         </div>
+        <div class="scroll-down d-flex justify-content-center w-100">
+            <img src="{{URL::asset('/images/icons/scroll-down.png')}}" id="scroll-icon" alt="scroll naar beneden" class="scroll-img">
+        </div>
     </div>
 </div>
 
-<div class="container p-5">
-    <div class="row d-flex justify-content-space-between mt-5">
-        <div class="promo-card">
+<div class="container p-0 second-section">
+    <div class="row d-flex justify-content-between mt-5">
+        <div class="col-md-3 promo-card text-center pt-4">
             <div class="promo-logo">
                 <img src="{{URL::asset('/images/icons/search-location.png')}}" alt="" class="promo-logo-img">
             </div>
-        </div>
-        <div class="promo-card">
-            <div class="promo-logo">
-            <img src="{{URL::asset('/images/icons/network.png')}}" alt="" class="promo-logo-img">
+            <div class="mt-3">
+                <h4 class="white">Vind op locatie</h4>
+            </div>
+            <div class="mt-3">
+                <p class="white">
+                    Vind jouw geschike co-house familie. Gebruik de filters om de juiste locatie in te stellen en ga aan de slag!
+                </p>
+            </div>
+            <div class="mt-3 mb-3">
+                <button class="btn cta-white">Vind huis</button>
             </div>
         </div>
-        <div class="promo-card">
+        <div class="col-md-3 promo-card text-center pt-4">
             <div class="promo-logo">
                 <img src="{{URL::asset('/images/icons/knowledge.png')}}" alt="" class="promo-logo-img">
             </div>
+            <div class="mt-3">
+                <h4 class="white">Bied aan</h4>
+            </div>
+            <div class="mt-3">
+                <p class="white">
+                    Op zoek naar een nieuwe housemate? Plaats een zoekertje en kom met de geschikte persoon in contact!
+                </p>
+            </div>
+            <div class="mt-3 mb-3">
+                <button class="btn cta-white">Vind housemate</button>
+            </div>
+        </div>
+        <div class="col-md-3 promo-card text-center pt-4">
+            <div class="promo-logo">
+                <img src="{{URL::asset('/images/icons/network.png')}}" alt="" class="promo-logo-img">
+            </div>
+            <div class="mt-3">
+                <h4 class="white">Connecteer</h4>
+            </div>
+            <div class="mt-3">
+                <p class="white">
+                    Ons platform connecteert alle mensen die actief zijn om te co-housen! Vind en connecteer met mensen.
+                </p>
+            </div>
+            <div class="mt-3 mb-3">
+                <button class="btn cta-white">Leg connecties</button>
+            </div>
         </div>
     </div>
+</div>
+<div class="container-fluid mt-5">
+    <div class="row d-flex third-section justify-content-center">
+        <div class="make-account-box">
+            <a href="/register" class="text-decoration-none"><h4 class="white m-0">Maak een account</h4></a>
+        </div>
+        <div class="make-account-text d-flex">
+            <span class="arrows-left white ml-3">
+                < <
+            </span>
+            <span class="arrows-text font-italic white ml-3">
+                Maak een account en ga aan de slag
+            </span>
+        </div>
+        <div id="particles-js"></div>
+    </div>
+</div>
+<div class="container mt-5 fourth-section p-0">
+    <div class="d-flex align-center">
+        <img src="{{URL::asset('/images/icons/stats.png')}}" alt="statistieken" class="stat-icon">
+        <h2 class="mb-0 ml-4">Statistieken</h2>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <div class="d-flex stat-row">
+            <div class="stat-card p-3 d-flex align-center">
+                <img src="{{URL::asset('/images/icons/users.png')}}" alt="gebruikers logo" class="stats-logo-img">
+                <h4 class="white m-0 ml-md-3">200 gebruikers</h4>
+            </div>
+        </div>
+        <div class="d-flex stat-row">
+            <div class="stat-card p-3 d-flex align-center">
+                <img src="{{URL::asset('/images/icons/house.png')}}" alt="gebruikers logo" class="stats-logo-img">
+                <h4 class="white m-0 ml-md-3">154 huizen</h4>
+            </div>
+        </div>
+        <div class="d-flex stat-row">
+            <div class="stat-card p-3 d-flex align-center">
+                <img src="{{URL::asset('/images/icons/speech-bubble.png')}}" alt="gebruikers logo" class="stats-logo-img">
+                <h4 class="white m-0 ml-md-3">150 connecties</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    d
 </div>
 @endsection

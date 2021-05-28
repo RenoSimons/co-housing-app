@@ -1,6 +1,11 @@
 body {
     overflow-x:hidden !important;
 }
+
+html {
+    scroll-behavior: smooth;
+ }
+
 .hidden {
     display:none;
 }
@@ -56,4 +61,8 @@ body {
             height: 20px;
         }
     }
+}
+
+.align-center {
+    align-items: center;
 }

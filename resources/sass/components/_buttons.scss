@@ -106,3 +106,18 @@
         color: white;
     }
 }
+
+.cta-white {
+    text-decoration: none;
+    color: $black;
+    background-color: $white;
+    padding: 5px 40px !important;
+    border:none;
+    transition: 0.25s;
+    width: 190px;
+    &:hover {
+        transform:scale(1.1);
+        color:black;
+        background-color: white;
+    }
+}

@@ -32,7 +32,7 @@
                 </button>
                 
                 <div class="title-left">
-                    <a href="{{url('/')}}" class="text-decoration-none black-text"><img class="unknown-user" src="{{URL::asset('/images/icons/logo2.png')}}"> </a>
+                    <a href="{{url('/')}}" class="text-decoration-none black-text"><img class="unknown-user" src="{{URL::asset('/images/icons/logo.png')}}"> </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
