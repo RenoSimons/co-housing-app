@@ -61,51 +61,9 @@
     margin: 0;
 }
 
-#cities {
-    .city-card {
-        padding: 0;
-        margin-top: 15px;
-      
-        .hover-img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            .img-overlay {
-                position: absolute;
-                font-size: 24px;
-                font-weight: bold;
-                color:black;
-                letter-spacing: 4px;
-                z-index: 2;
-            }
-    
-            .city-img {
-                width: 100vw;
-                opacity: 0.75;
-                z-index: 1;
 
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        } 
-    }
-}
 
 @include media-breakpoint-up(md) {
-    #cities {
-        display: flex;
-        flex-wrap: wrap;
-        .city-card {
-            .city-img {
-                max-width: 35vw;
-                height: 20vh;
-                opacity: 0.75;
-            }
-        }
-        
-    }
 }
 
 

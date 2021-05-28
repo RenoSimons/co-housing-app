@@ -73,6 +73,7 @@ class CoHousingController extends Controller
         // Format dates
         $poster->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $poster->created_at)->format('d-m-Y');
         $house_details->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $house_details->created_at)->format('d-m-Y');
+        
         // Update view counter
         $newViewCount = $house_details->views;
         $newViewCount++;
@@ -82,6 +83,7 @@ class CoHousingController extends Controller
 
     public function getImages(Request $request) {
         $images = DB::table('rent_offers')->where('id', $request->id)->get('img_urls');
+        
         //dd($images->toJson());
         return response()->json($images);
     }

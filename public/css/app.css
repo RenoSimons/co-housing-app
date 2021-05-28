@@ -10058,43 +10058,6 @@ h3 {
   margin: 0;
 }
 
-#cities .city-card {
-  padding: 0;
-  margin-top: 15px;
-}
-#cities .city-card .hover-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#cities .city-card .hover-img .img-overlay {
-  position: absolute;
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
-  letter-spacing: 4px;
-  z-index: 2;
-}
-#cities .city-card .hover-img .city-img {
-  width: 100vw;
-  opacity: 0.75;
-  z-index: 1;
-}
-#cities .city-card .hover-img .city-img:hover {
-  opacity: 1;
-}
-
-@media (min-width: 768px) {
-  #cities {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #cities .city-card .city-img {
-    max-width: 35vw;
-    height: 20vh;
-    opacity: 0.75;
-  }
-}
 @media (min-width: 992px) {
   .landing-section .left-column {
     display: flex;
@@ -10707,19 +10670,20 @@ h3 {
 }
 
 .search-btn {
-  background-color: black;
-  color: white;
-  padding: 10px 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 7px 30px;
   border-radius: 5px;
   border: none;
   background-image: url(/images/loupe.png?912206d4ca715b523c9a74daa8127628);
   background-position: 15px;
   background-repeat: no-repeat;
   background-size: 20px 20px;
+  transform: translateY(4px);
 }
 .search-btn:hover {
   color: white;
-  font-weight: 800;
+  background-color: black;
 }
 
 .filter-btn {
