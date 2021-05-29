@@ -71,7 +71,7 @@ class FindRenterController extends Controller
             "wifi" => $request->input('wifi'),
             "views" => 10,
             "img_urls" => $photoUrls,
-            ]);
+        ]);
 
         $RentOffer->save();
         

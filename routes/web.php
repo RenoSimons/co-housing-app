@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountDetailController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FindRenterController;
@@ -26,9 +27,9 @@ use App\Http\Controllers\FavoriteController;
 Auth::routes();
 
 // HOMEPAGE
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/getcoordinates', [HomeController::class, 'getCoordinates']);
+Route::post('/getmarkerdata', [HomeController::class, 'getMarkerData']);
 
 // ZOEKPORTAAL
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');

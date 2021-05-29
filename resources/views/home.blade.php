@@ -155,19 +155,27 @@
 <div class="container-fluid mt-5">
     <div class="row d-flex third-section justify-content-center">
         <div class="make-account-box">
-            <a href="/register" class="text-decoration-none"><h4 class="white m-0">Maak een account</h4></a>
+            <a href="/register" class="text-decoration-none">
+                <h4 class="white m-0">Maak een account</h4>
+            </a>
         </div>
         <div class="make-account-text d-flex">
             <span class="arrows-left white ml-3">
-                < <
-            </span>
-            <span class="arrows-text font-italic white ml-3">
-                Maak een account en ga aan de slag
-            </span>
+                < < </span>
+                    <span class="arrows-text font-italic white ml-3">
+                        Maak een account en ga aan de slag
+                    </span>
         </div>
         <div id="particles-js"></div>
     </div>
 </div>
+
+<div class="container fifth-section mt-5 mb-5 p-0">
+    <div id="map-frontpage">
+
+    </div>
+</div>
+
 <div class="container mt-5 fourth-section p-0">
     <div class="d-flex align-center">
         <img src="{{URL::asset('/images/icons/stats.png')}}" alt="statistieken" class="stat-icon">
@@ -195,7 +203,112 @@
     </div>
 </div>
 
-<div class="mt-5">
-    d
-</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
+<script>
+    // Get the javascript map and locations
+    $(document).ready(function() {
+        let map;
+        initMap();
+
+        function initMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(50.8465573, 4.351697),
+                zoom: 8,
+                mapId: 'dark'
+            }
+
+            map = new google.maps.Map(document.getElementById("map-frontpage"), mapOptions);
+        }
+
+        // Google map
+        let coordinates = [];
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: "/getcoordinates",
+
+            success: function(response) {
+                coordinates = response;
+
+                coordinates.forEach(function(coordinates) {
+                    const marker = new google.maps.Marker({
+                        position: {
+                            lat: parseFloat(coordinates.lat),
+                            lng: parseFloat(coordinates.long)
+                        },
+                        icon: 'http://localhost:8000/images/icons/marker-logo.png',
+                        map: map,
+                    });
+                    marker.addListener("click", () => {
+                        $.ajax({
+                            type: 'POST',
+                            url: "/getmarkerdata",
+                            data: {
+                                id: coordinates.id
+                            },
+
+                            success: function(response) {
+                                let urlString = "http://" + window.location.host + "/storage/house_images/";
+                                let imagesArray = [];
+                                let images = JSON.stringify(response[0])
+                                let imageString = images.split(',');
+
+                                imageString.forEach(function(item, index) {
+                                    let newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '');
+                                    imagesArray.push(newString);
+                                })
+
+                                let street = response[1][0].street;
+                                let budget = response[1][0].budget;
+                                let housemates = response[1][0].housemates;
+                                let start_date = response[1][0].start_date;
+                                let type_house = response[1][0].type_house;
+                                let title = response[1][0].title;
+                                let id = response[1][0].id;
+
+                                const contentString =
+                                    `<div class="info-window">
+                                        <div class="title d-flex justify-content-between">
+                                            <div class="d-flex align-items-center mt-2 mr-2">
+                                                <img src="{{URL::asset('/images/icons/pin.png')}}" class="info-window-icons">
+                                                <p class="search-title mb-0 ml-2">${street}</p>
+                                            </div>
+                                            <div class="d-flex align-items-center mt-2">
+                                                <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="info-window-icons">
+                                                <p class="search-title mb-0 ml-2">€${budget}/mnd</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mt-2 mb-2">
+                                            <div class="info-window-images">
+                                                <img src="${urlString + imagesArray[0].replace('[', '')}" class="info-window-img" alt="foto van huis">
+                                            </div>
+                                            <div class="info-window-text ml-2">
+                                                <p>${title}</p>
+                                                <p><small>Intrekdatum: ${start_date}</small></p>
+                                                <a href="/cohousings/${id}" class="info-window-cta">Meer info</a>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+
+                                const infowindow = new google.maps.InfoWindow({
+                                    content: contentString,
+                                });
+
+                                infowindow.open(map, marker);
+                            }
+                        });
+                    })
+                })
+            }
+        });
+    });
+</script>
+
 @endsection

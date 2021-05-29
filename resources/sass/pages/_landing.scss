@@ -90,7 +90,7 @@
         transition: 0.75s;
         transform: translateX(-380%);
         z-index: 999;
-        opacity: 1;
+        background-color: #323232;
         h4 {
             padding: 20px;
             border: 1px solid $white;
@@ -132,6 +132,30 @@
         .stats-logo-img {
             width: 40px;
             height: 30px;
+        }
+    }
+}
+
+.fifth-section  {
+    #map-frontpage {
+        height: 500px;
+        width: 100%;
+
+        .info-window {
+            
+            .info-window-icons {
+                width: 13px;
+            }
+            .info-window-img {
+                border-radius: 3px;
+                width: 200px;
+            }
+            .info-window-text {
+                max-width: 150px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
         }
     }
 }

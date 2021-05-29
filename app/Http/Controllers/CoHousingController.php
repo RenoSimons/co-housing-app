@@ -84,7 +84,6 @@ class CoHousingController extends Controller
     public function getImages(Request $request) {
         $images = DB::table('rent_offers')->where('id', $request->id)->get('img_urls');
         
-        //dd($images->toJson());
         return response()->json($images);
     }
 }

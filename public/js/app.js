@@ -2180,7 +2180,6 @@ var scrollPosition = 0;
 var accAnimationPlayed = false;
 $(document).scroll(function (evt) {
   scrollPosition = $(this).scrollTop();
-  console.log($(this).scrollTop());
 
   if (scrollPosition >= 560 && accAnimationPlayed == false) {
     console.log('fired');

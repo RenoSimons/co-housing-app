@@ -20,7 +20,7 @@ class CreateRentOffers extends Migration
             $table->string('title');
             $table->string('start_date');
             $table->string('province');
-            $table->string('city');
+            $table->string('street');
             $table->string('lat');
             $table->string('long');
             $table->string('type_house');

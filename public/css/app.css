@@ -10086,7 +10086,7 @@ h3 {
   transition: 0.75s;
   transform: translateX(-380%);
   z-index: 999;
-  opacity: 1;
+  background-color: #323232;
 }
 .third-section .make-account-box h4 {
   padding: 20px;
@@ -10124,6 +10124,24 @@ h3 {
 .fourth-section .stat-card .stats-logo-img {
   width: 40px;
   height: 30px;
+}
+
+.fifth-section #map-frontpage {
+  height: 500px;
+  width: 100%;
+}
+.fifth-section #map-frontpage .info-window .info-window-icons {
+  width: 13px;
+}
+.fifth-section #map-frontpage .info-window .info-window-img {
+  border-radius: 3px;
+  width: 200px;
+}
+.fifth-section #map-frontpage .info-window .info-window-text {
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (min-width: 992px) {
@@ -10636,6 +10654,21 @@ h3 {
   transform: scale(1.1);
   color: black;
   background-color: white;
+}
+
+.info-window-cta {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  border-radius: 3px;
+  transition: 0.5s;
+  width: 65px;
+}
+.info-window-cta:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
 }
 
 .sticky {

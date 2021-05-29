@@ -121,3 +121,18 @@
         background-color: white;
     }
 }
+
+.info-window-cta {
+    text-decoration: none;
+    color: $white;
+    background-color: $black;
+    padding: 5px;
+    border-radius: 3px;
+    transition: 0.5s;
+    width: 65px;
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+    }
+}

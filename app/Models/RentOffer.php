@@ -14,7 +14,7 @@ class RentOffer extends Model
         'title',
         'start_date',
         'province',
-        'city',
+        'street',
         'lat', 
         'long',
         'type_house',

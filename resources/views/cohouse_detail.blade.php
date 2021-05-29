@@ -62,7 +62,7 @@
                 <div class="specs-column">
                     <div class="d-flex align-items-center mt-2">
                         <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">
-                        <p class="search-title">{{ $house_details->city }}</p>
+                        <p class="search-title">{{ $house_details->street }}</p>
                     </div>
                     <div class="d-flex align-items-center mt-2">
                         <img src="{{URL::asset('/images/icons/home.png')}}" class="search-icons">
