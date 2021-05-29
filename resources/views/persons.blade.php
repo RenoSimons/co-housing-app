@@ -114,18 +114,18 @@
                                     <span>{{ $application->type_house }}</span>
                                 </div>
                                 <div class="d-flex">
-                                    <img src="{{URL::asset('/images/icons/measuring-tape.png')}}" class="search-icons">
-                                    <span>{{ $application->surface }}</span>
-                                </div>   
+                                    <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
+                                    <span>{{ $application->budget }}</span>
+                                </div>
                             </div>
                             <div class="d-flex flex-wrap justify-content-between">
                                 <div class="d-flex">
-                                    <img src="{{URL::asset('/images/icons/multiple-users-silhouette.png')}}" class="search-icons">
-                                    <span>{{ $application->housemates }} pers.</span>
+                                    <img src="{{URL::asset('/images/icons/sex.png')}}" class="search-icons">
+                                    <span>{{ $application->gender }}</span>
                                 </div>
                                 <div class="d-flex">
-                                    <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
-                                    <span>{{ $application->budget }}</span>
+                                    <img src="{{URL::asset('/images/icons/age-group.png')}}" class="search-icons">
+                                    <span>{{ $application->age }} jaar</span>
                                 </div>
                                 <div class="d-flex">
                                     <img src="{{URL::asset('/images/icons/calendar.png')}}" class="search-icons">
@@ -134,8 +134,6 @@
                             </div>
                             
                             <p>{{ $application->intro }}</p>
-
-
 
                             <div class="action-btns d-flex justify-content-between">
                                 <a href="/profile/ {{ $application->user_id }}" class="save-btn action-link">Bekijk profiel</a>

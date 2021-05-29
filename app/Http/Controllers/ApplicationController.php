@@ -18,9 +18,9 @@ class ApplicationController extends Controller
         $request->validate([
             'location' => 'required',
             'type_building' => 'required',
-            'surface' => 'required',
+            'gender' => 'required',
             'budget' => 'required',
-            'housemates' => 'required',
+            'age' => 'required',
             'intro' => 'required',
             'start_date' => 'required',
         ]);
@@ -29,9 +29,9 @@ class ApplicationController extends Controller
             "user_id" => Auth::id(),
             "location" => $request->input('location'),
             "type_house" => $request->input('type_building'),
-            "surface" => $request->input('surface'),
+            "gender" => $request->input('surface'),
             "budget" => $request->input('budget'),
-            "housemates" => $request->input('housemates'),
+            "age" => $request->input('housemates'),
             "start_date" => $request->input('start_date'),
             "intro" => $request->input('intro'),
         ]);

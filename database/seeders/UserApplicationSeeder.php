@@ -25,8 +25,8 @@ class UserApplicationSeeder extends Seeder
                 'location' => $locations[rand(0, count($locations)-1)],
                 'type_house' => $types[rand(0, count($types)-1)],
                 'budget' => $budgets[rand(0, count($budgets)-1)],
-                'surface' => 'Eender',
-                'housemates' => '2',
+                'age' => 20,
+                'gender' => 'Man',
                 'intro' => $intro,
                 'start_date' => '19-05-2021',
             ]);

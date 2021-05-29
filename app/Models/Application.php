@@ -16,9 +16,9 @@ class Application extends Model
         'user_id',
         'location',
         'type_house',
-        'surface',
+        'gender',
         'budget',
-        'housemates',
+        'age',
         'start_date',
         'intro',
     ];

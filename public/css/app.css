@@ -10256,6 +10256,7 @@ h3 {
 
 .datepicker-days {
   width: 250px;
+  background-color: white;
 }
 .datepicker-days .table-condensed {
   width: 250px;

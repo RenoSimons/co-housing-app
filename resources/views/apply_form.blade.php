@@ -45,16 +45,13 @@
 
                         <div class="form-group">
                             <div class="d-flex align-items-center">
-                                <img src="{{URL::asset('/images/icons/measuring-tape.png')}}" class="search-icons">
-                                <p class="search-title">Oppervlakte</p>
+                                <img src="{{URL::asset('/images/icons/sex.png')}}" class="search-icons">
+                                <p class="search-title">Geslacht</p>
                             </div>
-                            <select class="form-control" name="surface">
-                                <option>Eender</option>
-                                <option>10 - 20m²</option>
-                                <option>20 - 30m²</option>
-                                <option>30 - 40m²</option>
-                                <option>40 - 50m²</option>
-                                <option>> 50m²</option>
+                            <select class="form-control" name="gender">
+                                <option>Man</option>
+                                <option>Vrouw</option>
+                                <option>X</option>
                             </select>
                         </div>
                     </div>
@@ -77,18 +74,10 @@
 
                         <div class="form-group">
                             <div class="d-flex align-items-center">
-                                <img src="{{URL::asset('/images/icons/multiple-users-silhouette.png')}}" class="search-icons">
-                                <p class="search-title">Aantal huisgenoten</p>
+                                <img src="{{URL::asset('/images/icons/age-group.png')}}" class="search-icons">
+                                <p class="search-title">Leeftijd</p>
                             </div>
-                            <select class="form-control" name="housemates">
-                                <option>Eender</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>> 5</option>
-                            </select>
+                            <input type="number" name="age" class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -96,7 +85,7 @@
                                 <img src="{{URL::asset('/images/icons/calendar.png')}}" class="search-icons">
                                 <p class="search-title">Intrekdatum</p>
                             </div>
-                            <input class="date form-control" name="start_date" type="text" required>
+                            <input autocomplete="off" class="date form-control" name="start_date" type="text" required>
                         </div>
                     </div>
                 </div>

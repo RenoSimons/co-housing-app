@@ -19,9 +19,9 @@ class CreateApplications extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('location');
             $table->string('type_house');
-            $table->string('surface');
+            $table->string('gender');
             $table->string('budget');
-            $table->string('housemates');
+            $table->integer('age');
             $table->string('start_date');
             $table->longText('intro');
             $table->timestamps();
