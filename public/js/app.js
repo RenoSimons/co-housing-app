@@ -2115,7 +2115,7 @@ var check = false;
   \**********************************/
 /***/ (() => {
 
-$(".heart-icon").click(function (e, currentTop) {
+$(".heart-icon, .garbage-icon").click(function (e) {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2123,6 +2123,8 @@ $(".heart-icon").click(function (e, currentTop) {
   });
   e.preventDefault();
   var id = $(this).attr('id');
+  var icon = $(this).attr('class');
+  var favoriteCardId = $(this).parent().parent().parent().attr('id');
   $.ajax({
     type: 'POST',
     url: "/favorite",
@@ -2135,10 +2137,26 @@ $(".heart-icon").click(function (e, currentTop) {
       var messageText = "";
 
       if (isFavorited) {
-        $('#' + id).attr("src", "/images/icons/heart-full.png");
+        if (icon !== 'garbage-icon') {
+          $('#' + id).attr("src", "/images/icons/heart-full.png");
+        }
+
         messageText = "Toegevoegd aan favorieten";
       } else {
-        $('#' + id).attr("src", "/images/icons/heart-empty.png");
+        if (icon !== 'garbage-icon') {
+          $('#' + id).attr("src", "/images/icons/heart-empty.png");
+        } else {
+          $('#' + favoriteCardId).fadeOut(500);
+          setTimeout(function () {
+            $('#' + favoriteCardId).remove();
+
+            if ($('#favorite-section').html().length == 241) {
+              var emptyFavoritesMessage = "<h1>Nog geen favorieten toegevoegd</h1>";
+              $('#favorite-section').html(emptyFavoritesMessage);
+            }
+          }, 1000);
+        }
+
         messageText = "Verwijderd van favorieten";
       } // Show succes message
 

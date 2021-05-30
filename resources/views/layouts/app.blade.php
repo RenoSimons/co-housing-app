@@ -95,7 +95,7 @@
                                         {{ __('Mijn profiel') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('myfavorites') }}">
                                         {{ __('Favorieten') }}
                                     </a>
                                     

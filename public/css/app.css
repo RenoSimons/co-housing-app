@@ -10536,6 +10536,18 @@ h3 {
   }
 }
 
+#favorites .favorite-card {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+#favorites .favorite-card .favorite-card-header {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#favorites .favorite-card .favorite-card-body {
+  border-radius: 5px;
+}
+
 .search-btn {
   background-color: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.8);
@@ -10611,6 +10623,7 @@ h3 {
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, 0.8);
   padding: 5px 10px;
+  border-radius: 3px;
 }
 .read-more-btn:hover {
   color: white;
@@ -10776,4 +10789,31 @@ html {
 
 .align-center {
   align-items: center;
+}
+
+.account-nav, .list-group, .list-group-item {
+  background-color: #323232;
+}
+
+.account-nav {
+  border-radius: 5px;
+}
+.account-nav .list-group .active-link {
+  background-color: grey;
+}
+.account-nav .list-group .list-group-item {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+.account-nav .list-group .list-group-item .account-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.garbage-icon {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+}
+.garbage-icon:hover {
+  cursor: pointer;
 }

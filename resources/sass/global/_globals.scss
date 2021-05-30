@@ -66,3 +66,34 @@ html {
 .align-center {
     align-items: center;
 }
+
+.account-nav, .list-group, .list-group-item {
+    background-color: #323232;
+}
+
+.account-nav {
+    border-radius: 5px;
+
+    .list-group {
+        .active-link {
+            background-color: grey;
+        }
+        .list-group-item {
+            border: 1px solid $grey;
+            .account-link {
+                color: $white;
+                text-decoration: none;
+            }
+            
+        }
+    }
+}
+
+.garbage-icon {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    &:hover {
+        cursor: pointer;
+    }
+}

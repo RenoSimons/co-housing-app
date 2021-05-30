@@ -1,0 +1,15 @@
+#favorites {
+    .favorite-card {
+        border: 1px solid grey;
+        border-radius: 5px;
+        .favorite-card-header {
+            
+            color: $white;
+            background-color: $black;
+        }
+
+        .favorite-card-body {
+            border-radius: 5px;
+        }
+    }
+}
