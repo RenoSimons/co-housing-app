@@ -1,15 +1,8 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container mt-5" id="login-form">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
-            <div class="card p-5">
-                <div class="login-card-header d-flex">
-                    <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
-                    <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
-                </div>
-                <div class="card-body mt-3 p-1">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-1">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -54,19 +47,9 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn page-login-btn">
+                            <button type="submit" class="btn modal-login-btn">
                                 {{ __('Login') }}
                             </button>
-                        </div>
-
-                        <div class="form-group row mb-0 mt-2 d-flex justify-content-center">
-                            <div>
-                                @if (Route::has('password.request'))
-                                <a class="btn  white-text" href="{{ route('password.request') }}">
-                                        {{ __('Paswoord Vergeten?') }}
-                                    </a>
-                                @endif
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -74,5 +57,4 @@
         </div>
     </div>
 </div>
-@endsection
 

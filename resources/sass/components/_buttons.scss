@@ -137,3 +137,30 @@
         color: white;
     }
 }
+
+.modal-login-btn {
+    width: 75%;
+    background-color: $white;
+    color: $black;
+    border-radius: 5px;
+    border:none;
+    transition: 0.5s;
+    &:hover {
+        width: 100%;
+        color: black;
+        background-color: white;
+    }
+}
+
+.page-login-btn {
+    width: 30%;
+    background-color: $white;
+    color: $black;
+    border-radius: 5px;
+    border:none;
+    transition: 0.5s;
+    &:hover {
+        color: black;
+        background-color: white;
+    }
+}

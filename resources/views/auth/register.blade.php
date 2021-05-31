@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-2 mt-md-5">
+<div class="container mt-2 mt-md-5" id="register-form">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header black-bg text-light">{{ __('Registreer') }}</div>
+            <div class="card p-5">
+                <div class="login-card-header d-flex">
+                    <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Registreer</h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -18,9 +21,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -32,9 +35,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -46,9 +49,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -61,13 +64,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn text-light black-bg">
-                                    {{ __('Registreer') }}
-                                </button>
-                            </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn page-login-btn">
+                                {{ __('Registreer') }}
+                            </button>
                         </div>
+
                     </form>
                 </div>
             </div>

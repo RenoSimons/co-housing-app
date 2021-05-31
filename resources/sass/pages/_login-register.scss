@@ -1,0 +1,23 @@
+#login-form {
+    .card {
+        background-color: $black;
+        color: $white;
+
+        .login-card-header {
+            padding-bottom: 15px;
+            border-bottom: 1px solid $white;
+        }
+    }
+}
+
+#register-form {
+    .card {
+        background-color: $black;
+        color: $white;
+
+        .login-card-header {
+            padding-bottom: 15px;
+            border-bottom: 1px solid $white;
+        }
+    }
+}

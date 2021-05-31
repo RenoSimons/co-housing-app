@@ -10548,6 +10548,24 @@ h3 {
   border-radius: 5px;
 }
 
+#login-form .card {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+#login-form .card .login-card-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#register-form .card {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+#register-form .card .login-card-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
 .search-btn {
   background-color: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.8);
@@ -10685,6 +10703,33 @@ h3 {
   color: white;
 }
 
+.modal-login-btn {
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: none;
+  transition: 0.5s;
+}
+.modal-login-btn:hover {
+  width: 100%;
+  color: black;
+  background-color: white;
+}
+
+.page-login-btn {
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: none;
+  transition: 0.5s;
+}
+.page-login-btn:hover {
+  color: black;
+  background-color: white;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -10724,6 +10769,15 @@ h3 {
     margin-top: 0;
   }
 }
+#loginModal .modal-content {
+  background-color: #323232;
+  color: rgba(255, 255, 255, 0.8);
+}
+#loginModal .modal-content .card {
+  background-color: #323232;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 body {
   overflow-x: hidden !important;
 }
@@ -10816,4 +10870,8 @@ html {
 }
 .garbage-icon:hover {
   cursor: pointer;
+}
+
+.w-35 {
+  width: 35%;
 }
