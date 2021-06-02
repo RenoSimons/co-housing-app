@@ -33,23 +33,23 @@
     </ul>
 </div>
 
-<script>
-    let slug = window.location.pathname;
+<script type="application/javascript">
+    // let urlSlug10 = window.location.pathname;
 
-    switch (slug) {
-        case '/user/messages':
-            $('#link1').addClass('active-link');
-            break;
-        case '/myapplications':
-            $('#link2').addClass('active-link');
-            break;
-        case '/user':
-            $('#link3').addClass('active-link');
-            break;
-        case '/myfavorites':
-            $('#link4').addClass('active-link');
-            break;
-        default:
-            // code block
-    }
+    // switch (urlSlug10) {
+    //     case '/messages':
+    //         $('#link1').addClass('active-link');
+    //         break;
+    //     case '/myapplications':
+    //         $('#link2').addClass('active-link');
+    //         break;
+    //     case '/user':
+    //         $('#link3').addClass('active-link');
+    //         break;
+    //     case '/myfavorites':
+    //         $('#link4').addClass('active-link');
+    //         break;
+    //     default:
+    //         break;
+    // }
 </script>

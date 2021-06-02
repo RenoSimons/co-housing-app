@@ -203,8 +203,8 @@
     </div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
-<script>
+<script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
+<script type="application/javascript">
     // Get the javascript map and locations
     $(document).ready(function() {
         let map;

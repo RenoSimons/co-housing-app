@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Session;
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -17,6 +17,14 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('chat', function ($user) {
-    return Auth::check();
-  });
+Broadcast::channel('Chat', function ($user) {
+    return $user;
+});
+
+
+Broadcast::channel('Chat.{session}', function ($user, Session $session) {
+    if ($user->id  === $session->user1_id || $user->id  === $session->user2_id) {
+        return true;
+    }
+    return false;
+});

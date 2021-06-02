@@ -28,6 +28,6 @@
         "laravel-echo": "^1.10.0",
         "pusher-js": "^7.0.3",
         "vue-axios": "^3.2.4",
-        "vue-router": "^3.5.1"
+        "vue-chat-scroll": "^1.4.0"
     }
 }

@@ -11,8 +11,11 @@ use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\CoHousingController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\ChatsController;
 
+//CHAT CONTROLLERS
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\BlockController;
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,9 +65,17 @@ Route::get('/findrenter', [FindRenterController::class, 'index'])->middleware('a
 Route::post('/publish', [FindRenterController::class, 'publish'])->middleware('auth')->name('publish');
 
 // ACCOUNT DASHBOARD
-Route::get('/user/messages', [ChatsController::class, 'index'])->middleware('auth')->name('messages');
-Route::get('/user/messages/fetch', [ChatsController::class, 'fetchMessages'])->middleware('auth');
-Route::post('/user/messages/fetch', [ChatsController::class, 'sendMessage'])->middleware('auth');
+Route::post('getFriends', [AccountController::class, 'getFriends']);
+Route::post('/session/create', [SessionController::class, 'create']);
+Route::post('/session/{session}/chats', [ChatController::class, 'chats']);
+Route::post('/session/{session}/read', [ChatController::class, 'read']);
+Route::post('/session/{session}/clear', [ChatController::class, 'clear']);
+Route::post('/session/{session}/block', [BlockController::class, 'block']);
+Route::post('/session/{session}/unblock', [BlockController::class, 'unblock']);;
+Route::post('/send/{session}', [ChatController::class, 'send']);
+
+Route::get('/messages', [AccountController::class, 'chat'])->middleware('auth')->name('messages');
+
 Route::get('/profile/{id}', [PublicProfileController::class, 'showProfile'])->middleware('auth');
 Route::get('/myapplications', [AccountController::class, 'showMyApplications'])->middleware('auth')->name('myapplications');
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');

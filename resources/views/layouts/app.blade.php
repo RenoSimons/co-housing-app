@@ -20,10 +20,14 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <script type="application/javascript">
+        window.auth = {!! auth()->user() !!}
+    </script>
 </head>
 
 <body>
-    <div id="app" class="overflow-hidden">
+    <div  class="overflow-hidden">
         <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -75,6 +79,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('messages') }}">
+                                    {{ __('Mijn berichten') }}
+                                </a>
+
                                 <a class="dropdown-item" href="{{ URL::to('/profile', Auth::user()->id) }}">
                                     {{ __('Bekijk mijn online profiel') }}
                                 </a>
@@ -147,9 +155,9 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Scripts -->
+    <script type="application/javascript" src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Resources\UserResource;
+use App\Models\User;
 
 class AccountController extends Controller
 {
@@ -24,5 +25,15 @@ class AccountController extends Controller
 
     public function showMyApplications() {
         return view('myApplications');
+    }
+
+    public function chat()
+    {
+        return view('myMessages');
+    }
+
+    public function getFriends()
+    {
+        return UserResource::collection(User::where('id','!=', auth()->id())->get());
     }
 }

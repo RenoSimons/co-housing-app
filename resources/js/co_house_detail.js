@@ -9,8 +9,10 @@ $.ajaxSetup({
     }
 });
 
-const url = window.location.pathname.split('/');
-const id = url[url.length - 1];
+//const url = window.location.pathname.split('/');
+//const id = url[url.length - 1];
+
+const id = 1;
 
 $.ajax({
     type: 'POST',
