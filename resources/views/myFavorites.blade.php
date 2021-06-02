@@ -7,7 +7,7 @@
             <x-accountNavigation />
         </div>
         <div class="col-md-9" id="favorite-section">
-            @if(count($favorites) > 1)
+            @if(count($favorites) >= 1)
                 @foreach ($favorites as $key => $array)
                     @foreach ($array as $favorite)
                     <div class="favorite-card mb-5" id="favorite{{$key}}">

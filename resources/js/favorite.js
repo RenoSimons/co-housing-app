@@ -33,7 +33,8 @@ $(".heart-icon, .garbage-icon").click(function(e) {
                     
                     setTimeout(function(){
                         $('#' + favoriteCardId).remove();
-                        if ( $('#favorite-section').html().length == 241) {
+                        console.log($('#favorite-section').html().length)
+                        if ( $('#favorite-section').html().length < 241) {
                             const emptyFavoritesMessage = `<h1>Nog geen favorieten toegevoegd</h1>`;
                             $('#favorite-section').html(emptyFavoritesMessage)
                         }

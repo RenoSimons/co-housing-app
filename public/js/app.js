@@ -2149,8 +2149,9 @@ $(".heart-icon, .garbage-icon").click(function (e) {
           $('#' + favoriteCardId).fadeOut(500);
           setTimeout(function () {
             $('#' + favoriteCardId).remove();
+            console.log($('#favorite-section').html().length);
 
-            if ($('#favorite-section').html().length == 241) {
+            if ($('#favorite-section').html().length < 241) {
               var emptyFavoritesMessage = "<h1>Nog geen favorieten toegevoegd</h1>";
               $('#favorite-section').html(emptyFavoritesMessage);
             }
