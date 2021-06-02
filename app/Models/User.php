@@ -10,6 +10,7 @@ use App\Models\AccountDetail;
 use App\Models\Application;
 use App\Models\RentOffer;
 use App\Models\Favorite;
+use App\Models\Message;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -74,5 +75,10 @@ class User extends Authenticatable
         $check = $this->favorites->where('offer_id', '=', $id)->first();
 
         return $check ? true : false; 
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }
