@@ -1879,57 +1879,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       friends: [],
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      auth: window.auth
+      auth: []
     };
   },
   methods: {
     close: function close(friend) {
       friend.session.open = false;
     },
-    getFriends: function getFriends() {
+    getAuth: function getAuth() {
       var _this = this;
 
-      axios.post("/getFriends").then(function (res) {
-        _this.friends = res.data.data;
+      axios.post("/getUser").then(function (res) {
+        _this.auth = res.data;
+      });
+    },
+    getFriends: function getFriends() {
+      var _this2 = this;
 
-        _this.friends.forEach(function (friend) {
-          return friend.session ? _this.listenForEverySession(friend) : "";
+      axios.post("/getFriends").then(function (res) {
+        console.log(res.data.data);
+        _this2.friends = res.data.data;
+
+        _this2.friends.forEach(function (friend) {
+          return friend.session ? _this2.listenForEverySession(friend) : "";
         });
       });
     },
     openChat: function openChat(friend) {
+      console.log(friend.session);
+
       if (friend.session) {
         this.friends.forEach(function (friend) {
           return friend.session ? friend.session.open = false : "";
@@ -1941,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     createSession: function createSession(friend) {
+      console.log(friend);
       axios.post("/session/create", {
         friend_id: friend.id
       }).then(function (res) {
@@ -1954,20 +1939,21 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
-    this.getFriends();
+    console.log(this.auth);
+    this.getAuth();
     Echo.channel("Chat").listen("SessionEvent", function (e) {
-      var friend = _this2.friends.find(function (friend) {
+      var friend = _this3.friends.find(function (friend) {
         return friend.id == e.session_by;
       });
 
       friend.session = e.session;
 
-      _this2.listenForEverySession(friend);
+      _this3.listenForEverySession(friend);
     });
     Echo.join("Chat").here(function (users) {
-      _this2.friends.forEach(function (friend) {
+      _this3.friends.forEach(function (friend) {
         users.forEach(function (user) {
           if (user.id == friend.id) {
             friend.online = true;
@@ -1975,14 +1961,17 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     }).joining(function (user) {
-      _this2.friends.forEach(function (friend) {
+      _this3.friends.forEach(function (friend) {
         return user.id == friend.id ? friend.online = true : "";
       });
     }).leaving(function (user) {
-      _this2.friends.forEach(function (friend) {
+      _this3.friends.forEach(function (friend) {
         return user.id == friend.id ? friend.online = false : "";
       });
     });
+  },
+  mounted: function mounted() {
+    this.getFriends();
   },
   components: {
     PrivateMessageComponent: _PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_0__.default
@@ -2063,30 +2052,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['friend'],
   data: function data() {
     return {
       chats: [],
       message: null,
-      isTyping: false
+      isTyping: false,
+      auth: []
     };
   },
   watch: {
     message: function message(value) {
       if (value) {
         Echo["private"]("Chat.".concat(this.friend.session.id)).whisper("typing", {
-          name: auth.name
+          name: this.auth.name
         });
       }
     }
@@ -2096,13 +2076,14 @@ __webpack_require__.r(__webpack_exports__);
       return this.friend.session;
     },
     can: function can() {
-      return this.session.blocked_by == auth.id;
+      return this.session.blocked_by == this.auth.id;
     }
   },
   created: function created() {
     var _this = this;
 
     this.read();
+    this.getAuth();
     this.getAllMessages();
     Echo["private"]("Chat.".concat(this.friend.session.id)).listen("PrivateChatEvent", function (e) {
       _this.friend.session.open ? _this.read() : "";
@@ -2129,15 +2110,22 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    getAllMessages: function getAllMessages() {
+    getAuth: function getAuth() {
       var _this2 = this;
 
+      axios.post("/getUser").then(function (res) {
+        _this2.auth = res.data;
+      });
+    },
+    getAllMessages: function getAllMessages() {
+      var _this3 = this;
+
       axios.post("/session/".concat(this.friend.session.id, "/chats")).then(function (res) {
-        return _this2.chats = res.data.data;
+        return _this3.chats = res.data.data;
       });
     },
     send: function send() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.message) {
         this.pushToChats(this.message);
@@ -2145,7 +2133,7 @@ __webpack_require__.r(__webpack_exports__);
           message: this.message,
           to_user: this.friend.id
         }).then(function (res) {
-          return _this3.chats[_this3.chats.length - 1].id = res.data;
+          return _this4.chats[_this4.chats.length - 1].id = res.data;
         });
         this.message = null;
       }
@@ -2162,26 +2150,26 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('close');
     },
     clear: function clear() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.post("session/".concat(this.friend.session.id, "/clear")).then(function (res) {
-        _this4.chats = [];
+        _this5.chats = [];
       });
     },
     block: function block() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.session.block = true;
       axios.post("/session/".concat(this.friend.session.id, "/block")).then(function (res) {
-        return _this5.session.blocked_by = auth.id;
+        return _this6.session.blocked_by = _this6.auth.id;
       });
     },
     unblock: function unblock() {
-      var _this6 = this;
+      var _this7 = this;
 
       this.session.block = false;
       axios.post("session/".concat(this.friend.session.id, "/unblock")).then(function (res) {
-        _this6.session.blocked_by = null;
+        _this7.session.blocked_by = null;
       });
     },
     read: function read() {
@@ -2356,10 +2344,9 @@ $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
-}); //const url = window.location.pathname.split('/');
-//const id = url[url.length - 1];
-
-var id = 1;
+});
+var url = window.location.pathname.split('/');
+var id = url[url.length - 1];
 $.ajax({
   type: 'POST',
   url: "/cohousings/getimages",
@@ -2414,6 +2401,34 @@ $('.dark-overlay, .image-box').click(function () {
   var activeImageId = "#img" + $(this).attr('value');
   $(activeImageId).addClass('active');
   $('#carousel-modal').modal('toggle');
+}); // Handle the contact modal
+
+$('.contact-btn').click(function () {
+  $('#contact-modal').modal('toggle');
+});
+$('#submit-contact-form').click(function (e) {
+  e.preventDefault();
+  $.ajax({
+    type: 'POST',
+    url: "/session/create",
+    data: {
+      poster_id: $('#poster_id').html(),
+      message: $('#first_message').val()
+    },
+    success: function success(response) {
+      $('#contact-modal').modal('toggle'); // Show succes message
+
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(response);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 3000);
+    }
+  });
 });
 
 /***/ }),
@@ -2575,20 +2590,71 @@ $(document).scroll(function (evt) {
 
 // Scroll down on icon click
 $('#scroll-icon').click(function () {
-  window.scrollTo(0, 778);
+  window.scrollTo(0, 861);
 }); // Animations
 
 var scrollPosition = 0;
+var textPlayed = false;
 var accAnimationPlayed = false;
 $(document).scroll(function (evt) {
-  scrollPosition = $(this).scrollTop();
+  scrollPosition = $(this).scrollTop(); // Make account slide in
 
-  if (scrollPosition >= 560 && accAnimationPlayed == false) {
-    console.log('fired');
+  function slideInAnimation() {
     $('.make-account-box, .make-account-text').css({
       'transform': 'translateX(0%)'
     });
-    accAnimationPlayed = true;
+  } // Nav anim
+
+
+  if (scrollPosition > 860) {
+    $('.navbar').addClass('dark-bg');
+  } else {
+    $('.navbar').removeClass('dark-bg');
+  } // Draw white svg's
+
+
+  if (scrollPosition > 380 && accAnimationPlayed == false) {
+    setTimeout(function () {
+      slideInAnimation();
+    }, 2500); //Animation 1
+
+    $('#a1p1').fadeIn(400);
+    $('#a1p2').fadeIn(400);
+    $('#a1t1').addClass('visible');
+    setTimeout(function () {
+      $('#a1p3').fadeIn(400);
+    }, 400); // //Animation 2
+
+    setTimeout(function () {
+      $('#a2t1').addClass('visible');
+      $('#a2p1, #a2p2, #a2p3').fadeIn(300);
+    }, 800);
+    setTimeout(function () {
+      $('#a2p4').fadeIn(200);
+      $('#a2p4').addClass("spinning-logo");
+    }, 700); // //Animation 3
+
+    setTimeout(function () {
+      setTimeout(function () {
+        $('#a3p1').fadeIn(300);
+        $('#a3t1').addClass('visible');
+      }, 900);
+      setTimeout(function () {
+        $('#a3p2').fadeIn(150);
+      }, 1200);
+      setTimeout(function () {
+        $('#a3p3').fadeIn(150);
+      }, 1500);
+      setTimeout(function () {
+        $('#a3p4').fadeIn(150);
+      }, 1700);
+      setTimeout(function () {
+        $('#a3p5').fadeIn(150);
+      }, 1900);
+      setTimeout(function () {
+        $('#a1t2, #a1t3, #a2t2, #a2t3, #a3t2, #a3t3').addClass('visible');
+      }, 1900);
+    }, 800);
   }
 });
 var header = window.location.pathname; // Particle animation
@@ -46039,124 +46105,72 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
-    _c(
-      "div",
-      { staticClass: "container" },
-      [
-        _c("div", { staticClass: "left" }, [
-          _c("div", { staticClass: "top" }, [
-            _vm.auth.img
-              ? _c("div", [
-                  _c("img", {
-                    staticStyle: { height: "46px", float: "left" },
-                    attrs: { src: _vm.auth.image, alt: "" }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "span",
+  return _c("div", { staticClass: "wrapper", attrs: { id: "chat-window" } }, [
+    _c("div", { staticClass: "container d-flex justify-content-between p-0" }, [
+      _c("div", { staticClass: "left" }, [
+        _c("div", { staticClass: "top" }),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "people" },
+          _vm._l(_vm.friends, function(friend) {
+            return _c(
+              "li",
               {
-                staticClass: "dropdown search",
-                staticStyle: {
-                  float: "left",
-                  "margin-right": "10px",
-                  top: "13px",
-                  left: "20px"
-                },
-                attrs: { "aria-hidden": "true" }
+                key: friend.id,
+                staticClass: "person",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.openChat(friend)
+                  }
+                }
               },
               [
-                _vm.auth.name < 11
-                  ? _c("div", [_vm._v(_vm._s(_vm.auth.name))])
-                  : _c("div", [
-                      _vm._v(
-                        "  " + _vm._s(_vm.auth.name.substring(0, 11) + "..")
-                      )
+                friend.id !== _vm.auth.id
+                  ? _c("div", [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("p", { staticClass: "mb-0" }, [
+                          _c("span", { staticClass: "name" }, [
+                            _vm._v(" " + _vm._s(friend.name))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        friend.session && friend.session.unreadCount > 0
+                          ? _c("span", { staticClass: "ml-2" }, [
+                              _vm._v(_vm._s(friend.session.unreadCount))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      friend.online
+                        ? _c("p", [
+                            _c(
+                              "small",
+                              {
+                                staticClass: "preview",
+                                staticStyle: { color: "#00b0ff" }
+                              },
+                              [_vm._v("Online")]
+                            )
+                          ])
+                        : _c("p", [
+                            _c("small", { staticClass: "preview" }, [
+                              _vm._v("Offline")
+                            ])
+                          ])
                     ])
+                  : _vm._e()
               ]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "form",
-                {
-                  staticStyle: { display: "none" },
-                  attrs: { id: "logout-form", action: "logout", method: "POST" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_token" },
-                    domProps: { value: _vm.csrf }
-                  })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "people" },
-            _vm._l(_vm.friends, function(friend) {
-              return _c(
-                "li",
-                {
-                  key: friend.id,
-                  staticClass: "person",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.openChat(friend)
-                    }
-                  }
-                },
-                [
-                  _c("img", { attrs: { src: friend.image, alt: "" } }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "name" }, [
-                    _vm._v(" " + _vm._s(friend.name))
-                  ]),
-                  _vm._v(" "),
-                  friend.session && friend.session.unreadCount > 0
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "time search",
-                          staticStyle: {
-                            padding: "5px",
-                            background: "#00b0ff",
-                            border: "2px solid #00b0ff",
-                            color: "#effbff",
-                            "text-align": "center",
-                            "font-size": "16px"
-                          }
-                        },
-                        [_vm._v(_vm._s(friend.session.unreadCount))]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  friend.online
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "preview",
-                          staticStyle: { color: "#00b0ff" }
-                        },
-                        [_vm._v("Online")]
-                      )
-                    : _c("span", { staticClass: "preview" }, [
-                        _vm._v("Offline")
-                      ])
-                ]
-              )
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { attrs: { id: "chat-box" } },
         _vm._l(_vm.friends, function(friend) {
           return _c("div", { key: friend.id }, [
             friend.session
@@ -46178,30 +46192,13 @@ var render = function() {
                 )
               : _vm._e()
           ])
-        })
-      ],
-      2
-    )
+        }),
+        0
+      )
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticStyle: { float: "right", "font-size": "22px", padding: "10px" },
-        attrs: {
-          onclick:
-            "event.preventDefault();document.getElementById('logout-form').submit();"
-        }
-      },
-      [_c("i", { staticClass: "fa fa-sign-out" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46224,10 +46221,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "right" }, [
+  return _c("div", { staticClass: "right-chat" }, [
     _c("div", { staticClass: "top" }, [
       _c("span", [
-        _vm._v("To: "),
+        _vm._v("Aan: "),
         _c("span", { staticClass: "name" }, [
           _c("span", { class: { "text-danger": _vm.session.block } }, [
             _vm._v("\n            " + _vm._s(_vm.friend.name) + " "),
@@ -46335,20 +46332,14 @@ var render = function() {
       {
         directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
         staticClass: "chat",
-        staticStyle: { "max-height": "460px", "overflow-y": "scroll" }
+        staticStyle: { "overflow-y": "scroll" }
       },
-      [
-        _c(
-          "div",
-          {
-            directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
-            staticClass: "card-text"
-          },
-          _vm._l(_vm.chats, function(chat) {
-            return _c(
+      _vm._l(_vm.chats, function(chat) {
+        return _c("div", { key: chat.id }, [
+          _c("div", { staticClass: "card-text" }, [
+            _c(
               "p",
               {
-                key: chat.id,
                 class: {
                   "bubble you": chat.type === 0,
                   "bubble me": chat.type === 1
@@ -46356,9 +46347,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                " +
+                  "\n                    " +
                     _vm._s(chat.message) +
-                    "\n                "
+                    "\n\n                    "
                 ),
                 _c("br"),
                 _vm._v(" "),
@@ -46385,57 +46376,10 @@ var render = function() {
                   : _vm._e()
               ]
             )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _vm._l(_vm.chats, function(chat) {
-          return _c("div", { key: chat.id, staticClass: "card-text" }, [
-            chat.type === 1
-              ? _c("div", { staticClass: "bubble you" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(chat.message) +
-                      "\n                    "
-                  ),
-                  chat.read_at != null
-                    ? _c("i", {
-                        staticClass: "fa fa-check",
-                        staticStyle: { color: "#fff9fe" },
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  chat.sent_at
-                    ? _c("span", { staticStyle: { "font-size": "9px" } }, [
-                        _vm._v(_vm._s(chat.read_at))
-                      ])
-                    : _vm._e()
-                ])
-              : _c("div", { staticClass: "bubble me" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(chat.message) +
-                      "\n                    "
-                  ),
-                  chat.read_at != null
-                    ? _c("i", {
-                        staticClass: "fa fa-check",
-                        staticStyle: { color: "#00b0ff" },
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  chat.read_at
-                    ? _c("span", { staticStyle: { "font-size": "9px" } }, [
-                        _vm._v(_vm._s(chat.read_at))
-                      ])
-                    : _vm._e()
-                ])
           ])
-        })
-      ],
-      2
+        ])
+      }),
+      0
     ),
     _vm._v(" "),
     _c("div", { staticClass: "write" }, [
@@ -46453,42 +46397,53 @@ var render = function() {
         [
           _c("a", { staticClass: "write-link attach" }),
           _vm._v(" "),
-          _c("input", {
-            directives: [
+          _c("div", { staticClass: "d-flex center-align" }, [
+            _c(
+              "a",
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.message,
-                expression: "message"
-              }
-            ],
-            attrs: {
-              type: "text",
-              placeholder: "Write your message here",
-              disabled: _vm.session.block
-            },
-            domProps: { value: _vm.message },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+                staticClass: "send-chat-btn",
+                staticStyle: { cursor: "pointer" },
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.send($event)
+                  }
                 }
-                _vm.message = $event.target.value
+              },
+              [
+                _c("img", {
+                  staticStyle: { width: "15px" },
+                  attrs: { src: "/images/icons/send.png", alt: "send button" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.message,
+                  expression: "message"
+                }
+              ],
+              attrs: {
+                type: "text",
+                placeholder: "Schrijf een bericht...",
+                disabled: _vm.session.block
+              },
+              domProps: { value: _vm.message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
+                }
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "write-link send",
-            staticStyle: { cursor: "pointer" },
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.send($event)
-              }
-            }
-          })
+            })
+          ])
         ]
       )
     ])

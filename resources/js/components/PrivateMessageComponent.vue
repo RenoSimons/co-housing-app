@@ -1,7 +1,7 @@
 <template>
-    <div class="right">
+    <div class="right-chat">
         <div class="top">
-            <span>To: <span class="name">
+            <span>Aan: <span class="name">
                 <span :class="{'text-danger':session.block}">
                 {{friend.name}} <span v-if="isTyping">is Typing</span>
                 <span v-if="session.block" class="text-danger">(blocked)</span>
@@ -23,45 +23,35 @@
 
         </div>
 
-        <div class="chat" style="max-height: 460px; overflow-y: scroll;" v-chat-scroll  >
-
-
-            <div   class="card-text" v-chat-scroll>
-                <p  :class="{'bubble you':chat.type === 0,'bubble me':chat.type === 1}" v-for="chat in chats" :key="chat.id">
-                    {{chat.message}}
-                    <br>
-                    <span style="font-size:10px">send {{chat.send_at}}</span>
-
-                    <br>
-                    <i v-if="chat.read_at!=null" class="fa fa-check" style=" color: #fff9fe" aria-hidden="true">
-                        <span style="font-size:10px">read {{chat.read_at}}</span>
-                    </i>
-
-                </p>
-            </div>
-
-               <div class="card-text"   v-for="chat in chats" :key="chat.id">
-                    <div class="bubble you" v-if="chat.type === 1">
+        <div class="chat" style="overflow-y: scroll;" v-chat-scroll>
+            <div v-for="chat in chats" :key="chat.id">
+                <div class="card-text">
+                    <p :class="{'bubble you':chat.type === 0,'bubble me':chat.type === 1}">
                         {{chat.message}}
-                        <i v-if="chat.read_at!=null" class="fa fa-check" style=" color: #fff9fe" aria-hidden="true">
+
+                        <br>
+                        <span style="font-size:10px">send {{chat.send_at}}</span>
+
+                        <br>
+                        <i v-if="chat.read_at!=null" class="fa fa-check" style="color: #fff9fe" aria-hidden="true">
+                            <span style="font-size:10px">read {{chat.read_at}}</span>
                         </i>
-                        <span v-if="chat.sent_at" style="font-size:9px">{{chat.read_at}}</span>
-                    </div>
-                    <div class="bubble me" v-else>
-                        {{chat.message}}
-                        <i v-if="chat.read_at!=null" class="fa fa-check" style=" color: #00b0ff" aria-hidden="true">
-                        </i>
-                        <span v-if="chat.read_at" style="font-size:9px">{{chat.read_at}}</span>
-                    </div>
+                    </p>
                 </div>
+            </div>
         </div>
+
         <div class="write">
-            <form   class="card-footer"  @submit.prevent="send">
-            <a  class="write-link attach"></a>
-            <input type="text" placeholder="Write your message here"
-                   :disabled="session.block"
-                   v-model="message" />
-            <a  type="submit" style="cursor: pointer" @click.prevent="send" class="write-link send"></a>
+            <form class="card-footer"  @submit.prevent="send">
+                <a class="write-link attach"></a>
+                <div class="d-flex center-align">
+                    <a type="submit" style="cursor: pointer" @click.prevent="send" class="send-chat-btn">
+                        <img src="/images/icons/send.png" alt="send button" style="width: 15px;">
+                    </a>
+                    <input type="text" placeholder="Schrijf een bericht..."
+                        :disabled="session.block"
+                        v-model="message" />
+                </div>
             </form>
         </div>
     </div>
@@ -76,14 +66,15 @@
             return {
                 chats: [],
                 message: null,
-                isTyping: false
+                isTyping: false,
+                auth: []
             }
         },
         watch: {
             message(value) {
                 if (value) {
                     Echo.private(`Chat.${this.friend.session.id}`).whisper("typing", {
-                        name: auth.name
+                        name: this.auth.name
                     });
                 }
             }
@@ -93,11 +84,12 @@
                 return this.friend.session;
             },
             can() {
-                return this.session.blocked_by == auth.id;
+                return this.session.blocked_by == this.auth.id;
             }
         },
         created() {
             this.read();
+            this.getAuth();
             this.getAllMessages();
             Echo.private(`Chat.${this.friend.session.id}`).listen(
                 "PrivateChatEvent",
@@ -126,6 +118,11 @@
             );
         },
         methods: {
+            getAuth() {
+                axios.post("/getUser").then(res => {
+                    this.auth = res.data;
+                });
+            },
             getAllMessages() {
                 axios
                     .post(`/session/${this.friend.session.id}/chats`)
@@ -163,7 +160,7 @@
                 this.session.block = true;
                 axios
                     .post(`/session/${this.friend.session.id}/block`)
-                    .then(res => (this.session.blocked_by = auth.id));
+                    .then(res => (this.session.blocked_by = this.auth.id));
             },
             unblock() {
                 this.session.block = false;

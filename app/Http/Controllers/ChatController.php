@@ -18,12 +18,11 @@ class ChatController extends Controller
         $message = $session->messages()->create([
             'content' => $request->message
         ]);
-
-
+        
         $chat = $message->createForSend($session->id);
 
         $message->createForReceive($session->id, $request->to_user);
-
+        
         broadcast(new PrivateChatEvent($message->content, $chat));
 
         return response($chat->id, 200);
@@ -31,7 +30,7 @@ class ChatController extends Controller
 
     public function chats(Session $session)
     {
-        return ChatResource::collection($session->chats->where('user_id', auth()->id()));
+        return ChatResource::collection($session->chats->where('session_id', $session->id));
 
     }
 

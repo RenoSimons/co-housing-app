@@ -5,9 +5,9 @@
   <div class="row d-flex justify-content-around">
     <div class="col-md-3">
       <x-accountNavigation />
+      {{Auth::user()->name}}
     </div>
     <div class="col-md-9" id="message-section">
-      <h1>Berichten</h1>
         <private-chat-component></private-chat-component>
     </div>
   </div>

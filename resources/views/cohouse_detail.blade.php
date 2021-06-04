@@ -158,7 +158,7 @@
             <!-- GOOGLE MAP -->
             <div class="map-box mt-5 mb-5">
                 <div id="map"></div>
-                
+
                 <div class="d-none" id="lat">{{$house_details->lat}}</div>
                 <div class="d-none" id="long">{{$house_details->long}}</div>
             </div>
@@ -166,55 +166,77 @@
     </div>
 
     <!-- Image carousel in modal-->
-    <div class="modal fade" id="carousel-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"">
+    <div class="modal fade" id="carousel-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class=" modal-dialog" role="document">
-        <div class="modal-content pb-1">
-            <div class="modal-header d-flex justify-content-between">
-                <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body pt-0">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Images come here with JS -->
+            <div class="modal-content pb-1">
+                <div class="modal-header d-flex justify-content-between">
+                    <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Images come here with JS -->
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon prev-next-icon" value="prev" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon prev-next-icon" value="next" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon prev-next-icon" value="prev" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon prev-next-icon" value="next" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
-<script>
-    // Get the javascript map and locations
-    $(document).ready(function() {
-        let map;
-        initMap();
 
-        function initMap() {
-            var mapOptions = {
-                center: new google.maps.LatLng($('#lat').html(), $('#long').html()),
-                zoom: 12,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+    <!-- Contact modal-->
+    <div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content pb-1">
+                <div class="modal-header d-flex justify-content-between">
+                    <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pt-0 mb-2">
+                    <span class="hidden" id="poster_id">{{ $poster->id }}</span>
+                    <h4>Stuur een bericht naar {{ $poster->name }}</h4>
+                    <x-contactModal class="mt-2 mb-2" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
+    <script>
+        // Get the javascript map and locations
+        $(document).ready(function() {
+            let map;
+            initMap();
+
+            function initMap() {
+                var mapOptions = {
+                    center: new google.maps.LatLng($('#lat').html(), $('#long').html()),
+                    zoom: 12,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                const marker = new google.maps.Marker({
+                    position: {
+                        lat: parseFloat($('#lat').html()),
+                        lng: parseFloat($('#long').html())
+                    },
+                    map: map,
+                });
             }
 
-            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        });
+    </script>
 
-            const marker = new google.maps.Marker({
-                position: { lat: parseFloat($('#lat').html()), lng: parseFloat($('#long').html()) },
-                map: map,
-            });
-        }
-
-    });
-</script>
-
-@endsection
+    @endsection

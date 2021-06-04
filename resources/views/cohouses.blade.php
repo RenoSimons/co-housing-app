@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container p-2 p-md-0 mt-1 mt-md-5" id="offer-wrapper">
-    <h1>Co-housings in de aanbieding</h1>
+    <div class="d-flex justify-content-between">
+        <h1>Co-housings in de aanbieding</h1>
+        <img src="{{URL::asset('/images/icons/offer-black.png')}}" class="header-icon">
+    </div>
     <hr>
 
     <div class="row shadow-sm mt-md-4">
@@ -72,7 +75,7 @@
                 <div class="form-group collapser">
                     <div class="d-flex align-items-center">
                         <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
-                        <p class="search-title">Budget <small>(maandelijks)</small></p>
+                        <p class="search-title">Prijs <small>(maandelijks)</small></p>
                     </div>
                     <select class="form-control btn_listener" name="budget">
                         <option>Eender</option>

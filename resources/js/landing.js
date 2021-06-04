@@ -1,19 +1,77 @@
 // Scroll down on icon click
 $('#scroll-icon').click(function() {
-    window.scrollTo(0, 778);
+    window.scrollTo(0, 861);
 })
 
 // Animations
 let scrollPosition = 0;
+let textPlayed = false;
 let accAnimationPlayed = false;
 
 $(document).scroll( function(evt) {
     scrollPosition = $(this).scrollTop();
 
-    if (scrollPosition >= 560 && accAnimationPlayed == false) {
-        console.log('fired')
-        $('.make-account-box, .make-account-text').css({'transform': 'translateX(0%)'})
-        accAnimationPlayed = true;
+    // Make account slide in
+
+    function slideInAnimation() {
+      $('.make-account-box, .make-account-text').css({'transform': 'translateX(0%)'})
+    }
+
+    // Nav anim
+    if(scrollPosition > 860) {
+      $('.navbar').addClass('dark-bg');
+    } else {
+      $('.navbar').removeClass('dark-bg');
+    }
+
+    // Draw white svg's
+
+    if( scrollPosition > 380 && accAnimationPlayed == false) {
+      setTimeout(function(){
+        slideInAnimation()
+      }, 2500);
+      //Animation 1
+      $('#a1p1').fadeIn(400); 
+      $('#a1p2').fadeIn(400);
+      $('#a1t1').addClass('visible')  
+
+      setTimeout(function(){
+        $('#a1p3').fadeIn(400); 
+      }, 400);
+ 
+      // //Animation 2
+      setTimeout(function(){
+        $('#a2t1').addClass('visible') 
+        $('#a2p1, #a2p2, #a2p3').fadeIn(300); 
+      }, 800);
+
+      setTimeout(function(){
+        $('#a2p4').fadeIn(200);
+        $('#a2p4').addClass("spinning-logo"); 
+      }, 700);
+
+      // //Animation 3
+      setTimeout(function(){
+        setTimeout(function(){
+          $('#a3p1').fadeIn(300); 
+          $('#a3t1').addClass('visible') 
+        }, 900);
+        setTimeout(function(){
+          $('#a3p2').fadeIn(150); 
+        }, 1200);
+        setTimeout(function(){
+          $('#a3p3').fadeIn(150); 
+        }, 1500);
+        setTimeout(function(){
+          $('#a3p4').fadeIn(150); 
+        }, 1700);
+        setTimeout(function(){
+          $('#a3p5').fadeIn(150); 
+        }, 1900);
+        setTimeout(function(){
+          $('#a1t2, #a1t3, #a2t2, #a2t3, #a3t2, #a3t3').addClass('visible'); 
+        }, 1900);
+      }, 800);
     }
 });
 

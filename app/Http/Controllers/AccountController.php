@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\SessionResource;
 use App\Http\Resources\UserResource;
+use App\Events\SessionEvent;
 use App\Models\User;
+use App\Models\Session;
+use App\Models\Connection;
 
 class AccountController extends Controller
 {
@@ -32,8 +36,18 @@ class AccountController extends Controller
         return view('myMessages');
     }
 
-    public function getFriends()
+    public function getFriends(Request $request)
     {
-        return UserResource::collection(User::where('id','!=', auth()->id())->get());
+        $user_id = $request->user()->id;
+        $connection_ids = Connection::where('user_id', $user_id)->pluck('user2_id');
+        $connections = User::whereIn('id', $connection_ids)->get();
+
+        return UserResource::collection($connections);
+        //return response()->json($connections);
     }
+
+    public function getUser(Request $request) {
+        return response()->json($request->user());
+    }
+
 }

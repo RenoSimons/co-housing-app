@@ -1,9 +1,10 @@
 .landing-section {
     background-image: url("../../../public/images/people_couch.jpeg");
     background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     margin: 0;
 
@@ -69,10 +70,36 @@
     .promo-card {
         background-color: $black;
         border-radius: 5px;
-        width: 100px !important;
+        width: 100px;
         z-index: 999;
 
         .promo-logo {
+            svg g {
+                fill: #EAE6EA;
+                display: inline-block;
+            }
+
+            #spin-box {
+                max-width: 46px;
+                max-height: 46px;
+                display: inline-block;
+                
+                .spinning-logo {
+                    animation: spin 0.8s linear;
+                    transform-origin: center right;
+                }
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(180deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }     
+            }
+
             .promo-logo-img {
                 width: 100px;
                 opacity: 0.9;
@@ -88,7 +115,7 @@
 
     .make-account-box {
         transition: 0.75s;
-        transform: translateX(-380%);
+        transform: translateX(-450%);
         z-index: 999;
         background-color: #323232;
         h4 {
@@ -101,11 +128,12 @@
     }
 
     .make-account-text {
-        transform: translateX(230%);
+        transform: translateX(260%);
         transition: 0.75s;
         .arrows-text , .arrows-left{
             font-size: 20px;
             letter-spacing: 1px;
+            display:none;
         }
     }
 
@@ -126,7 +154,7 @@
         background-color: $black;
         color: $white;
         border-radius: 5px;
-        width: 320px;
+        width: 100%;
         padding: 5px;
 
         .stats-logo-img {
@@ -160,9 +188,87 @@
     }
 }
 
+.footer {
+    background-color: $dark;
+    height: 150px;
+    margin-top: auto;
+    .logo-footer {
+        width: 80px;
+    }
+}
+
+@include media-breakpoint-up(xs) {
+    .second-section {
+        .center-row {
+            justify-content: center !important;
+        }
+        .promo-card {
+            width: 80% !important;
+        }
+    }
+    .third-section  {
+        .make-account-text {
+            .arrows-text , .arrows-left{
+                display:none;
+            }
+        }
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .fourth-section {
+        .stat-row {
+            justify-content: center;
+            margin-bottom: 30px;
+
+            .stat-card {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    .second-section {
+        .promo-card {
+            width: 80% !important;
+        }
+    }
+    .third-section  {
+        .make-account-text {
+                .arrows-text , .arrows-left{
+                    display:block;
+                }
+        }
+    }
+
+    .fourth-section {
+        .stat-row {
+            .stat-card {
+                width:100% !important ;
+            }
+        }
+    }
+}
 
 
 @include media-breakpoint-up(md) {
+    .second-section {
+        .center-row {
+            justify-content: space-between !important;
+        }
+    }
+
+    .fourth-section {
+        .stat-row {
+            .stat-card {
+                width: 250px !important ;
+            }
+        }
+    }
 }
 
 
@@ -250,54 +356,22 @@
     }
   }
 
+ // Path animations
+ #a1p1, #a1p2 , #a1p3 , #a2p2, #a2p1, #a2p3, #a2p4, #a3p1, #a3p2, #a3p3, #a3p4,#a3p5
+ {
+    display:none;
+ }
 
+ #a1t1 ,#a2t1  ,#a3t1  {
+    opacity: 0;
+    transition: 0.2s;
+ }
+ #a1t2 ,#a1t3,#a2t2 ,#a2t3,#a3t2 ,#a3t3 {
+    opacity: 0;
+    transition: 0.5s;
+ }
 
-// $pathNumber: 18;
+ .visible {
+    opacity: 1 !important;
+ }
 
-// // The color that will be at the beginning and the end of the loop.
-// $firstColor: #2d2e30;
-
-// // The list of all the used colors. You can add or remove colors, the animation stays fluid. The $first-color must remain at the end of the list though.
-// $listColors: #574e50, #a39f99, #383c3d, rgb(27, 26, 27), $firstColor;
-
-// $delayCoeff: 0.05s; 
-
-// .svg {
-//   display: inline-block;
-//   height: 200px;
-//   width: 200px;
-//   line-height: 200px;
-//   text-align: center;
-//   background-color: #FFF;
-//   border-radius: 50%;
-// }
-
-// #svg {
-//   display: inline-block;
-//   vertical-align: middle;
-//   fill: $firstColor;
-  
-//   @for $i from 1 through 18 {
-
-//       path:nth-child(#{$i}) {
-//         animation: pweek $delayCoeff*$pathNumber linear infinite;
-//         animation-delay: $i*$delayCoeff;
-        
-//         &:hover {
-//           animation-play-state: paused;
-          
-//         }
-//       }
-//    }
-// }
-
-// @keyframes pweek {
-//   0% {
-//     fill: $firstColor;
-//   }
-//   @for $i from 1 through length($listColors) {
-//     #{$i*(100/length($listColors))}% {
-//       fill: nth($listColors, $i);
-//     }
-//   }
-// }

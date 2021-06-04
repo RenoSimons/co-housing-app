@@ -20,14 +20,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <script type="application/javascript">
-        window.auth = {!! auth()->user() !!}
-    </script>
 </head>
 
 <body>
-    <div  class="overflow-hidden">
+    <div class="overflow-hidden">
         <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -144,14 +140,30 @@
                             <div class="col-md-8">
                                 @if (Route::has('password.request'))
                                 <a class="btn  white-text" href="{{ route('password.request') }}">
-                                        {{ __('Paswoord Vergeten?') }}
-                                    </a>
+                                    {{ __('Paswoord Vergeten?') }}
+                                </a>
                                 @endif
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container h-100 d-flex justify-content-between align-center">
+            <div class="col-md-4 p-2">
+                <div class="d-flex">
+                    <img class="logo-footer ml-2" src="{{URL::asset('/images/icons/logo.png')}}">
+                </div>
+            </div>
+            <div class="col-md-4 p-2">
+
+            </div>
+            <div class="col-md-4 p-2">
+
             </div>
         </div>
     </div>

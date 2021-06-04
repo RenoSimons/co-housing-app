@@ -66,7 +66,9 @@ Route::post('/publish', [FindRenterController::class, 'publish'])->middleware('a
 
 // ACCOUNT DASHBOARD
 Route::post('getFriends', [AccountController::class, 'getFriends']);
-Route::post('/session/create', [SessionController::class, 'create']);
+Route::post('/getUser', [AccountController::class, 'getUser']);
+Route::post('/session/getsession', [AccountController::class, 'test']);
+Route::post('/session/create', [SessionController::class, 'create'])->name('create');
 Route::post('/session/{session}/chats', [ChatController::class, 'chats']);
 Route::post('/session/{session}/read', [ChatController::class, 'read']);
 Route::post('/session/{session}/clear', [ChatController::class, 'clear']);

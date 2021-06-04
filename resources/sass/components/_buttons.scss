@@ -123,6 +123,17 @@
     }
 }
 
+
+@include media-breakpoint-up(md) {
+    .second-section {
+        .cta-white {
+            width: 80%;
+            padding: 5px 5px !important;
+        }
+
+    }
+}
+
 .info-window-cta {
     text-decoration: none;
     color: $white;
@@ -163,4 +174,12 @@
         color: black;
         background-color: white;
     }
+}
+
+.send-chat-btn {
+    height: 33px;
+    background-color: white;
+    text-decoration: none;
+    color: $black;
+    padding: 5px;
 }

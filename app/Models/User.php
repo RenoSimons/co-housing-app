@@ -11,6 +11,7 @@ use App\Models\Application;
 use App\Models\RentOffer;
 use App\Models\Favorite;
 use App\Models\Message;
+use App\Models\Connection;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -69,6 +70,10 @@ class User extends Authenticatable
 
     public function favorites() {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function connections() {
+        return $this->hasMany(Connection::class);
     }
 
     public function hasFavorited($id) {

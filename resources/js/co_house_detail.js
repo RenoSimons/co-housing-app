@@ -9,10 +9,8 @@ $.ajaxSetup({
     }
 });
 
-//const url = window.location.pathname.split('/');
-//const id = url[url.length - 1];
-
-const id = 1;
+const url = window.location.pathname.split('/');
+const id = url[url.length - 1];
 
 $.ajax({
     type: 'POST',
@@ -83,9 +81,38 @@ $('.dark-overlay, .image-box').click(function() {
     let activeImageId = "#img" + $(this).attr('value');
     $(activeImageId).addClass('active');
 
-    $('#carousel-modal').modal('toggle')
+    $('#carousel-modal').modal('toggle');
 });
 
+// Handle the contact modal
+$('.contact-btn').click(function() {
+    $('#contact-modal').modal('toggle');
+})
 
+$('#submit-contact-form').click(function(e) {
+
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: "/session/create",
+        data: {
+            poster_id: $('#poster_id').html(),
+            message: $('#first_message').val()
+        },
+
+        success: function(response) {
+            $('#contact-modal').modal('toggle');
+
+            // Show succes message
+            $('.slider-box').css({'transform': 'translate(0% , 5%)'})
+            $('#message-text').html(response);
+
+            setTimeout(function(){
+                $('.slider-box').css({'transform': 'translate(20% , 5%)'})
+           }, 3000);
+        }
+    })
+
+})
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Vind hier jouw nieuwe co-houser</h1>
+        <h1>Personen op zoek naar een co-house</h1>
         <hr>
     </div>
     <div class="container d-md-flex p-0 mt-md-5 p-md-3">
