@@ -100,11 +100,14 @@
                 @foreach ($applications as $application)
                     <div class="application-card shadow-sm rounded d-md-flex mb-4 p-3">
                         <div class="col-md-4">
-                            <img class="img-fluid m-2" src="https://picsum.photos/400" alt="">
+                        @if ( strlen( $application->img_url) > 0)
+                        <img class="img-fluid" src="{{ URL::asset('storage/user_images/'. $application->img_url) }}" alt="Avatar">
+                        @else
+                        <small>Deze verhuurder heeft nog geen profielfoto</small>
+                        @endif
                         </div>
                         <div class="col-md-8">
-                            <h4 class="m-2">User title here</h4>
-
+                            <h4 class="ml-0 mb-3">{{ $application->name }}</h4>
                             <div class="d-flex justify-content-between flex-wrap">
                                 <div class="d-flex">
                                     <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">

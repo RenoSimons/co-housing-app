@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\DB;
 class PersonController extends Controller
 {
     public function index() {
-        $applications = Application::get();
-
+        $applications = DB::table('applications')
+            ->join('account_details', 'applications.user_id', '=', 'account_details.user_id')
+            ->join('users', 'applications.user_id', '=', 'users.id')
+            ->select('applications.*', 'account_details.img_url', 'users.name')
+            ->get();
         return view('persons', ['applications' =>$applications]);
     }
 
@@ -38,6 +41,17 @@ class PersonController extends Controller
         $age = $request->input('age');
         if ($age == 'Eender') {
             $age = null;
+            $minAge = null;
+            $maxAge = null;
+        } else {
+            if ($age == '> 40') {
+                $minAge = 40;
+                $maxAge = 100;
+            } else {
+                $age = explode('-', $age);
+                $minAge = $age[0];
+                $maxAge = $age[1];
+            }
         }
 
         $budget = $request->input('budget');
@@ -55,13 +69,14 @@ class PersonController extends Controller
             ->when($gender, function ($query, $gender) {
                 return $query->where('gender', $gender);
             })
-            ->when($age, function ($query, $age) {
-                return $query->where('age', $age);
+            ->when($age, function ($query) use ($maxAge, $minAge) {
+                return $query->where('age', '<=', $maxAge)->where('age', '>=', $minAge);
             })
             ->when($budget, function ($query, $budget) {
                 return $query->where('budget', $budget);
             })
-            
+            ->join('account_details', 'applications.user_id', '=', 'account_details.user_id')
+            ->select('applications.*','account_details.img_url')
             ->get();
 
         return view('persons', ['applications' =>$applications]);

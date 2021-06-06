@@ -10260,6 +10260,9 @@ h3 {
     align-items: center;
     margin-top: 0px;
   }
+  .landing-section .right-column {
+    transform: translateX(-30%);
+  }
   .landing-section .search-card {
     min-width: 35vw !important;
     height: auto !important;

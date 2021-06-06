@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid vh-100 p-0">
     <div class="row d-flex landing-section">
-        <div class="col-md-12 col-lg-6 left-column">
+        <div class="col-md-12 col-lg-8 left-column">
             <div class="row">      
                 <div class="search-card">
                     <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="search-form mt-5 mb-5">
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6 right-column" id="map-button">
+        <div class="col-md-12 col-lg-4 right-column" id="map-button">
             <div class="row">
                 <a href="#map-frontpage" class="text-decoration-none">
                     <div class="map-cta d-flex align-center dark-bg p-3 mb-5">

@@ -32,6 +32,18 @@ class CoHousingController extends Controller
         $surface = $request->input('surface');
         if ($surface == 'Eender') {
             $surface = null;
+            $minSurface = null;
+            $maxSurface = null;
+        } else {
+            //Get the boundaries
+            if ($surface == '> 50m²') {
+                $minSurface = 50;
+                $maxSurface = 100000;
+            } else {
+                $surface = explode(" ", $surface);
+                $minSurface = intval($surface[0]);
+                $maxSurface = intval(explode("m", $surface[2])[0]);
+            }
         }
 
         $housemates = $request->input('housemates');
@@ -42,6 +54,17 @@ class CoHousingController extends Controller
         $budget = $request->input('budget');
         if ($budget == 'Eender') {
             $budget = null;
+            $minBudget = null;
+            $maxBudget = null;
+        } else {
+            if ($budget == '> €600') {
+                $minBudget = 600;
+                $maxBudget = 100000;
+            } else {
+                $budget = explode('-', $budget);
+                $minBudget = explode('€', $budget[0])[1];
+                $maxBudget = $budget[1];
+            }
         }
 
         $rentOffers = RentOffer::query()
@@ -51,18 +74,19 @@ class CoHousingController extends Controller
             ->when($type_house, function ($query, $type_house) {
                 return $query->where('type_house', $type_house);
             })
-            ->when($surface, function ($query, $surface) {
-                return $query->where('surface', $surface);
+            ->when($surface, function ($query) use ($maxSurface, $minSurface) {
+                return $query->where('surface', '<=', $maxSurface)->where('surface','>=', $minSurface);
             })
             ->when($housemates, function ($query, $housemates) {
                 return $query->where('housemates', $housemates);
             })
-            ->when($budget, function ($query, $budget) {
-                return $query->where('budget', $budget);
+            ->when($budget, function ($query) use ($minBudget, $maxBudget) {
+                return $query->where('budget','<=', $maxBudget)->where('budget','>=', $minBudget);
             })
             ->get();
-        
+
             return view('cohouses', ['rentoffers' => $rentOffers]);
+      
     }
 
     public function showHouseDetail($id) {

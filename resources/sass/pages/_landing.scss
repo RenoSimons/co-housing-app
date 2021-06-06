@@ -304,6 +304,10 @@
             align-items: center;
             margin-top: 0px;
         }
+
+        .right-column {
+            transform: translateX(-30%);
+        }
         .search-card {
             min-width: 35vw !important;
             height: auto !important;

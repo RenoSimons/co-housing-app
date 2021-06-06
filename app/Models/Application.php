@@ -27,4 +27,8 @@ class Application extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function test($id) {
+        dd($id);
+    }
 }
