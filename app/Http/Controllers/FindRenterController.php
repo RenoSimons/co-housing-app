@@ -5,6 +5,7 @@ use App\Models\RentOffer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class FindRenterController extends Controller
 {
@@ -59,7 +60,6 @@ class FindRenterController extends Controller
             "surface" => $request->input('surface'),
             "budget" => $request->input('budget'),
             "housemates" => $request->input('housemates'),
-            "intro" => $request->input('intro'),
             "start_date" => $request->input('start_date'),
             "house_description" => $request->input('description_house'),
             "housemates_description" => $request->input('description_mates'),
@@ -75,9 +75,42 @@ class FindRenterController extends Controller
 
         $RentOffer->save();
         
+        return redirect('/myapplications');
+    }
 
+    public function edit(Request $request) {
+        $affected = DB::table('rent_offers')
+              ->where('id', $request->id)
+              ->update([
+                    "title" => $request->title,
+                    "province" => $request->province,
+                    "street" => $request->street,
+                    "lat" => $request->lat,
+                    "long" => $request->long,
+                    "type_house" => $request->type_house,
+                    "surface" => $request->surface,
+                    "budget" => $request->budget,
+                    "housemates" => $request->housemates,
+                    "start_date" => $request->start_date,
+                    "house_description" => $request->house_description,
+                    "housemates_description" => $request->housemates_description,
+                    "own_toilet" => $request->own_toilet,
+                    "shared_kitchen" => $request->shared_kitchen,
+                    "own_bathroom" => $request->own_bathroom,
+                    "pets" => $request->pets,
+                    "washing_machine" => $request->washing_machine,
+                    "wifi" => $request->wifi,
+              ]);
+             
+        return response()->json('Post succesvol aangepast');
+    }
 
-        return view ('home');
+    public function delete(Request $request) {
+        $affected = DB::table('rent_offers')
+            ->where('id' , $request->id)
+            ->delete();
+
+        return response()->json('Post succesvol verwijderd');
     }
 }
 

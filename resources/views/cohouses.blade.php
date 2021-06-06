@@ -136,7 +136,7 @@
                         <p>{{ $rentoffer->title }}</p>
                     </div>
                     <div class="action-btn">
-                        <a href="/cohousings/{{ $rentoffer->id }}" class="read-more-btn">Lees meer</a>
+                        <a href="/cohousings/{{ $rentoffer->id }}" class="read-more-btn dark-bg">Lees meer</a>
                     </div>
                 </div>
             </div>

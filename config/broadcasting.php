@@ -37,7 +37,9 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'cluster' => env('PUSHER_CLUSTER'),
-                'encrypted' => true,
+                'scheme' => 'http',
+                'useTLS' => true,
+                'ecrypted' => true,
             ],
         ],
 

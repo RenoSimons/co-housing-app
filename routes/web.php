@@ -59,12 +59,16 @@ Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middle
 // APPLICATION FORM
 Route::get('/application', [ApplicationController::class, 'index'])->middleware('auth')->name('application');
 Route::post('/publishpost', [ApplicationController::class, 'publish'])->middleware('auth')->name('publish');
+Route::post('/editpost', [ApplicationController::class, 'edit'])->middleware('auth')->name('edit');
+Route::post('/deletepost', [ApplicationController::class, 'delete'])->middleware('auth')->name('delete');
 
 // FIND A RENTER FORM
 Route::get('/findrenter', [FindRenterController::class, 'index'])->middleware('auth')->name('findrenter');
 Route::post('/publish', [FindRenterController::class, 'publish'])->middleware('auth')->name('publish');
+Route::post('/editoffer', [FindRenterController::class, 'edit'])->middleware('auth')->name('edit');
+Route::post('/deleteoffer', [FindRenterController::class, 'delete'])->middleware('auth')->name('deleteoffer');
 
-// ACCOUNT DASHBOARD
+// MESSAGING
 Route::post('getFriends', [AccountController::class, 'getFriends']);
 Route::post('/getUser', [AccountController::class, 'getUser']);
 Route::post('/session/getsession', [AccountController::class, 'test']);
@@ -76,8 +80,8 @@ Route::post('/session/{session}/block', [BlockController::class, 'block']);
 Route::post('/session/{session}/unblock', [BlockController::class, 'unblock']);;
 Route::post('/send/{session}', [ChatController::class, 'send']);
 
+// ACCOUNT DASHBOARD
 Route::get('/messages', [AccountController::class, 'chat'])->middleware('auth')->name('messages');
-
 Route::get('/profile/{id}', [PublicProfileController::class, 'showProfile'])->middleware('auth');
 Route::get('/myapplications', [AccountController::class, 'showMyApplications'])->middleware('auth')->name('myapplications');
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');

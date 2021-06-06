@@ -95,7 +95,7 @@
                 "PrivateChatEvent",
                 e => {
                     this.friend.session.open ? this.read() : "";
-                    this.chats.push({ message: e.content, type: 1, send_at: "Just Now" });
+                    this.chats.push({ message: e.content, type: 1, send_at: "Zonet" });
                 }
             );
             Echo.private(`Chat.${this.friend.session.id}`).listen("MsgReadEvent", e =>

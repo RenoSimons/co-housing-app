@@ -391,7 +391,7 @@
                             lat: parseFloat(coordinates.lat),
                             lng: parseFloat(coordinates.long)
                         },
-                        icon: 'http://localhost:8000/images/icons/marker-logo.png',
+                        icon: '/images/icons/marker-logo.png',
                         map: map,
                     });
                     marker.addListener("click", () => {

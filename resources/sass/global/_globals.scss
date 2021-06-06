@@ -22,7 +22,7 @@ html {
  }
 
 .hidden {
-    display:none;
+    display:none !important;
 }
 
 .black {
@@ -58,12 +58,12 @@ html {
 
 .slider-box {
     width: 100%;
-    display: flex;
     justify-content: flex-end;
     position: absolute;
     transition: 0.5s;
     transform:translate(20%, 5%);
     z-index: 999;
+    display: flex;
 
     #message-slider {
         width: 20%;
@@ -127,4 +127,13 @@ html {
 
 .header-icon {
     height: 43px;
+}
+
+.header-dark {
+    background-color: $dark;
+    color: $white;
+}
+
+.hide-overflow {
+    overflow-x: hidden;
 }

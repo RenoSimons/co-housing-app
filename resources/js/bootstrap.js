@@ -1,5 +1,16 @@
 window._ = require('lodash');
 
+import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '9240c19e59d2f73348c8',
+    cluster: 'eu',
+    forceTLS: true
+});
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -31,13 +42,3 @@ window.Vue = require('vue');
  * allows your team to easily build robust real-time web applications.
  */
 
-import Echo from 'laravel-echo';
-
-window.Pusher = require('pusher-js');
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: '1213350',
-    cluster: 'eu',
-    encrypted: true
-});

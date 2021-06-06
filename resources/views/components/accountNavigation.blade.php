@@ -1,4 +1,4 @@
-<div class="account-nav">
+<div class="account-nav mr-md-5">
     <ul class="list-group">
         <li class="list-group-item" id="link1">
             <a class="account-link"  href="{{ route('messages') }}">
@@ -7,7 +7,7 @@
         </li>
         <li class="list-group-item" id="link2">
             <a class="account-link" href="{{ route('myapplications') }}">
-                {{ __('Mijn applicaties') }}
+                {{ __('Mijn posts') }}
             </a>
         </li>
         <li class="list-group-item" id="link4">
@@ -34,22 +34,22 @@
 </div>
 
 <script type="application/javascript">
-    // let urlSlug10 = window.location.pathname;
+    let urlSlug10 = window.location.pathname;
 
-    // switch (urlSlug10) {
-    //     case '/messages':
-    //         $('#link1').addClass('active-link');
-    //         break;
-    //     case '/myapplications':
-    //         $('#link2').addClass('active-link');
-    //         break;
-    //     case '/user':
-    //         $('#link3').addClass('active-link');
-    //         break;
-    //     case '/myfavorites':
-    //         $('#link4').addClass('active-link');
-    //         break;
-    //     default:
-    //         break;
-    // }
+    switch (urlSlug10) {
+        case '/messages':
+            $('#link1').addClass('active-link');
+            break;
+        case '/myapplications':
+            $('#link2').addClass('active-link');
+            break;
+        case '/user':
+            $('#link3').addClass('active-link');
+            break;
+        case '/myfavorites':
+            $('#link4').addClass('active-link');
+            break;
+        default:
+            break;
+    }
 </script>

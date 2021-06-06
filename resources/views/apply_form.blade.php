@@ -5,6 +5,8 @@
     <div class="container">
         <h1>Stel jezelf voor als potentiële huurder</h1>
         <hr>
+
+        @if ($user_has_application == null)
         <h4>Vul onderstaande informatie in om in contact te komen met de juiste persoon die een plek heeft op basis van jouw benodigdheden</h4>
 
         <div class="mt-4">
@@ -98,8 +100,14 @@
                     </div>
                 </div>
             </form>
-
         </div>   
+        @else
+        <div class="">
+            <h4>Sorry, maximum 1 voorstel is mogelijk</h4>
+            <p>Ga naar 'Mijn account' onder posts en pas je voorgaande post aan.</p>
+            <a href="{{ route('myapplications') }}" class="read-more-btn mt-4">Ga naar mijn posts</a>
+        </div>
+        @endif
     </div>  
 </div>
 

@@ -28,8 +28,10 @@ require('./cohouse_overview');
 require('./offerHouse');
 require('./detect_mobile');
 require('./co_house_detail');
+require('./myposts');
 require('./particles');
 require('./landing');
+
 
 
 

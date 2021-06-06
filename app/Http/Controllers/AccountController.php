@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\SessionResource;
 use App\Http\Resources\UserResource;
-use App\Events\SessionEvent;
 use App\Models\User;
-use App\Models\Session;
+use App\Models\Application;
 use App\Models\Connection;
+use App\Models\RentOffer;
 
 class AccountController extends Controller
 {
@@ -22,13 +21,19 @@ class AccountController extends Controller
             array_push($favorited_offers, DB::table('rent_offers')->where('id', $id)->get()->toArray()); 
         }
 
-        //dd($favorited_offers);
-
         return view('myFavorites', ['favorites' => $favorited_offers, 'favorite_ids' => $user_favorite_ids]);
     }
 
     public function showMyApplications() {
-        return view('myApplications');
+        $user_id = Auth::user()->id;
+        $user_post = Application::where('user_id', $user_id)->first();
+        $house_offers = RentOffer::where('user_id', $user_id)->get();
+
+        if(count($house_offers) == 0) {
+            $house_offers = null;
+        }
+        
+        return view('myApplications' , ['user_post' => $user_post, 'house_offers' => $house_offers]);
     }
 
     public function chat()

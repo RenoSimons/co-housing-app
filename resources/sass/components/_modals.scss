@@ -8,5 +8,16 @@
             color: $white;
         }
     }
-    
+}
+
+#edit-application-modal, .edit-house-offer-modal {
+    //transform: translateY(-50px);
+    .modal-content {
+        background-color: #F8FAFC;
+
+        .modal-body {
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+    }
 }

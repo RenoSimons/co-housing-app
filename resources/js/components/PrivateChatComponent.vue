@@ -6,7 +6,7 @@
 
                 </div>
                 <ul class="people">
-                    <li class="person" @click.prevent="openChat(friend)"  v-for="friend in friends" :key="friend.id">
+                        <li class="person" @click.prevent="openChat(friend)"  v-for="friend in friends" :key="friend.id">
                         <div v-if="friend.id !== auth.id">
                             <div class="d-flex">
                                 <p class="mb-0"><span class="name"> {{friend.name}}</span></p> 

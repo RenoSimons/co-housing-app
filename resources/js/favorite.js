@@ -44,12 +44,12 @@ $(".heart-icon, .garbage-icon").click(function(e) {
             }
 
             // Show succes message
-            $('.slider-box').css({'transform': 'translate(0% , 5%)'})
+            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
             $('#message-text').html(messageText);
 
-            setTimeout(function(){
-                $('.slider-box').css({'transform': 'translate(20% , 5%)'})
-           }, 3000);
+            setTimeout(function () {
+                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
+            }, 3000);
         }
     });
 });

@@ -10743,7 +10743,7 @@ h3 {
 .read-more-btn {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #808080;
   padding: 5px 10px;
   border-radius: 3px;
 }
@@ -10848,6 +10848,60 @@ h3 {
   padding: 5px;
 }
 
+.edit-btn {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 35px;
+  border-radius: 5px;
+  border: none;
+  background-image: url(/images/edit-button.png?c5fd488c111c4a8436079dfbe1aa373c);
+  background-position: 15px;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  transition: 1s;
+  width: 100px;
+}
+.edit-btn:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 35px;
+  border-radius: 5px;
+  border: none;
+  background-image: url(/images/garbage-can.png?2a65d800bee9ba107813e21b27161b92);
+  background-position: 15px;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  transition: 1s;
+  width: 120px;
+}
+.delete-btn:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.save-btn2 {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 35px;
+  border-radius: 5px;
+  border: none;
+  background-image: url(/images/save.png?6e9e435a27b76428435066103d662af1);
+  background-position: 15px;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  transition: 1s;
+  width: 120px;
+}
+.save-btn2:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -10894,6 +10948,14 @@ h3 {
 #loginModal .modal-content .card {
   background-color: #323232;
   color: rgba(255, 255, 255, 0.8);
+}
+
+#edit-application-modal .modal-content, .edit-house-offer-modal .modal-content {
+  background-color: #F8FAFC;
+}
+#edit-application-modal .modal-content .modal-body, .edit-house-offer-modal .modal-content .modal-body {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 #chat-window .left {
@@ -10984,7 +11046,7 @@ html {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .black {
@@ -11020,12 +11082,12 @@ html {
 
 .slider-box {
   width: 100%;
-  display: flex;
   justify-content: flex-end;
   position: absolute;
   transition: 0.5s;
   transform: translate(20%, 5%);
   z-index: 999;
+  display: flex;
 }
 .slider-box #message-slider {
   width: 20%;
@@ -11083,4 +11145,13 @@ html {
 
 .header-icon {
   height: 43px;
+}
+
+.header-dark {
+  background-color: #323232;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hide-overflow {
+  overflow-x: hidden;
 }
