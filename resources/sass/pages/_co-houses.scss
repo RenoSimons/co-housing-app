@@ -46,6 +46,10 @@
 
     .card {
         transition: 0.5s;
+        .card-img-top {
+            width: 100%;
+            height: 225px;
+        }
         .card-overlay {
             position: absolute;
             margin-top: 30px !important;

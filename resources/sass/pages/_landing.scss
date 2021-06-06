@@ -13,7 +13,6 @@
         justify-content: center;
         align-items: center;
         margin-top: 30%;
-
         .search-card {
             display:flex;
             justify-content: center;
@@ -48,6 +47,31 @@
                     margin-top: 35px;
                 }
             }   
+        }
+    }
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .map-cta {
+            border-radius: 10px;
+            color: $white;
+            opacity: 0.95;
+            transition: 0.5s;
+            &:hover {
+                transform: scale(1.1);
+                background-color: black !important;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .map-icon {
+                width: 40px;
+                height: 40px;
+            }
         }
     }
     .scroll-down {

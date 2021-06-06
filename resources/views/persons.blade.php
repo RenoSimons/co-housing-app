@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Personen op zoek naar een co-house</h1>
+        <div class="d-flex justify-content-between">
+            <h1>Personen op zoek naar een co-house</h1>
+            <img src="{{URL::asset('/images/icons/search-location-black.png')}}" class="header-icon">
+        </div>
         <hr>
     </div>
     <div class="container d-md-flex p-0 mt-md-5 p-md-3">
@@ -20,6 +23,7 @@
                             <p class="search-title">Regio</p>
                         </div>
                         <select class="form-control" name="region">
+                            <option>Eender</option>
                             <option>Antwerpen</option>
                             <option>Gent</option>
                             <option>Brugge</option>
@@ -45,31 +49,28 @@
 
                     <div class="form-group">
                         <div class="d-flex align-items-center">
-                            <img src="{{URL::asset('/images/icons/measuring-tape.png')}}" class="search-icons">
-                            <p class="search-title">Oppervlakte</p>
+                            <img src="{{URL::asset('/images/icons/sex.png')}}" class="search-icons">
+                            <p class="search-title">Geslacht</p>
                         </div>
-                        <select class="form-control" name="surface">
+                        <select class="form-control" name="gender">
                             <option>Eender</option>
-                            <option>10 - 20m²</option>
-                            <option>20 - 30m²</option>
-                            <option>30 - 40m²</option>
-                            <option>40 - 50m²</option>
-                            <option>> 50m²</option>
+                            <option>Man</option>
+                            <option>Vrouw</option>
+                            <option>X</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <div class="d-flex align-items-center">
-                            <img src="{{URL::asset('/images/icons/multiple-users-silhouette.png')}}" class="search-icons">
-                            <p class="search-title">Aantal huisgenoten</p>
+                            <img src="{{URL::asset('/images/icons/age-group.png')}}" class="search-icons">
+                            <p class="search-title">Leeftijd</p>
                         </div>
-                        <select class="form-control" name="housemates">
+                        <select class="form-control" name="age">
                             <option>Eender</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>> 5</option>
+                            <option>15-20</option>
+                            <option>20-25</option>
+                            <option>25-30</option>
+                            <option>35-40</option>
+                            <option>> 40</option>
                         </select>
                     </div>
 
@@ -133,7 +134,7 @@
                                 </div>    
                             </div>
                             
-                            <p>{{ $application->intro }}</p>
+                            <p>{{  Str::limit($application->intro, 200) }}</p>
 
                             <div class="action-btns d-flex justify-content-between">
                                 <a href="/profile/ {{ $application->user_id }}" class="save-btn action-link">Bekijk profiel</a>

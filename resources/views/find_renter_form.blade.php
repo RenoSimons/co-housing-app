@@ -26,17 +26,17 @@
                 @csrf
                 {{ method_field('POST') }}
                 <div id="section1">
-                    <h4 class="mb-2">Titel van je zoekertje</h4>
+                    <h4 class="header-dark p-2 mb-0">Titel van je zoekertje</h4>
                     <input type="text" name="title" class="form-control" id="intro-form1" required maxlength="200">
                     <small id="chars-left1"></small>
 
-                    <h4 class="mt-4">Korte beschrijving van de woonplaats</h4>
+                    <h4 class="mt-4 header-dark p-2 mb-0">Korte beschrijving van de woonplaats</h4>
                     <div class="form-outline w-100">
                         <textarea class="form-control" name="description_house" id="intro-form2" required maxlength="500" rows="6"></textarea>
                     </div>
                     <small id="chars-left2"></small>
 
-                    <h4 class="mt-4">Korte beschrijving van de huisgenoten</h4>
+                    <h4 class="mt-4 header-dark p-2 mb-0">Korte beschrijving van de huisgenoten</h4>
                     <div class="form-outline w-100">
                         <textarea class="form-control" name="description_mates" id="intro-form3" rows="6" maxlength="500"></textarea>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div id="section2" class="hidden">
-                    <h4 class="mb-4 mt-4">Specificaties woning</h4>
+                    <h4 class="mb-4 mt-4 header-dark p-2 mb-0">Specificaties woning</h4>
                     <div class="d-md-flex mt-2">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-                    <h4 class="mb-4 mt-4">Extra opties</h4>
+                    <h4 class="mb-4 mt-4 header-dark p-2 mb-0">Extra opties</h4>
                     <div class="d-md-flex mt-2">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
@@ -196,13 +196,13 @@
                             </div>
                         </div>
                     </div>
-                    <h4 class="mt-4">Startdatum verhuur</h4>
+                    <h4 class="mt-4 header-dark p-2 mb-0">Startdatum verhuur</h4>
                     <div class="form-group w-50 w-md-25">
-                        <input class="date form-control" name="start_date" id="date-field" type="text">
+                        <input autocomplete="off" class="date form-control" name="start_date" id="date-field" type="text">
                     </div>
                 </div>
                 <div id="section3" class="hidden">
-                    <h4 class="mt-4">Voeg foto's van de kamer en woning toe</h4>
+                    <h4 class="mt-4 header-dark p-2 mb-4">Voeg foto's van de kamer en woning toe</h4>
                     <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                         <input id="gallery-photo-add" accept="image/*" multiple="multiple" name="photos[]" type="file" class="form-control border-0 hidden">
                         <label id="upload-label" for="gallery-photo-add" class="font-weight-light text-muted"> </label>

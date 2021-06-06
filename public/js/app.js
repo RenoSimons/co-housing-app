@@ -2617,7 +2617,7 @@ $(document).scroll(function (evt) {
   if (scrollPosition > 380 && accAnimationPlayed == false) {
     setTimeout(function () {
       slideInAnimation();
-    }, 2500); //Animation 1
+    }, 1000); //Animation 1
 
     $('#a1p1').fadeIn(400);
     $('#a1p2').fadeIn(400);
@@ -2626,37 +2626,34 @@ $(document).scroll(function (evt) {
       $('#a1p3').fadeIn(400);
     }, 400); // //Animation 2
 
-    setTimeout(function () {
-      $('#a2t1').addClass('visible');
-      $('#a2p1, #a2p2, #a2p3').fadeIn(300);
-    }, 800);
-    setTimeout(function () {
-      $('#a2p4').fadeIn(200);
-      $('#a2p4').addClass("spinning-logo");
-    }, 700); // //Animation 3
+    $('#a2t1').addClass('visible');
+    $('#a2p1, #a2p2, #a2p3').fadeIn(300);
+    $('#a2p4').fadeIn(200);
+    $('#a2p4').addClass("spinning-logo"); // //Animation 3
 
+    $('#a3p1').fadeIn(300);
+    $('#a3t1').addClass('visible');
     setTimeout(function () {
-      setTimeout(function () {
-        $('#a3p1').fadeIn(300);
-        $('#a3t1').addClass('visible');
-      }, 900);
-      setTimeout(function () {
-        $('#a3p2').fadeIn(150);
-      }, 1200);
-      setTimeout(function () {
-        $('#a3p3').fadeIn(150);
-      }, 1500);
-      setTimeout(function () {
-        $('#a3p4').fadeIn(150);
-      }, 1700);
-      setTimeout(function () {
-        $('#a3p5').fadeIn(150);
-      }, 1900);
-      setTimeout(function () {
-        $('#a1t2, #a1t3, #a2t2, #a2t3, #a3t2, #a3t3').addClass('visible');
-      }, 1900);
+      $('#a3p2').fadeIn(300);
+    }, 200);
+    setTimeout(function () {
+      $('#a3p3').fadeIn(300);
+    }, 400);
+    setTimeout(function () {
+      $('#a3p4').fadeIn(300);
+    }, 600);
+    setTimeout(function () {
+      $('#a3p5').fadeIn(300);
     }, 800);
+    setTimeout(function () {
+      $('#a1t2, #a1t3, #a2t2, #a2t3, #a3t2, #a3t3').addClass('visible');
+    }, 1000);
   }
+});
+$(document).ready(function () {
+  $('.first-button').on('click', function () {
+    $('.animated-icon1').toggleClass('open');
+  });
 });
 var header = window.location.pathname; // Particle animation
 
@@ -2860,7 +2857,6 @@ $('.delete-btn').click(function (e) {
       data: {},
       success: function success(response) {
         // Show succes message
-        $('.slider-box').removeClass('hidden');
         $('.slider-box').css({
           'transform': 'translate(0% , 5%)'
         });
@@ -2870,7 +2866,6 @@ $('.delete-btn').click(function (e) {
             'transform': 'translate(20% , 5%)'
           });
         }, 1000);
-        $('.slider-box').addClass('hidden');
         setTimeout(function () {
           window.location.reload();
         }, 1000);

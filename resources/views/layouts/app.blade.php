@@ -25,34 +25,34 @@
 <body>
     <div class="overflow-hidden">
         <nav class="navbar sticky navbar-expand-md navbar-light bg-white shadow-sm pt-3 pb-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+            <div class="container-fluid p-md-0">
+                <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <div class="animated-icon1"><span></span><span></span><span></span></div>
                 </button>
 
-                <div class="title-left">
+                <div class="title-left ml-0 ml-md-3">
                     <a href="{{url('/')}}" class="text-decoration-none black-text"><img class="unknown-user" src="{{URL::asset('/images/icons/logo.png')}}"> </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item ml-sm-2 ">
                             <a class="nav-link black-text nav-btn" href="{{ route('cohousings') }}">{{ __('Vind co-house') }}</a>
                         </li>
-                        <li class="nav-item ml-md-5 mt-xs-2">
+                        <li class="nav-item ml-sm-2 ml-md-4 ml-lg-5 mt-xs-2">
                             <a class="nav-link black-text nav-btn" href="{{ route('persons') }}">{{ __('Vind huurder') }}</a>
                         </li>
-                        <li class="nav-item ml-md-5 mt-xs-2">
+                        <li class="nav-item ml-sm-2 ml-md-4 ml-lg-5 mt-xs-2">
                             <a class="nav-link black-text nav-btn" href="{{ route('findrenter') }}">{{ __('Stel te huur') }}</a>
                         </li>
-                        <li class="nav-item ml-md-5 mt-xs-2">
+                        <li class="nav-item ml-sm-2 ml-md-4 ml-lg-5 mt-xs-2">
                             <a class="nav-link black-text nav-btn" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a>
                         </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto d-flex align-center">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -68,8 +68,11 @@
                         @endif
                         @else
 
+                        @auth
+                            <img src="{{URL::asset('/images/icons/bell.png')}}" class="search-icons d-none d-md-flex mb-1 mr-md-4" alt="notificatie bel">
+                        @endauth
+                        
                         <li class="nav-item dropdown">
-
                             <a id="navbarDropdown" class="nav-link black-text dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Mijn account
                             </a>

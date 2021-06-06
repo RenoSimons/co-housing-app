@@ -38,3 +38,25 @@
         margin-top: 0;
     }
 }
+
+@media only screen and (max-width: 769px)  {
+    .nav-btn {
+        &:hover{
+            padding: 8px;
+            transform: scale(1);
+        }
+    }
+    #navbar-dropdown {
+        width:20%;
+    }
+    .dropdown {
+        width: 100%;
+    }
+}
+
+.dropdown-menu {
+    background-color: $dark;
+    a {
+        color: $white;
+    }
+}

@@ -4,7 +4,7 @@
 <div class="container-fluid vh-100 p-0">
     <div class="row d-flex landing-section">
         <div class="col-md-12 col-lg-6 left-column">
-            <div class="row">
+            <div class="row">      
                 <div class="search-card">
                     <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="search-form mt-5 mb-5">
                         {{ method_field('GET') }}
@@ -89,12 +89,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-6 left-column">
+        <div class="col-md-12 col-lg-6 right-column" id="map-button">
             <div class="row">
-                <!-- empty column -->
+                <a href="#map-frontpage" class="text-decoration-none">
+                    <div class="map-cta d-flex align-center dark-bg p-3 mb-5">
+                        <img src="{{URL::asset('/images/icons/map.png')}}" class="map-icon">
+                        <h2 class="m-0 ml-4">Bekijk de kaart met cohousings</h2>
+                    </div>
+                </a>
             </div>
         </div>
-        <div class="scroll-down d-flex justify-content-center w-100">
+        <div class="scroll-down d-flex justify-content-center w-100 mt-5">
             <img src="{{URL::asset('/images/icons/scroll-down.png')}}" id="scroll-icon" alt="scroll naar beneden" class="scroll-img">
         </div>
     </div>
@@ -144,7 +149,7 @@
                 </p>
             </div>
             <div class="mt-3 mb-3">
-                <button class="btn cta-white mt-xs-4 mt-md-0" id="a1t3">Vind huis</button>
+                <a href="/cohousings"><button class="btn cta-white mt-xs-4 mt-md-0" id="a1t3">Vind huis</button></a>
             </div>
         </div>
         <div class="col-md-3 col-sm-12 promo-card text-center pt-4 pb-2 mb-4  mb-md-0">
@@ -185,7 +190,7 @@
                 </p>
             </div>
             <div class="mt-3 mb-3">
-                <button class="btn cta-white mt-xs-4 mt-md-0" id="a3t3">Vind housemate</button>
+            <a href="/personen"><button class="btn cta-white mt-xs-4 mt-md-0" id="a3t3">Vind housemate</button></a>
             </div>
         </div>
         <div class="col-md-3 col-sm-12 promo-card text-center pt-4 pb-2 mb-4 mb-md-0">
@@ -294,7 +299,7 @@
                 </p>
             </div>
             <div class="mt-3 mb-3">
-                <button class="btn cta-white" id="a3t3">Leg connecties</button>
+                <a href="/application"><button class="btn cta-white" id="a3t3">Leg connecties</button></a>
             </div>
         </div>
     </div>
@@ -332,19 +337,19 @@
         <div class="d-flex stat-row">
             <div class="stat-card p-3 d-flex align-center">
                 <img src="{{URL::asset('/images/icons/users.png')}}" alt="gebruikers logo" class="stats-logo-img">
-                <h4 class="white mb-0 ml-3">200 gebruikers</h4>
+                <h4 class="white mb-0 ml-3">{{$total_users}} gebruikers</h4>
             </div>
         </div>
         <div class="d-flex stat-row">
             <div class="stat-card p-3 d-flex align-center">
                 <img src="{{URL::asset('/images/icons/house.png')}}" alt="gebruikers logo" class="stats-logo-img">
-                <h4 class="white mb-0 ml-3">154 huizen</h4>
+                <h4 class="white mb-0 ml-3">{{$total_houses}} huizen</h4>
             </div>
         </div>
         <div class="d-flex stat-row">
             <div class="stat-card p-3 d-flex align-center">
                 <img src="{{URL::asset('/images/icons/speech-bubble.png')}}" alt="gebruikers logo" class="stats-logo-img">
-                <h4 class="white mb-0 ml-3">150 connecties</h4>
+                <h4 class="white mb-0 ml-3">{{$total_connections}} connecties</h4>
             </div>
         </div>
     </div>

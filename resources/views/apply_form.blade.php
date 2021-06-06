@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="row p-3 mt-4">
-                    <h4>Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
+                    <h4 class="header-dark p-2 mb-0">Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
                     <textarea class="form-control" name="intro" rows="10" required>{{ $user_details->intro_text }}</textarea>
                     <div>
                         <button  id="save-status" class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>

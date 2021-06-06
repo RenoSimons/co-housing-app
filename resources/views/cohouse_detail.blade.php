@@ -83,7 +83,7 @@
                         <p class="search-title">{{ $house_details->housemates }} huisgenoten</p>
                     </div>
                     <div class="d-flex align-items-center mt-2">
-                        <img src="{{URL::asset('/images/icons/home.png')}}" class="search-icons">
+                        <img src="{{URL::asset('/images/icons/calendar.png')}}" class="search-icons">
                         <p class="search-title">Beschikbaar vanaf: {{ $house_details->start_date }}</p>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 mb-5">
                 <small>Zoekertje geplaatst op {{ $house_details->created_at }}</small>
             </div>
         </div>
@@ -144,7 +144,7 @@
                     @if ( strlen( $poster_details->img_url) > 0)
                     <img class="user-avatar-post" src="{{ URL::asset('storage/user_images/'. $poster_details->img_url) }}" alt="Avatar">
                     @else
-                    <img class="user-avatar-post" src="{{URL::asset('/images/icons/unknown-user.png')}}" alt="empty image">
+                    <small>Deze verhuurder heeft nog geen profielfoto</small>
                     @endif
                 </div>
                 <p class="user-name">

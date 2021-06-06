@@ -75,14 +75,12 @@ $('.delete-btn').click( function(e) {
 
             success: function (response) {
             // Show succes message
-            $('.slider-box').removeClass('hidden');
             $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
             $('#message-text').html(response);
 
             setTimeout(function () {
                 $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
             }, 1000);
-            $('.slider-box').addClass('hidden');
 
             setTimeout(function () {
                 window.location.reload();

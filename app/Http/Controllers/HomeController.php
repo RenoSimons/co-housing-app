@@ -14,7 +14,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $total_users = count(DB::table('users')->get());
+        $total_houses = count(DB::table('rent_offers')->get());
+        $total_connections = count(DB::table('connections')->get()) / 2;
+        
+        return view('home', ['total_users' => $total_users,
+                            'total_houses' => $total_houses,
+                            'total_connections' => $total_connections,
+        ]);
     }
 
     public function getCoordinates() {
