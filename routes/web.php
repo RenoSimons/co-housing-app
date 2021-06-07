@@ -50,8 +50,9 @@ Route::get('/personen', [PersonController::class, 'index'])->name('persons');
 Route::post('/personen/filter', [PersonController::class, 'searchPersons'])->name('searchPersons');
 
 // USER ACCOUNT DETAILS
+Route::post('/visibility', [AccountDetailController::class, 'togglePrivate'])->middleware('auth');
 Route::post('/store', [AccountDetailController::class, 'storeUserImage'])->middleware('auth');
-Route::post('/birthplace', [AccountDetailController::class, 'updateBirthPlace'])->middleware('auth');
+Route::post('/updatedetails', [AccountDetailController::class, 'updateDetails'])->middleware('auth');
 Route::post('/introtext', [AccountDetailController::class, 'updateIntroText'])->middleware('auth');
 Route::post('/hobbies', [AccountDetailController::class, 'updateHobbies'])->middleware('auth');
 Route::post('/status', [AccountDetailController::class, 'updateStatus'])->middleware('auth');

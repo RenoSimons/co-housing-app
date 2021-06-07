@@ -20,6 +20,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 </head>
 
 <body>
@@ -123,36 +126,37 @@
         <main>
             @yield('content')
         </main>
-
-        <!-- Login modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between">
-                        <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
-                        <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <x-loginModal />
-                    </div>
-                    <div class="modal-footer d-flex justify-content-between">
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8">
-                                @if (Route::has('password.request'))
-                                <a class="btn  white-text" href="{{ route('password.request') }}">
-                                    {{ __('Paswoord Vergeten?') }}
-                                </a>
-                                @endif
-                            </div>
+        @guest
+            <!-- Login modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-between">
+                            <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
+                            <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                        <div class="modal-body">
+                            <x-loginModal />
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8">
+                                    @if (Route::has('password.request'))
+                                    <a class="btn  white-text" href="{{ route('password.request') }}">
+                                        {{ __('Paswoord Vergeten?') }}
+                                    </a>
+                                    @endif
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endguest
     </div>
 
     <div class="footer">

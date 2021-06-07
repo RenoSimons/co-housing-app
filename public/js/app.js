@@ -2180,6 +2180,224 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/accountOverview.js":
+/*!*****************************************!*\
+  !*** ./resources/js/accountOverview.js ***!
+  \*****************************************/
+/***/ (() => {
+
+//Handle the save buttons state
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$('#toggle-profile').click(function () {
+  var classNames = $(this).children().attr('class');
+  var is_private_int = 1;
+
+  if (classNames.includes('btn-success')) {
+    is_private_int = 1;
+  } else {
+    is_private_int = 0;
+  }
+
+  $.ajax({
+    type: 'POST',
+    url: "/visibility",
+    data: {
+      is_private: is_private_int
+    },
+    success: function success(response) {
+      var message = "";
+
+      if (response == 1) {
+        message = "Je profiel is nu privé!";
+      } else {
+        message = "Je profiel is nu publiek!";
+      } // Show succes message
+
+
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(message);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 2000);
+    }
+  });
+});
+$('#save-personal-details').click(function () {
+  $.ajax({
+    type: 'POST',
+    url: "/updatedetails",
+    data: {
+      insta_link: $('#instaInput').val(),
+      fb_link: $('#fbInput').val(),
+      birthplace: $('#birthInput').val()
+    },
+    success: function success(response) {
+      // Show succes message
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(response);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 2000);
+      $('#save-personal-details').attr('disabled', 'true');
+    }
+  });
+});
+$('#save-intro').click(function () {
+  $.ajax({
+    type: 'POST',
+    url: "/introtext",
+    data: {
+      intro_text: $('#instaInput').val()
+    },
+    success: function success(response) {
+      // Show succes message
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(response);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 2000);
+      $('#save-intro').attr('disabled', 'true');
+    }
+  });
+});
+$('#save-hobbies').click(function () {
+  $.ajax({
+    type: 'POST',
+    url: "/hobbies",
+    data: {
+      hobby_text: $('#hobby-form').val()
+    },
+    success: function success(response) {
+      // Show succes message
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(response);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 2000);
+      $('#save-hobbies').attr('disabled', 'true');
+    }
+  });
+});
+$('#save-status').click(function () {
+  $.ajax({
+    type: 'POST',
+    url: "/status",
+    data: {
+      status: $('#status-form').val()
+    },
+    success: function success(response) {
+      // Show succes message
+      $('.slider-box').css({
+        'transform': 'translate(0% , 5%)'
+      });
+      $('#message-text').html(response);
+      setTimeout(function () {
+        $('.slider-box').css({
+          'transform': 'translate(20% , 5%)'
+        });
+      }, 2000);
+      $('#save-status').attr('disabled', 'true');
+    }
+  });
+}); // Event listeners disabled btns
+
+$(function () {
+  $('#instaInput').on('input', function () {
+    if ($(this).val().length > 0) {
+      $('#save-personal-details').removeAttr("disabled");
+    } else {
+      $('#save-personal-details').attr("disabled", "true");
+    }
+  });
+});
+$(function () {
+  $('#fbInput').on('input', function () {
+    if ($(this).val().length > 0) {
+      $('#save-personal-details').removeAttr("disabled");
+    } else {
+      $('#save-personal-details').attr("disabled", "true");
+    }
+  });
+});
+$(function () {
+  $('#birthInput').on('input', function () {
+    if ($(this).val().length > 0) {
+      $('#save-personal-details').removeAttr("disabled");
+    } else {
+      $('#save-personal-details').attr("disabled", "true");
+    }
+  });
+});
+$(function () {
+  $('#intro-form4').on('input', function () {
+    if ($(this).val().length > 0) {
+      $('#save-intro').removeAttr("disabled");
+    } else {
+      $('#save-intro').attr("disabled", "true");
+    }
+  });
+});
+$(function () {
+  $('#hobby-form').on('input', function () {
+    if ($(this).val().length > 0) {
+      $('#save-hobbies').removeAttr("disabled");
+    } else {
+      $('#save-hobbies').attr("disabled", "true");
+    }
+  });
+});
+$(function () {
+  $('#status-form').on('change', function () {
+    $('#save-status').removeAttr("disabled");
+  });
+}); //Handle maximum input
+
+var maxLength4 = 1000;
+$('#intro-form4').keyup(function () {
+  var length = $(this).val().length;
+  length = maxLength4 - length;
+  $('#chars-left4').text(length + ' letters over...');
+  $('#chars-left5').addClass('hidden');
+  $('#chars-left4').removeClass('hidden');
+
+  if (length > 0) {
+    $('#intro-form3').removeClass('red-border');
+  }
+});
+$('#hobby-form').keyup(function () {
+  var length = $(this).val().length;
+  length = maxLength4 - length;
+  $('#chars-left5').text(length + ' letters over...');
+  $('#chars-left4').addClass('hidden');
+  $('#chars-left5').removeClass('hidden');
+
+  if (length > 0) {
+    $('#intro-form3').removeClass('red-border');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -2227,6 +2445,8 @@ __webpack_require__(/*! ./detect_mobile */ "./resources/js/detect_mobile.js");
 __webpack_require__(/*! ./co_house_detail */ "./resources/js/co_house_detail.js");
 
 __webpack_require__(/*! ./myposts */ "./resources/js/myposts.js");
+
+__webpack_require__(/*! ./accountOverview */ "./resources/js/accountOverview.js");
 
 __webpack_require__(/*! ./particles */ "./resources/js/particles.js");
 
@@ -2288,39 +2508,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
   \******************************************/
 /***/ (() => {
 
-// Event listeners disabled btns
-$(function () {
-  $('#birthInput').on('input', function () {
-    if ($(this).val().length > 0) {
-      $('#save-birth').removeAttr("disabled");
-    } else {
-      $('#save-birth').attr("disabled", "true");
-    }
-  });
-});
-$(function () {
-  $('#intro-form').on('input', function () {
-    if ($(this).val().length > 0) {
-      $('#save-intro').removeAttr("disabled");
-    } else {
-      $('#save-intro').attr("disabled", "true");
-    }
-  });
-});
-$(function () {
-  $('#hobby-form').on('input', function () {
-    if ($(this).val().length > 0) {
-      $('#save-hobbies').removeAttr("disabled");
-    } else {
-      $('#save-hobbies').attr("disabled", "true");
-    }
-  });
-});
-$(function () {
-  $('#status-form').on('change', function () {
-    $('#save-status').removeAttr("disabled");
-  });
-});
 $(function () {
   $('.form-control').on('change', function () {
     $('.filter-btn').removeAttr("disabled");

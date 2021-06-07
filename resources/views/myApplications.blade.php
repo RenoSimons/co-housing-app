@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" id="favorites">
+<div class="mt-2 mt-md-5 container-fluid-md container-lg my-account-wrapper" id="myapplications">
     <div class="row d-flex justify-content-around">
         <div class="col-md-3">
             <x-accountNavigation />
         </div>
         <div class="col-md-9">
-            <h5 class="p-3 header-dark">Jouw voorstelling als huurder</h5>
+            <h5 class="p-3 header-dark mt-3 mt-md-0">Jouw voorstelling als huurder</h5>
 
             @if ($user_post == null)
             <small>Je hebt je nog niet kandidaat gesteld om te huren</small>
@@ -16,11 +16,12 @@
             </div>
             @else
             <div class="application-card shadow-sm rounded d-md-flex mt-4 mb-4 p-3">
-                <div class="col-md-4">
-                    <img class="img-fluid m-2" src="https://picsum.photos/400" alt="">
+                <div class="col-md-4 d-flex align-center justify-content-center overflow-hidden">
+                    <img class="img-fluid max-height" id="mypost-user-img" src="{{ URL::asset('storage/user_images/'. Auth::user()->avatar()) }}" alt="Foto van jezelf">
+               
                 </div>
-                <div class="col-md-8 d-flex flex-column justify-content-between">
-                    <h4 class="m-2">User title here</h4>
+                <div class="col-md-8 d-flex flex-column justify-content-around">
+                    <h4 class="m-2">{{ Auth::user()->name }}</h4>
 
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">
@@ -51,7 +52,8 @@
                         </div>
                     </div>
 
-                    <p>{{ $user_post->intro }}</p>
+                    <p>{{  Str::limit($user_post->intro, 200) }}</p>
+                    <small class="mb-2">Gepost op {{ $user_post->created_at }}</small>
 
                     <div class="action-btns d-flex justify-content-between">
                         <span class="edit-btn" id="my-application-btn">Wijzig</span>  
@@ -72,12 +74,10 @@
             @else
             @foreach($house_offers as $house_offer)
             <div class="application-card shadow-sm rounded d-md-flex mt-4 mb-4 p-3">
-                <div class="col-md-4">
+                <div class="col-md-4 d-flex align-center">
                     <img class="img-fluid m-2" src="{{ URL::asset('storage/house_images/'. $house_offer->img_urls[0]) }}" alt="">
                 </div>
                 <div class="col-md-8 d-flex flex-column justify-content-between">
-                    <h4 class="m-2">User title here</h4>
-
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">
                             <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">
@@ -108,6 +108,8 @@
                     </div>
 
                     <p>{{ $house_offer->title }}</p>
+                    
+                    <small class="mb-2">Gepost op {{ $house_offer->created_at }}</small>
 
                     <div class="action-btns d-flex justify-content-between">
                         <span class="edit-btn" id="{{$house_offer->id}}">Wijzig</span>  

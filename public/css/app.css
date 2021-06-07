@@ -10333,6 +10333,9 @@ h3 {
 .account-detail-wrapper #upload {
   opacity: 0;
 }
+.account-detail-wrapper #output {
+  width: 50%;
+}
 .account-detail-wrapper #upload-label {
   position: absolute;
   top: 50%;
@@ -10359,11 +10362,7 @@ h3 {
   z-index: 2;
   position: relative;
 }
-@media (min-width: 768px) {
-  .account-detail-wrapper {
-    display: flex;
-  }
-}
+
 .red-border {
   border: 0.5px dashed red;
 }
@@ -10680,6 +10679,10 @@ h3 {
 }
 #favorites .favorite-card .favorite-card-body {
   border-radius: 5px;
+}
+
+#myapplications #mypost-user-img {
+  max-height: 200px;
 }
 
 #login-form .card {
@@ -11042,6 +11045,7 @@ h3 {
 }
 .dropdown-menu {
   background-color: #323232;
+  border: none !important;
 }
 .dropdown-menu a {
   color: rgba(255, 255, 255, 0.8);
@@ -11216,6 +11220,7 @@ html {
 
 .account-nav {
   border-radius: 5px;
+  transition: 0.5s;
 }
 .account-nav .list-group .active-link {
   background-color: grey;

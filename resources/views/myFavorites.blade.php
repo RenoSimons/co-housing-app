@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" id="favorites">
+<div class="container-fluid-md container-lg mt-2 mt-md-5" id="favorites">
     <div class="row d-flex justify-content-around">
         <div class="col-md-3">
             <x-accountNavigation />
         </div>
-        <div class="col-md-9" id="favorite-section">
+        <div class="col-md-9 mt-5 mt-md-0" id="favorite-section">
             @if(count($favorites) >= 1)
                 @foreach ($favorites as $key => $array)
                     @foreach ($array as $favorite)
@@ -28,7 +28,7 @@
                         <div class="p-3">
                             <div class="d-flex justify-content-between align-content-middle">
                                 <a href="" class="read-more-btn">Bekijk zoekertje</a>
-                                <img src="{{URL::asset('/images/icons/garbage-can.png')}}" id="{{$favorite_ids[$key]}}" class="garbage-icon">
+                                <img src="{{URL::asset('/images/icons/garbage-can-black.png')}}" id="{{$favorite_ids[$key]}}" class="garbage-icon">
                             </div>
                         </div>
                     </div>
@@ -37,6 +37,9 @@
             @else
             <div>
                 <h1>Nog geen favorieten toegevoegd</h1>
+                <div class="mt-4 mb-4">
+                    <a href="{{ url('cohousings') }}" class="read-more-btn">Bekijk beschikbare cohouses</a>
+                </div>
             </div>
             @endif 
         </div>

@@ -2,6 +2,10 @@
     #upload {
         opacity: 0;
     }
+
+    #output {
+        width: 50%;
+    }
     
     #upload-label {
         position: absolute;
@@ -32,16 +36,9 @@
         z-index: 2;
         position: relative;
     }
-
-    #intro-form {
-        //width: 40em !important;
-    }
 }
 
 @include media-breakpoint-up(md) {
-    .account-detail-wrapper {
-        display: flex;
-    }
 }
 
 .red-border {

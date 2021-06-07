@@ -29,6 +29,7 @@ require('./offerHouse');
 require('./detect_mobile');
 require('./co_house_detail');
 require('./myposts');
+require('./accountOverview');
 require('./particles');
 require('./landing');
 

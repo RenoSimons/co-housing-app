@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="text mt-2">
-                        <p>{{ $rentoffer->title }}</p>
+                        <p>{{ Str::limit($rentoffer->title, 200) }}</p>
                     </div>
                     <div class="action-btn">
                         <a href="/cohousings/{{ $rentoffer->id }}" class="read-more-btn dark-bg">Lees meer</a>

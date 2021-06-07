@@ -26,7 +26,10 @@ class AccountController extends Controller
 
     public function showMyApplications() {
         $user_id = Auth::user()->id;
-        $user_post = Application::where('user_id', $user_id)->first();
+        $user_post = DB::table('applications')
+            ->where('user_id', $user_id)
+            ->first();
+      
         $house_offers = RentOffer::where('user_id', $user_id)->get();
 
         if(count($house_offers) == 0) {

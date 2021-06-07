@@ -412,6 +412,7 @@
                                 let imagesArray = [];
                                 let images = JSON.stringify(response[0])
                                 let imageString = images.split(',');
+                                
 
                                 imageString.forEach(function(item, index) {
                                     let newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '');
@@ -425,7 +426,7 @@
                                 let type_house = response[1][0].type_house;
                                 let title = response[1][0].title;
                                 let id = response[1][0].id;
-
+                                
                                 const contentString =
                                     `<div class="info-window">
                                         <div class="title d-flex justify-content-between">
@@ -443,7 +444,7 @@
                                                 <img src="${urlString + imagesArray[0].replace('[', '')}" class="info-window-img" alt="foto van huis">
                                             </div>
                                             <div class="info-window-text ml-2">
-                                                <p>${title}</p>
+                                                <p>${title.slice(0, 100)}...</p>
                                                 <p><small>Intrekdatum: ${start_date}</small></p>
                                                 <a href="/cohousings/${id}" class="info-window-cta">Meer info</a>
                                             </div>

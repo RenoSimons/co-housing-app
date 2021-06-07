@@ -24,6 +24,18 @@ class AccountDetailController extends Controller
         );
     }
 
+    public function togglePrivate(Request $request) {
+        $user = $request->user();
+        $affected = $user->details;
+
+        $affected
+        ->update([
+            "is_private" => intval($request->is_private),
+        ]);
+
+        return response()->json($request->is_private);
+    }
+
     public function storeUserImage(Request $request) {
         $user = $request->user(); 
 
@@ -48,67 +60,69 @@ class AccountDetailController extends Controller
         return back()->with('error','Something went wrong');
     }
 
-    public function updateBirthPlace (Request $request) {
+    public function updateDetails (Request $request) {
 
         $user = $request->user();
+
+        $affected = $user->details;
+
+        if (strlen($request->insta_link) > 0 ) {
+            $affected
+            ->update([
+                "insta_link" => $request->insta_link,
+             ]);
+        }
+
+        if (strlen($request->fb_link) > 0) {
+            $affected
+            ->update([
+                "fb_link" => $request->fb_link,
+            ]);
+        }
         
-        $request->validate([
-            'birthplace' => 'required',
-        ]);
+        if (strlen($request->birthplace) > 0) {
+            $affected
+            ->update([
+                "birthplace" => $request->birthplace,
+            ]);
+        }
 
-        $affected = $user->details
-        ->update([
-            "birthplace" => $request->input('birthplace'),
-         ]);
-
-        return back()->with('success','Geboorteplaats update succes!');
+        return response()->json("Gegevens succesvol gewijzigd");
     }
 
     public function updateIntroText(Request $request) {
 
         $user = $request->user(); 
 
-        $request->validate([
-            'intro_text' => 'required',
-        ]);
-
         $affected = $user->details
         ->update([
-            "intro_text" => $request->input('intro_text'),
+            "intro_text" => $request->intro_text,
         ]);
 
-        return back()->with('success','Intro text update succes!');
+        return response()->json("Intro text succesvol gewijzigd");
     }
 
     public function updateHobbies (Request $request) {
 
         $user = $request->user(); 
 
-        $request->validate([
-            'hobbies' => 'required',
-        ]);
-
         $affected = $user->details
         ->update([
-            "hobby_text" => $request->input('hobbies'),
+            "hobby_text" => $request->hobby_text,
         ]);
-
-        return back()->with('success','Hobbies & interesses update succes!');
+        
+        return response()->json("Hobby's & interesses update succes!");
     }
 
     public function updateStatus (Request $request) {
 
         $user = $request->user(); 
 
-        $request->validate([
-            'status' => 'required',
-        ]);
-
         $affected = $user->details
         ->update([
-            "status" => $request->input('status'),
+            "status" => $request->status,
         ]);
 
-        return back()->with('success','Status update succes!');
+        return response()->json('Status update succes!');
     }
 }

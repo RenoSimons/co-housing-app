@@ -15,9 +15,12 @@ class AccountDetail extends Model
     protected $fillable = [
         'user_id',
         'birthplace',
+        'fb_link',
+        'insta_link',
         'intro_text',
         'hobby_text',
         'status',
         'img_url',
+        'is_private'
     ];
 }

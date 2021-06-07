@@ -3,7 +3,6 @@
         border: 1px solid grey;
         border-radius: 5px;
         .favorite-card-header {
-            
             color: $white;
             background-color: $black;
         }
@@ -11,5 +10,11 @@
         .favorite-card-body {
             border-radius: 5px;
         }
+    }
+}
+
+#myapplications {
+    #mypost-user-img {
+        max-height: 200px;
     }
 }
