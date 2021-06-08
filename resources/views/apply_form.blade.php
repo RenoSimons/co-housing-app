@@ -96,14 +96,14 @@
                     <h4 class="header-dark p-2 mb-0">Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
                     <textarea class="form-control" name="intro" rows="10" required></textarea>
                     <div>
-                        <button  id="save-status" class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>
+                        <button class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>
                     </div>
                 </div>
             </form>
         </div>   
         @else
         <div class="">
-            <h4>Sorry, maximum 1 voorstel is mogelijk</h4>
+            <h4>Sorry, maximum 1 voorstel per persoon is mogelijk</h4>
             <p>Ga naar 'Mijn account' onder posts en pas je voorgaande post aan.</p>
             <a href="{{ route('myapplications') }}" class="read-more-btn mt-4">Ga naar mijn posts</a>
         </div>

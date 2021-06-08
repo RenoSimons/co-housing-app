@@ -1,3 +1,5 @@
+import {showResponseMsg} from './showResponseMsg';
+
 //Handle the save buttons state
 $.ajaxSetup({
     headers: {
@@ -31,12 +33,7 @@ $('#toggle-profile').click(function() {
             }
 
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(message);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 2000);
+            showResponseMsg(message);
         }
     })
 })
@@ -54,12 +51,7 @@ $('#save-personal-details').click(function() {
 
         success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 2000);
+            showResponseMsg(response);
 
             $('#save-personal-details').attr('disabled', 'true')
 
@@ -73,17 +65,12 @@ $('#save-intro').click(function() {
         type: 'POST',
         url: "/introtext",
         data: {
-            intro_text: $('#instaInput').val(),
+            intro_text: $('#intro-form4').val(),
         },
 
         success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 2000);
+            showResponseMsg(response);
 
             $('#save-intro').attr('disabled', 'true')
 
@@ -101,12 +88,7 @@ $('#save-hobbies').click(function() {
 
         success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 2000);
+            showResponseMsg(response);
 
             $('#save-hobbies').attr('disabled', 'true')
 
@@ -125,12 +107,7 @@ $('#save-status').click(function() {
 
         success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 2000);
+            showResponseMsg(response);
 
             $('#save-status').attr('disabled', 'true')
 

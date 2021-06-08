@@ -63,7 +63,7 @@
         $(document).scroll(function(evt) {
             let currentTop = $(this).scrollTop();
             if (currentTop > 150) {
-                $('#account-nav-scroll').css('transform', 'translateY(' + (currentTop) + 'px)');
+                $('#account-nav-scroll').css('transform', 'translateY(' + (currentTop-75) + 'px)');
             }
             if (currentTop < 150) {
                 $('#account-nav-scroll').css('transform', 'translateY(0px)');

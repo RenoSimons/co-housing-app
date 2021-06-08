@@ -298,12 +298,25 @@
 
 @include media-breakpoint-up(lg) {
     .landing-section {
+
         .left-column {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 0px;
         }
+
+        .animatad-title {
+            position:absolute;
+            transform: translateY(-70px);
+            font-size: 45px;
+            color: $white;
+            letter-spacing: 5px;
+            font-style: italic;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
 
         .right-column {
             transform: translateX(-30%);

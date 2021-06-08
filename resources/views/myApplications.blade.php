@@ -11,17 +11,20 @@
 
             @if ($user_post == null)
             <small>Je hebt je nog niet kandidaat gesteld om te huren</small>
-            <div class="mt-3 mb-4">
+            <div class="mt-4 mb-4">
                 <a href="{{ url('application') }}" class="read-more-btn">Stel jezelf voor als kandidaat</a>
             </div>
             @else
             <div class="application-card shadow-sm rounded d-md-flex mt-4 mb-4 p-3">
                 <div class="col-md-4 d-flex align-center justify-content-center overflow-hidden">
-                    <img class="img-fluid max-height" id="mypost-user-img" src="{{ URL::asset('storage/user_images/'. Auth::user()->avatar()) }}" alt="Foto van jezelf">
-               
+                    @if(Auth::user()->avatar())
+                        <img class="img-fluid max-height" id="mypost-user-img" src="{{ URL::asset('storage/user_images/'. Auth::user()->avatar()) }}" alt="Foto van jezelf">
+                    @else
+                        <img class="img-fluid max-height" id="mypost-user-img" src="/images/icons/no-photo.png" alt="Onbekende gebruiker foto">
+                    @endif
                 </div>
                 <div class="col-md-8 d-flex flex-column justify-content-around">
-                    <h4 class="m-2">{{ Auth::user()->name }}</h4>
+                    <h4 class="mb-2 mb-md-4">{{ Auth::user()->name }}</h4>
 
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex">

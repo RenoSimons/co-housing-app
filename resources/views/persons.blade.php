@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-2 mt-md-5">
         <div class="d-flex justify-content-between">
             <h1>Personen op zoek naar een co-house</h1>
             <img src="{{URL::asset('/images/icons/search-location-black.png')}}" class="header-icon">
         </div>
         <hr>
     </div>
-    <div class="container d-md-flex p-0 mt-md-5 p-md-3">
+    <div class="container d-md-flex p-0 mt-md-5">
         <div class="col-md-4 mt-2 mb-4 mb-md-0 mt-md-0" id="search-box">
             <div class="filters shadow-sm rounded p-3">
-                <h4>Filter personen</h4>
+                <h4 class="header-dark p-3 rounded">Vind personen</h4>
                 <hr>
                 <form action="{{ url('/personen/filter') }}" method="post" class="mt-3">
                     @csrf
@@ -100,14 +100,17 @@
                 @foreach ($applications as $application)
                     <div class="application-card shadow-sm rounded d-md-flex mb-4 p-3">
                         <div class="col-md-4">
+
                         @if ( strlen( $application->img_url) > 0)
-                        <img class="img-fluid" src="{{ URL::asset('storage/user_images/'. $application->img_url) }}" alt="Avatar">
-                        @else
-                        <small>Deze verhuurder heeft nog geen profielfoto</small>
+                            <!-- <img class="img-fluid" src="{{$application->img_url }}" alt="Avatar"> -->
+                            <img class="img-fluid" src="{{ URL::asset('storage/user_images/'. $application->img_url) }}" alt="Avatar">
+                            @else
+                            <small>Deze verhuurder heeft nog geen profielfoto</small>
                         @endif
+
                         </div>
                         <div class="col-md-8">
-                            <h4 class="ml-0 mb-3">{{ $application->name }}</h4>
+                            <h4 class="ml-0 mb-3 mt-3 mt-md-0">{{ $application->name }}</h4>
                             <div class="d-flex justify-content-between flex-wrap">
                                 <div class="d-flex">
                                     <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">

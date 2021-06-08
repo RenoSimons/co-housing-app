@@ -1,3 +1,5 @@
+import { showResponseMsg } from "./showResponseMsg";
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -49,16 +51,11 @@ $('#save-edit-application').click( function(e) {
             success: function (response) {
                 $('#edit-application-modal').modal('toggle');
                 // Show succes message
-                $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-                $('#message-text').html(response);
-
-                setTimeout(function () {
-                    $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-                }, 1000);
+                showResponseMsg(response);
 
                 setTimeout(function () {
                     window.location.reload();
-                }, 1000);
+                }, 2000);
 
             }
         })
@@ -75,16 +72,11 @@ $('.delete-btn').click( function(e) {
 
             success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 1000);
+            showResponseMsg(response);
 
             setTimeout(function () {
                 window.location.reload();
-            }, 1000);
+            }, 2000);
 
             }
         })
@@ -100,16 +92,11 @@ $('.delete-btn').click( function(e) {
 
             success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 1000);
+            showResponseMsg(response);
 
             setTimeout(function () {
                 window.location.reload();
-            }, 1000);
+            }, 2000);
 
             }
         })
@@ -218,16 +205,11 @@ $('.save-btn2').click( function(e) {
 
             success: function (response) {
             // Show succes message
-            $('.slider-box').css({ 'transform': 'translate(0% , 5%)' })
-            $('#message-text').html(response);
-
-            setTimeout(function () {
-                $('.slider-box').css({ 'transform': 'translate(20% , 5%)' })
-            }, 1000);
+            showResponseMsg(response);
 
             setTimeout(function () {
                 window.location.reload();
-            }, 1000);
+            }, 2000);
 
             }
         })

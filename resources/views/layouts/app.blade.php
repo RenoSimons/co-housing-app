@@ -65,7 +65,7 @@
                         @endif
 
                         @if (Route::has('register'))
-                        <li class="nav-item ml-3">
+                        <li class="nav-item ml-0 ml-md-3">
                             <a class="nav-link black-text btn login-btn" href="{{ route('register') }}">{{ __('Registreer') }}</a>
                         </li>
                         @endif
@@ -117,7 +117,7 @@
             </div>
         </nav>
         <div class="slider-box hide-overflow">
-            <div id="message-slider" class="d-flex">
+            <div id="message-slider" class="d-flex hide-box">
                 <img src="{{URL::asset('/images/icons/uitroepteken.png')}}" class="exclamation-mark" alt="uitroepteken">
                 <span class="ml-2" id="message-text"></span>
             </div>

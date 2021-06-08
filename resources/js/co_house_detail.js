@@ -104,12 +104,7 @@ $('#submit-contact-form').click(function(e) {
             $('#contact-modal').modal('toggle');
 
             // Show succes message
-            $('.slider-box').css({'transform': 'translate(0% , 5%)'})
-            $('#message-text').html(response);
-
-            setTimeout(function(){
-                $('.slider-box').css({'transform': 'translate(20% , 5%)'})
-           }, 3000);
+            showResponseMsg(response);
         }
     })
 

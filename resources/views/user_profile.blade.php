@@ -46,7 +46,7 @@
                                 <input id="upload" type="file" accept="image/*" name="file" onchange="loadFile(event)" class="form-control border-0">
                                 <label id="upload-label" for="upload" class="font-weight-light text-muted">Open bestand...</label>
                                 <div class="input-group-append">
-                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Open bestand</small></label>
+                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4 dark-pill"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class=" white-text">Open bestand</small></label>
                                 </div>
                             </div>
 
@@ -93,13 +93,13 @@
                 </div>
 
                 <div class="row shadow-lg p-3 mt-5">
-                    <h4 class="header-dark p-2 w-100 rounded">hobby's en interesses</h4>
+                    <h4 class="header-dark p-2 w-100 rounded">Hobby's en interesses</h4>
                     <div class="form-outline w-100">
                         <label for="intro-form">Omschrijf je hobby's en interesses</label>
-                        <textarea class="form-control" name="hobby's" id="hobby-form" rows="7" maxlength="1000">{{ $user_details->hobby_text }}</textarea>
+                        <textarea class="form-control" id="hobby-form" rows="7" maxlength="1000">{{ $user_details->hobby_text }}</textarea>
                         <small id="chars-left5"></small>
                         <div>
-                            <button disabled id="save-hobby's" class='btn save-btn mt-3' type="submit">Opslaan</button>
+                            <button disabled id="save-hobbies" class='btn save-btn mt-3' type="submit">Opslaan</button>
                         </div>
                     </div>
                 </div>

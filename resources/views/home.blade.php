@@ -5,6 +5,7 @@
     <div class="row d-flex landing-section">
         <div class="col-md-12 col-lg-8 left-column">
             <div class="row">      
+                <h1 class="animatad-title">Vind co-house</h1>
                 <div class="search-card">
                     <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="search-form mt-5 mb-5">
                         {{ method_field('GET') }}

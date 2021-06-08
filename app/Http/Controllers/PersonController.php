@@ -14,6 +14,7 @@ class PersonController extends Controller
             ->join('users', 'applications.user_id', '=', 'users.id')
             ->select('applications.*', 'account_details.img_url', 'users.name')
             ->get();
+        //dd($applications);
         return view('persons', ['applications' =>$applications]);
     }
 
@@ -76,7 +77,8 @@ class PersonController extends Controller
                 return $query->where('budget', $budget);
             })
             ->join('account_details', 'applications.user_id', '=', 'account_details.user_id')
-            ->select('applications.*','account_details.img_url')
+            ->join('users', 'applications.user_id', '=', 'users.id')
+            ->select('applications.*','account_details.img_url', 'users.name')
             ->get();
 
         return view('persons', ['applications' =>$applications]);

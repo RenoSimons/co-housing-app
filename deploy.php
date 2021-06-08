@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 set('application', 'Co-housing België');
 
 // Project repository
-set('repository', 'git@domain.com:username/repository.git');
+set('repository', 'https://github.com/RenoSimons/co-housing-app.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
@@ -22,8 +22,8 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/{{application}}');    
+host('cohouse.reno.simons.nxtmediatech.eu ')
+    ->set('deploy_path', '~/subsites/cohouse.reno.simons.nxtmediatech.eu');    
     
 // Tasks
 

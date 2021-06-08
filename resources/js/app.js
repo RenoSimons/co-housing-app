@@ -22,6 +22,7 @@ const app = new Vue({
 });
 
 require('./nav');
+require('./showResponseMsg');
 require('./button_behaviour');
 require('./favorite');
 require('./cohouse_overview');
@@ -32,6 +33,7 @@ require('./myposts');
 require('./accountOverview');
 require('./particles');
 require('./landing');
+
 
 
 
