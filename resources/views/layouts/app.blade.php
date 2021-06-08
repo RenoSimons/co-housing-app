@@ -117,7 +117,7 @@
             </div>
         </nav>
         <div class="slider-box hide-overflow">
-            <div id="message-slider" class="d-flex hide-box">
+            <div id="message-slider" class="d-flex">
                 <img src="{{URL::asset('/images/icons/uitroepteken.png')}}" class="exclamation-mark" alt="uitroepteken">
                 <span class="ml-2" id="message-text"></span>
             </div>

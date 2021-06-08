@@ -355,8 +355,6 @@
         </div>
     </div>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 
 <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI5IIhJ3yW2ZIApd_bq9K_xP9a7Q6vE0"></script>
 <script type="application/javascript">
