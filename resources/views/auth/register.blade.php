@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="https://co-housing-app-3i8mx.ondigitalocean.app/register">
                         @csrf
 
                         <div class="form-group row">
