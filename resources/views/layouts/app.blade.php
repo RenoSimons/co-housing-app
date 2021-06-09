@@ -200,7 +200,7 @@
             </div>
 
             <div class="row d-flex justify-content-center border-white mb-2">
-                <p class="white-text mb-0 mt-2">© All rights reserved - Bachelor Project Reno Simons</p>
+                <p class="white-text cp-text mb-0 mt-2">© All rights reserved - Bachelor Project Reno Simons</p>
             </div>
         </div>
     </div>

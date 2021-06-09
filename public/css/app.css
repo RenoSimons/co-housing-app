@@ -10257,9 +10257,7 @@ h3 {
     font-size: 45px;
     color: rgba(255, 255, 255, 0.8);
     letter-spacing: 5px;
-    font-style: italic;
     text-transform: capitalize;
-    font-weight: bold;
   }
   .landing-section .right-column {
     transform: translateX(-30%);
@@ -10453,7 +10451,7 @@ h3 {
   cursor: pointer;
 }
 #offer-wrapper .collapse-icon {
-  width: 30px;
+  width: 20px;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -11205,6 +11203,10 @@ h3 {
   .footer .logo-footer {
     width: 80px !important;
   }
+
+  .cp-text {
+    font-size: 12px;
+  }
 }
 @media only screen and (max-width: 767px) {
   .footer .logo-footer {
@@ -11213,6 +11215,10 @@ h3 {
 
   h4 {
     font-size: 15px;
+  }
+
+  .cp-text {
+    font-size: 10px;
   }
 }
 @media only screen and (max-width: 493px) {
