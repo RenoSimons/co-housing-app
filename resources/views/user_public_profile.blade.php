@@ -3,9 +3,9 @@
 @section('content')
 <div class="container mt-5 d-md-flex" id="public-profile-wrapper">
     @if ($user_details[0]['is_private'] == 0)
-    <div class="col-md-6 mb-5">
+    <div class="col-md-4 mb-5 mr-2 p-0 pl-md-2 pr-md-2 mr-lg-5">
         <div class="user-name">
-            <h1  class="mb-0">{{ $username->name }}</h1>
+            <h1 class="mb-0">{{ $username->name }}</h1>
 
             @if($username->created_at)
             <small>Lid sinds: {{$username->created_at->format('m-d-Y ')}}</small>
@@ -36,12 +36,11 @@
                 @else
                 <span>Deze gebruiker heeft geen foto gepubliceerd</span>
                 @endif
-
             </div>
 
             <div class="personal-info d-flex flex-column justify-content-center">
                 <div class="d-flex ml-2 mt-4 justify-content-center"">
-                    <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">
+                    <img src=" {{URL::asset('/images/icons/pin.png')}}" class="search-icons">
                     @if (strlen($user_details[0]['birthplace']) > 0)
                     <strong>Afkomstig van {{ $user_details[0]['birthplace'] }}</strong>
                     @else
@@ -65,8 +64,8 @@
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="mt-5">
+    <div class="col-md-8 mb-5 p-0 pl-md-2 pr-md-2">
+        <div class="mt-5 pt-md-3">
             <h4 class="header-dark p-2">Over mezelf</h4>
             @if (strlen($user_details[0]['intro_text']) > 0)
             <p>{{ $user_details[0]['intro_text']}}</p>
@@ -83,11 +82,76 @@
             <span>Deze gebruiker heeft nog geen hobbies of interesses gepubliceerd</span>
             @endif
         </div>
+
+        <div class="looking-for mt-5">
+            <h4 class="header-dark p-2">Op zoek naar een woning?</h4>
+
+            @if ( $application !== 'false')
+
+            <div class="d-flex align-center mt-3">
+                <img class="attention-logo" src="{{URL::asset('/images/icons/attention.png')}}" alt="attentie">
+                <h4 class="ml-2 ml-md-3 mb-0">Deze persoon is op zoek naar een co-house</h4>
+            </div>
+            <div class="mt-4 ">
+                <a href="" data-toggle="modal" data-target="#applicationModal" class="read-more-btn">Open het zoekertje van deze persoon</a>
+            </div>
+
+            <div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header pb-0 d-flex justify-content-between">
+                            <h4 class="modal-title" id="exampleModalLongTitle">Zoekertje van {{ $username->name }}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{ $application->intro }}</p>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">
+                                    <p class="search-title">{{ $application->location }}</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/home.png')}}" class="search-icons">
+                                    <p class="search-title">{{ $application->type_house }}</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/sex.png')}}" class="search-icons">
+                                    <p class="search-title">{{ $application->gender }}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
+                                    <p class="search-title">€{{ $application->budget }} <small>(maandelijks)</small></p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/age-group.png')}}" class="search-icons">
+                                    <p class="search-title">{{ $application->age }} jaar</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{URL::asset('/images/icons/calendar.png')}}" class="search-icons">
+                                    <p class="search-title">{{ $application->start_date }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary dark-text" data-dismiss="modal">Sluit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @else
+            <p>Deze persoon is momenteel niet op zoek naar een co-house</p>
+            @endif
+        </div>
     </div>
     @else
     <div class="container">
-        <h1 class="header-dark p-3">Sorry, het profiel van {{  $username->name}} is privé</h1>
-        <button class="contact-btn mt-2 mt-md-3 w-25">Stuur een bericht naar {{  $username->name }}</button>
+        <h1 class="header-dark p-3">Sorry, het profiel van {{ $username->name}} is privé</h1>
+        <button class="contact-btn mt-2 mt-md-3 w-25">Stuur een bericht naar {{ $username->name }}</button>
     </div>
     @endif
 </div>

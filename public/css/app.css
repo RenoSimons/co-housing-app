@@ -10712,6 +10712,16 @@ h3 {
   border: 0.5px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
+#public-profile-wrapper .looking-for .attention-logo {
+  width: 30px;
+}
+#public-profile-wrapper #applicationModal .modal-body {
+  overflow-y: scroll;
+  max-height: 40vh;
+}
+#public-profile-wrapper #applicationModal .modal-content {
+  background-color: rgba(255, 255, 255, 0.9);
+}
 
 .search-btn {
   background-color: rgba(0, 0, 0, 0.8);

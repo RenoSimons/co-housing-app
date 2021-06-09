@@ -10,11 +10,6 @@
                 {{ __('Mijn posts') }}
             </a>
         </li>
-        <li class="list-group-item" id="link4">
-            <a class="account-link" href="{{ route('myfavorites') }}">
-                {{ __('Favorieten') }}
-            </a>
-        </li>
         <li class="list-group-item" id="link3">
             <a class="account-link" href="{{ route('user') }}">
                 {{ __('Mijn profiel') }}
@@ -23,6 +18,11 @@
         <li class="list-group-item">
             <a class="account-link" href="{{ URL::to('/profile', Auth::user()->id) }}">
                 {{ __('Bekijk mijn online profiel') }}
+            </a>
+        </li>
+        <li class="list-group-item" id="link4">
+            <a class="account-link" href="{{ route('myfavorites') }}">
+                {{ __('Favorieten') }}
             </a>
         </li>
         <li class="list-group-item">

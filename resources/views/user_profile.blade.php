@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-9 mt-5 mt-md-0" id="change-profile-section">
             <div class="d-flex justify-content-between align-center">
-                <h1>Profiel details</h1>
+                <h1 class="mb-0">Profiel details</h1>
                 <div id="toggle-profile">
                     @if ( $user_details->is_private == 0)
                         <input type="checkbox" checked data-toggle="toggle" data-on="Publiek" data-off="Privé" data-onstyle="success" data-offstyle="danger">
