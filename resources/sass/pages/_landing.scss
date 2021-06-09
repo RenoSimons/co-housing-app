@@ -212,15 +212,6 @@
     }
 }
 
-.footer {
-    background-color: $dark;
-    height: 150px;
-    margin-top: auto;
-    .logo-footer {
-        width: 80px;
-    }
-}
-
 @include media-breakpoint-up(xs) {
     .second-section {
         .center-row {

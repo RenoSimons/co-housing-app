@@ -152,7 +152,11 @@
                 <small class="very-small">Lid sinds {{$poster->created_at}} </small>
                 </p>
                 <p>
-                    <button class="contact-btn">Contacteer verhuurder</button>
+                    @if( $has_session == 'false')
+                        <button class="contact-btn">Contacteer verhuurder</button>
+                    @else
+                        <button class="contact-btn">Ga naar jullie chat</button>
+                    @endif
                 </p>
             </div>
             <!-- GOOGLE MAP -->

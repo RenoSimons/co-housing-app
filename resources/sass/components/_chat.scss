@@ -36,18 +36,38 @@
                 background-color: $black;
                 color: white;
                 padding: 20px;
+
+                .block {
+                    color:$white;
+                    text-decoration: none;
+                }
             }
 
             .chat {
                 padding: 20px;
                 height: 50vh;
+                
                 .card-text {
                     .me {
                         float: right;
                     }
 
-                    .bubble {
-                        width: 100%;
+                    .bubble-me {
+                        min-width: 30%;
+                        max-width: 70%;
+                        display:flex;
+                        justify-content: flex-start;
+                        background-color: grey;
+                        color: $white;
+                        border-radius: 10px;
+
+                    }
+                    .bubble-you {
+                        max-width: 70%;
+                        min-width: 30%;
+                        background-color: $dark;
+                        color: $white;
+                        border-radius: 10px;
                     }
                 }
             }
@@ -68,5 +88,24 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width:768px) {
+    #chat-window {
+        .left {
+            .people {
+                margin-top: 20px;
+            }
+
+        }
+        #chat-box {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+
+    #account-nav-scroll {
+        display:none;
     }
 }

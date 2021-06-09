@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Session;
 use App\Models\AccountDetail;
 use App\Models\RentOffer;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +90,7 @@ class CoHousingController extends Controller
       
     }
 
-    public function showHouseDetail($id) {
+    public function showHouseDetail(Request $request, $id) {
         $house_details = DB::table('rent_offers')->where('id', $id)->first();
         $poster = DB::table('users')->where('id', $house_details->user_id)->first();
         $poster_details = AccountDetail::where('user_id', $house_details->user_id)->first();
@@ -101,8 +102,24 @@ class CoHousingController extends Controller
         // Update view counter
         $newViewCount = $house_details->views;
         $newViewCount++;
+
+        // Check if the poster and viewer have a chat connection
+        $sessionCheck1 = Session::where('user1_id', $poster->id)->where('user2_id', auth()->id())->first();
+        $sessionCheck2 = Session::where('user2_id', $poster->id)->where('user1_id', auth()->id())->first();
+        
+        $has_session = 'false';
+
+        if($sessionCheck1 !== null) {
+            $has_session = 'true';
+        } 
+
+        if($sessionCheck2 !== null) {
+            $has_session = 'true';
+        } 
+
         DB::table('rent_offers')->where('id', $id)->update(['views' => $newViewCount]);
-        return view('cohouse_detail', ['house_details' => $house_details, 'poster' => $poster, 'poster_details' => $poster_details] );
+
+        return view('cohouse_detail', ['house_details' => $house_details, 'poster' => $poster, 'poster_details' => $poster_details, 'has_session' => $has_session] );
     }
 
     public function getImages(Request $request) {

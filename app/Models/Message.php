@@ -18,19 +18,13 @@ class Message extends Model
         return $this->hasMany(Chat::class);
     }
 
-    public function createForSend($session_id)
-    {
-        return $this->chats()->create([
-            'session_id' => $session_id,
-            'type' => 0,
-            'user_id' => auth()->id()]);
-    }
-
-    public function createForReceive($session_id, $to_user)
+    public function createForReceive($session_id, $to_user, $from_user)
     {
         return $this->chats()->create([
             'session_id' => $session_id,
             'type' => 1,
-            'user_id' => $to_user]);
+            'user_id' => $from_user,
+            'user2_id' => $to_user,
+        ]);
     }
 }

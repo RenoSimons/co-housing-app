@@ -1,5 +1,5 @@
 import {check} from './detect_mobile.js';
-
+import {showResponseMsg} from './showResponseMsg';
 // Get the images in javascript for carousel
 const imagesArray = []
 
@@ -96,7 +96,7 @@ $('#submit-contact-form').click(function(e) {
         type: 'POST',
         url: "/session/create",
         data: {
-            poster_id: $('#poster_id').html(),
+            receiver_id: $('#poster_id').html(),
             message: $('#first_message').val()
         },
 

@@ -1,10 +1,8 @@
 <template>
     <div class="wrapper" id="chat-window">
-        <div class="container d-flex justify-content-between p-0">
+        <div class="container d-md-flex justify-content-between p-0">
             <div class="left">
-                <div class="top">
-
-                </div>
+                <div class="top"></div>
                 <ul class="people">
                         <li class="person" @click.prevent="openChat(friend)"  v-for="friend in friends" :key="friend.id">
                         <div v-if="friend.id !== auth.id">
@@ -13,7 +11,7 @@
                                 <span class="ml-2" v-if="friend.session && friend.session.unreadCount > 0">{{friend.session.unreadCount}}</span>
                             </div>
                             <p v-if="friend.online"><small  class="preview" style="color:#00b0ff" >Online</small></p>
-                            <p v-else><small  class="preview" >Offline</small></p>
+                            <p v-else><small  class="preview">Offline</small></p>
                         </div>
                     </li>
                 </ul>
@@ -52,7 +50,6 @@
             },
             getFriends() {
                 axios.post("/getFriends").then(res => {
-                    console.log(res.data.data)
                     this.friends = res.data.data;
                     this.friends.forEach(
                         friend => (friend.session ? this.listenForEverySession(friend) : "")
@@ -60,7 +57,6 @@
                 });
             },
             openChat(friend) {
-                console.log(friend.session)
                 if (friend.session) {
                     this.friends.forEach(
                         friend => (friend.session ? (friend.session.open = false) : "")
@@ -72,7 +68,6 @@
                 }
             },
             createSession(friend) {
-                console.log(friend)
                 axios.post("/session/create", { friend_id: friend.id }).then(res => {
                     (friend.session = res.data.data), (friend.session.open = true);
                 });
@@ -82,11 +77,11 @@
                     "PrivateChatEvent",
                     e => (friend.session.open ? "" : friend.session.unreadCount++)
                 );
-            }
+            },
         },
         created() {
-            console.log(this.auth)
             this.getAuth();
+            this.getFriends();
 
             Echo.channel("Chat").listen("SessionEvent", e => {
                 let friend = this.friends.find(friend => friend.id == e.session_by);
@@ -113,9 +108,6 @@
                         friend => (user.id == friend.id ? (friend.online = false) : "")
                     );
                 });
-        },
-        mounted() {
-            this.getFriends();
         },
         components: { PrivateMessageComponent }
     };
