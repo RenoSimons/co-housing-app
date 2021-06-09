@@ -92,7 +92,7 @@
                 <img class="attention-logo" src="{{URL::asset('/images/icons/attention.png')}}" alt="attentie">
                 <h4 class="ml-2 ml-md-3 mb-0">Deze persoon is op zoek naar een co-house</h4>
             </div>
-            <div class="mt-4 ">
+            <div class="mt-4">
                 <a href="" data-toggle="modal" data-target="#applicationModal" class="read-more-btn">Open het zoekertje van deze persoon</a>
             </div>
 

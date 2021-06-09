@@ -15,13 +15,13 @@ class SessionController extends Controller
     {
         // Create chat session if session doesn't exist else send message
         try {
+            $session = Session::create(['user1_id' => auth()->id(), 'user2_id' => $request->receiver_id]);
             
-            $session = Session::create(['user1_id' => auth()->id(), 'user2_id' => $request->poster_id]);
             $modifiedSession = new SessionResource($session);
-
+            
             // Create connections for both users
-            $connection_sender = Connection::create(['user_id' => auth()->id(), 'user2_id' => $request->poster_id] );
-            $connection_receiver = Connection::create(['user2_id' => auth()->id(), 'user_id' => $request->poster_id] );
+            $connection_sender = Connection::create(['user_id' => auth()->id(), 'user2_id' => $request->receiver_id] );
+            $connection_receiver = Connection::create(['user2_id' => auth()->id(), 'user_id' => $request->receiver_id] );
             
             try {
                 broadcast(new SessionEvent($modifiedSession, auth()->id()));
@@ -30,16 +30,14 @@ class SessionController extends Controller
             }
 
         } catch (\Illuminate\Database\QueryException $e) {
-            $session = Session::where('user1_id', auth()->id())->where('user2_id', $request->poster_id)->first();
+            $session = Session::where('user1_id', auth()->id())->where('user2_id', $request->receiver_id)->first();
 
             $message = $session->messages()->create([
                 'content' => $request->message
             ]);
             
-            
-            $chat = $message->createForSend($session->id);
 
-            $message->createForReceive($session->id, $request->poster_id);
+            $chat = $message->createForReceive($session->id, $request->receiver_id, auth()->id());
             
             try {
                 broadcast(new PrivateChatEvent($request->message, $chat));
@@ -55,10 +53,8 @@ class SessionController extends Controller
                 'content' => $request->message
             ]);
             
-            
-            $chat = $message->createForSend($session->id);
 
-            $message->createForReceive($session->id, $request->poster_id);
+            $message->createForReceive($session->id, $request->receiver_id, auth()->id());
             
             try {
                 broadcast(new PrivateChatEvent($request->message, $chat));

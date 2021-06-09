@@ -4,7 +4,7 @@
             <span>Aan: <span class="name">
                 <span :class="{'text-danger':session.block}">
                 {{friend.name}} <span v-if="isTyping">is Typing</span>
-                <span v-if="session.block" class="text-danger">(blocked)</span>
+                <span v-if="session.block" class="text-danger">(geblokkeerd)</span>
             </span>
             </span>
             </span>
@@ -14,10 +14,8 @@
             <div style="float: right; margin-right: 10px"  class="dropdown">
                 <i class="fa fa-ellipsis-v" style=" color: #6b6b6b" aria-hidden="true"></i>
                 <div class="dropdown-content">
-                    <a   href="#" v-if="session.block && can" @click.prevent="unblock">UnBlock</a>
-                    <a   href="#" @click.prevent="block" v-if="!session.block">Block</a>
-
-                    <a   href="#" @click.prevent="clear"> Clear Chat</a>
+                    <a href="#" class="block" v-if="session.block && can" @click.prevent="unblock">Hef blokkeer op</a>
+                    <a href="#" class="block" @click.prevent="block" v-if="!session.block">Blokkeer</a>
                 </div>
             </div>
 
@@ -25,12 +23,13 @@
 
         <div class="chat" style="overflow-y: scroll;" v-chat-scroll>
             <div v-for="chat in chats" :key="chat.id">
-                <div class="card-text">
-                    <p :class="{'bubble you':chat.type === 0,'bubble me':chat.type === 1}">
+                <div class="card-text" :class="chat.user_id == auth.id ? 'd-flex justify-content-end' : ''">
+                    <p :class="chat.user2_id == auth.id ? 'bubble-you p-2' : 'bubble-me p-2'">
+                     
                         {{chat.message}}
 
                         <br>
-                        <span style="font-size:10px">send {{chat.send_at}}</span>
+                        <span v-if="chat.user2_id == auth.id" style="font-size:10px">send {{chat.send_at}}</span>
 
                         <br>
                         <i v-if="chat.read_at!=null" class="fa fa-check" style="color: #fff9fe" aria-hidden="true">
@@ -144,6 +143,8 @@
                 this.chats.push({
                     message: message,
                     type: 0,
+                    user_id: this.auth.id,
+                    user2_id: 0,
                     read_at: null,
                     send_at: "Just now"
                 });

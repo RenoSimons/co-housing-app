@@ -12,7 +12,7 @@ class BlockController extends Controller
     {
         $session->block();
 
-        broadcast(new BlockEvent($session->id, true));
+        //broadcast(new BlockEvent($session->id, true));
 
         return response(null, 201);
     }
@@ -21,7 +21,7 @@ class BlockController extends Controller
     {
         $session->unblock();
 
-        broadcast(new BlockEvent($session->id, false));
+        //broadcast(new BlockEvent($session->id, false));
 
         return response(null, 201);
     }

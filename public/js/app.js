@@ -1877,8 +1877,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1903,7 +1901,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post("/getFriends").then(function (res) {
-        console.log(res.data.data);
         _this2.friends = res.data.data;
 
         _this2.friends.forEach(function (friend) {
@@ -1912,8 +1909,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     openChat: function openChat(friend) {
-      console.log(friend.session);
-
       if (friend.session) {
         this.friends.forEach(function (friend) {
           return friend.session ? friend.session.open = false : "";
@@ -1925,7 +1920,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     createSession: function createSession(friend) {
-      console.log(friend);
       axios.post("/session/create", {
         friend_id: friend.id
       }).then(function (res) {
@@ -1941,8 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this3 = this;
 
-    console.log(this.auth);
     this.getAuth();
+    this.getFriends();
     Echo.channel("Chat").listen("SessionEvent", function (e) {
       var friend = _this3.friends.find(function (friend) {
         return friend.id == e.session_by;
@@ -1970,9 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
   },
-  mounted: function mounted() {
-    this.getFriends();
-  },
   components: {
     PrivateMessageComponent: _PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_0__.default
   }
@@ -1991,7 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -2142,6 +2132,8 @@ __webpack_require__.r(__webpack_exports__);
       this.chats.push({
         message: message,
         type: 0,
+        user_id: this.auth.id,
+        user2_id: 0,
         read_at: null,
         send_at: "Just now"
       });
@@ -2491,6 +2483,8 @@ $(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detect_mobile.js */ "./resources/js/detect_mobile.js");
+/* harmony import */ var _showResponseMsg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./showResponseMsg */ "./resources/js/showResponseMsg.js");
+
  // Get the images in javascript for carousel
 
 var imagesArray = [];
@@ -2566,13 +2560,13 @@ $('#submit-contact-form').click(function (e) {
     type: 'POST',
     url: "/session/create",
     data: {
-      poster_id: $('#poster_id').html(),
+      receiver_id: $('#poster_id').html(),
       message: $('#first_message').val()
     },
     success: function success(response) {
       $('#contact-modal').modal('toggle'); // Show succes message
 
-      showResponseMsg(response);
+      (0,_showResponseMsg__WEBPACK_IMPORTED_MODULE_1__.showResponseMsg)(response);
     }
   });
 });
@@ -46487,96 +46481,100 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper", attrs: { id: "chat-window" } }, [
-    _c("div", { staticClass: "container d-flex justify-content-between p-0" }, [
-      _c("div", { staticClass: "left" }, [
-        _c("div", { staticClass: "top" }),
-        _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "people" },
-          _vm._l(_vm.friends, function(friend) {
-            return _c(
-              "li",
-              {
-                key: friend.id,
-                staticClass: "person",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.openChat(friend)
+    _c(
+      "div",
+      { staticClass: "container d-md-flex justify-content-between p-0" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "top" }),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "people" },
+            _vm._l(_vm.friends, function(friend) {
+              return _c(
+                "li",
+                {
+                  key: friend.id,
+                  staticClass: "person",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.openChat(friend)
+                    }
                   }
-                }
-              },
-              [
-                friend.id !== _vm.auth.id
-                  ? _c("div", [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("p", { staticClass: "mb-0" }, [
-                          _c("span", { staticClass: "name" }, [
-                            _vm._v(" " + _vm._s(friend.name))
-                          ])
+                },
+                [
+                  friend.id !== _vm.auth.id
+                    ? _c("div", [
+                        _c("div", { staticClass: "d-flex" }, [
+                          _c("p", { staticClass: "mb-0" }, [
+                            _c("span", { staticClass: "name" }, [
+                              _vm._v(" " + _vm._s(friend.name))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          friend.session && friend.session.unreadCount > 0
+                            ? _c("span", { staticClass: "ml-2" }, [
+                                _vm._v(_vm._s(friend.session.unreadCount))
+                              ])
+                            : _vm._e()
                         ]),
                         _vm._v(" "),
-                        friend.session && friend.session.unreadCount > 0
-                          ? _c("span", { staticClass: "ml-2" }, [
-                              _vm._v(_vm._s(friend.session.unreadCount))
+                        friend.online
+                          ? _c("p", [
+                              _c(
+                                "small",
+                                {
+                                  staticClass: "preview",
+                                  staticStyle: { color: "#00b0ff" }
+                                },
+                                [_vm._v("Online")]
+                              )
                             ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      friend.online
-                        ? _c("p", [
-                            _c(
-                              "small",
-                              {
-                                staticClass: "preview",
-                                staticStyle: { color: "#00b0ff" }
-                              },
-                              [_vm._v("Online")]
-                            )
-                          ])
-                        : _c("p", [
-                            _c("small", { staticClass: "preview" }, [
-                              _vm._v("Offline")
+                          : _c("p", [
+                              _c("small", { staticClass: "preview" }, [
+                                _vm._v("Offline")
+                              ])
                             ])
-                          ])
-                    ])
-                  : _vm._e()
-              ]
-            )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { id: "chat-box" } },
+          _vm._l(_vm.friends, function(friend) {
+            return _c("div", { key: friend.id }, [
+              friend.session
+                ? _c(
+                    "div",
+                    [
+                      friend.session.open
+                        ? _c("private-message-component", {
+                            attrs: { friend: friend },
+                            on: {
+                              close: function($event) {
+                                return _vm.close(friend)
+                              }
+                            }
+                          })
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ])
           }),
           0
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { attrs: { id: "chat-box" } },
-        _vm._l(_vm.friends, function(friend) {
-          return _c("div", { key: friend.id }, [
-            friend.session
-              ? _c(
-                  "div",
-                  [
-                    friend.session.open
-                      ? _c("private-message-component", {
-                          attrs: { friend: friend },
-                          on: {
-                            close: function($event) {
-                              return _vm.close(friend)
-                            }
-                          }
-                        })
-                      : _vm._e()
-                  ],
-                  1
-                )
-              : _vm._e()
-          ])
-        }),
-        0
-      )
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -46613,7 +46611,7 @@ var render = function() {
             _vm._v(" "),
             _vm.session.block
               ? _c("span", { staticClass: "text-danger" }, [
-                  _vm._v("(blocked)")
+                  _vm._v("(geblokkeerd)")
                 ])
               : _vm._e()
           ])
@@ -46662,6 +46660,7 @@ var render = function() {
               ? _c(
                   "a",
                   {
+                    staticClass: "block",
                     attrs: { href: "#" },
                     on: {
                       click: function($event) {
@@ -46670,7 +46669,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("UnBlock")]
+                  [_vm._v("Hef blokkeer op")]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -46678,6 +46677,7 @@ var render = function() {
               ? _c(
                   "a",
                   {
+                    staticClass: "block",
                     attrs: { href: "#" },
                     on: {
                       click: function($event) {
@@ -46686,23 +46686,9 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Block")]
+                  [_vm._v("Blokkeer")]
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.clear($event)
-                  }
-                }
-              },
-              [_vm._v(" Clear Chat")]
-            )
+              : _vm._e()
           ])
         ]
       )
@@ -46717,47 +46703,57 @@ var render = function() {
       },
       _vm._l(_vm.chats, function(chat) {
         return _c("div", { key: chat.id }, [
-          _c("div", { staticClass: "card-text" }, [
-            _c(
-              "p",
-              {
-                class: {
-                  "bubble you": chat.type === 0,
-                  "bubble me": chat.type === 1
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(chat.message) +
-                    "\n\n                    "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticStyle: { "font-size": "10px" } }, [
-                  _vm._v("send " + _vm._s(chat.send_at))
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                chat.read_at != null
-                  ? _c(
-                      "i",
-                      {
-                        staticClass: "fa fa-check",
-                        staticStyle: { color: "#fff9fe" },
-                        attrs: { "aria-hidden": "true" }
-                      },
-                      [
-                        _c("span", { staticStyle: { "font-size": "10px" } }, [
-                          _vm._v("read " + _vm._s(chat.read_at))
-                        ])
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
-          ])
+          _c(
+            "div",
+            {
+              staticClass: "card-text",
+              class:
+                chat.user_id == _vm.auth.id ? "d-flex justify-content-end" : ""
+            },
+            [
+              _c(
+                "p",
+                {
+                  class:
+                    chat.user2_id == _vm.auth.id
+                      ? "bubble-you p-2"
+                      : "bubble-me p-2"
+                },
+                [
+                  _vm._v(
+                    "\n                 \n                    " +
+                      _vm._s(chat.message) +
+                      "\n\n                    "
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  chat.user2_id == _vm.auth.id
+                    ? _c("span", { staticStyle: { "font-size": "10px" } }, [
+                        _vm._v("send " + _vm._s(chat.send_at))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  chat.read_at != null
+                    ? _c(
+                        "i",
+                        {
+                          staticClass: "fa fa-check",
+                          staticStyle: { color: "#fff9fe" },
+                          attrs: { "aria-hidden": "true" }
+                        },
+                        [
+                          _c("span", { staticStyle: { "font-size": "10px" } }, [
+                            _vm._v("read " + _vm._s(chat.read_at))
+                          ])
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            ]
+          )
         ])
       }),
       0
