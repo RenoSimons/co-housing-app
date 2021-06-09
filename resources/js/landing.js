@@ -1,6 +1,8 @@
+import {check} from './detect_mobile.js';
+
 // Scroll down on icon click
 $('#scroll-icon').click(function() {
-    window.scrollTo(0, 861);
+    window.scrollTo(0, 659);
 })
 
 // Animations

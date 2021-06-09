@@ -28,6 +28,7 @@
         "bootstrap4-toggle": "^3.6.1",
         "laravel-echo": "^1.10.0",
         "pusher-js": "^7.0.3",
+        "rellax": "^1.12.1",
         "vue-axios": "^3.2.4",
         "vue-chat-scroll": "^1.4.0"
     }

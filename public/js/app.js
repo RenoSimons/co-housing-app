@@ -2722,11 +2722,15 @@ $(document).scroll(function (evt) {
 /*!*********************************!*\
   !*** ./resources/js/landing.js ***!
   \*********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// Scroll down on icon click
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detect_mobile.js */ "./resources/js/detect_mobile.js");
+ // Scroll down on icon click
+
 $('#scroll-icon').click(function () {
-  window.scrollTo(0, 861);
+  window.scrollTo(0, 659);
 }); // Animations
 
 var scrollPosition = 0;

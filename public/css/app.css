@@ -10016,6 +10016,13 @@ h3 {
   width: 100vw;
   margin: 0;
 }
+.landing-section .animatad-title {
+  position: absolute;
+  transform: translateY(-70px);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 5px;
+  text-transform: capitalize;
+}
 .landing-section .left-column {
   display: flex;
   justify-content: center;
@@ -10222,7 +10229,25 @@ h3 {
   width: 100%;
 }
 
+.landing-section .animatad-title {
+  position: absolute;
+  transform: translateY(-40px);
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 5px;
+  text-transform: capitalize;
+}
+
 @media (min-width: 576px) {
+  .landing-section .animatad-title {
+    position: absolute;
+    transform: translateY(-40px);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 5px;
+    text-transform: capitalize;
+  }
+
   .second-section .promo-card {
     width: 80% !important;
   }
@@ -10241,7 +10266,17 @@ h3 {
   }
 
   .fourth-section .stat-row .stat-card {
-    width: 250px !important;
+    width: 230px !important;
+  }
+
+  .landing-section .animatad-title {
+    position: absolute;
+    transform: translateY(-30px);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    margin-left: 20px;
   }
 }
 @media (min-width: 992px) {
@@ -10250,14 +10285,6 @@ h3 {
     justify-content: center;
     align-items: center;
     margin-top: 0px;
-  }
-  .landing-section .animatad-title {
-    position: absolute;
-    transform: translateY(-70px);
-    font-size: 45px;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 5px;
-    text-transform: capitalize;
   }
   .landing-section .right-column {
     transform: translateX(-30%);
@@ -10281,6 +10308,10 @@ h3 {
   .landing-section .search-card .search-btn {
     margin-top: 42.5px !important;
     width: 100% !important;
+  }
+
+  .fourth-section .stat-row .stat-card {
+    width: 300px !important;
   }
 }
 @-webkit-keyframes breathing {

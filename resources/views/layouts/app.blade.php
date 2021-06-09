@@ -85,16 +85,16 @@
                                     {{ __('Mijn berichten') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ URL::to('/profile', Auth::user()->id) }}">
-                                    {{ __('Bekijk mijn online profiel') }}
-                                </a>
-
                                 <a class="dropdown-item" href="{{ route('myapplications') }}">
                                     {{ __('Mijn posts') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('user') }}">
                                     {{ __('Mijn profiel') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ URL::to('/profile', Auth::user()->id) }}">
+                                    {{ __('Bekijk mijn online profiel') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('myfavorites') }}">

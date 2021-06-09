@@ -7,7 +7,7 @@
         <hr>
 
         @if ($user_has_application == null)
-        <h4>Vul onderstaande informatie in om in contact te komen met de juiste persoon die een plek heeft op basis van jouw benodigdheden</h4>
+        <h4>Vul onderstaande informatie in om in contact te komen met de persoon die een plek heeft op basis van jouw benodigdheden</h4>
 
         <div class="mt-4">
             <form action="{{ url('/publishpost') }}" method="post">
