@@ -10199,15 +10199,6 @@ h3 {
   justify-content: space-between;
 }
 
-.footer {
-  background-color: #323232;
-  height: 150px;
-  margin-top: auto;
-}
-.footer .logo-footer {
-  width: 80px;
-}
-
 .second-section .center-row {
   justify-content: center !important;
 }
@@ -11144,6 +11135,62 @@ h3 {
   outline: none;
 }
 
+.footer {
+  background-color: #323232;
+  height: 185px;
+  margin-top: auto;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer ul a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none;
+}
+.footer ul a:hover {
+  text-decoration: underline;
+  padding-bottom: 3px;
+  color: white;
+}
+.footer p, .footer h4 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.footer .border-white {
+  border-top: 0.5px solid grey;
+}
+
+@media only screen and (min-width: 767px) {
+  .footer .logo-footer {
+    width: 80px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer .logo-footer {
+    width: 40px;
+  }
+
+  h4 {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 493px) {
+  .footer {
+    height: 165px;
+  }
+  .footer .logo-footer {
+    width: 25px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 10px;
+  }
+}
 body {
   overflow-x: hidden !important;
   min-height: 100vh;

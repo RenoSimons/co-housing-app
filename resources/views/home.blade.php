@@ -361,13 +361,21 @@
     // Get the javascript map and locations
     $(document).ready(function() {
         let map;
+        var stylesArray = [
+            {
+                "featureType": "road",
+                "elementType": "geometry",
+                "stylers": [{ "color": "#CCFFFF" }]
+            }
+        ]
         initMap();
 
         function initMap() {
             var mapOptions = {
                 center: new google.maps.LatLng(50.8465573, 4.351697),
                 zoom: 8,
-                mapId: 'dark'
+                mapId: 'dark',
+                styles: stylesArray
             }
 
             map = new google.maps.Map(document.getElementById("map-frontpage"), mapOptions);

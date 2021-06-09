@@ -159,18 +159,48 @@
         @endguest
     </div>
 
-    <div class="footer">
-        <div class="container h-100 d-flex justify-content-between align-center">
-            <div class="col-md-4 p-2">
-                <div class="d-flex">
-                    <img class="logo-footer ml-2" src="{{URL::asset('/images/icons/logo.png')}}">
+    <div class="footer pt-2">
+        <div class="container h-100">
+            <div class="d-flex justify-content-between align-center">
+                <div class="col-md-4 p-2">
+                    <div class="d-flex align-center">
+                        <img class="logo-footer ml-2" src="{{URL::asset('/images/icons/logo.png')}}">
+                        <h4 class="white-text mb-0 ml-2 ml-md-4">Co-housing België</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2 d-flex justify-content-center">
+                    <ul class="d-flex flex-column justify-content-between">
+                        <li><a class="" href="{{ route('cohousings') }}">{{ __('Vind co-house') }}</a></li>
+                        <li><a class="" href="{{ route('persons') }}">{{ __('Vind huurder') }}</a></li>
+                        <li><a class="" href="{{ route('findrenter') }}">{{ __('Stel te huur') }}</a></li>
+                        <li><a class="" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a></li>
+                        @auth <li><a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li> @endauth
+                    </ul>             
+                </div>
+                <div class="col-md-4 p-2 d-flex justify-content-center">
+                    @auth
+                        <ul class="d-flex flex-column justify-content-between">
+                            <li><a class="" href="{{ route('messages') }}">{{ __('Mijn berichten') }}</a></li>
+                            <li><a class="" href="{{ route('myapplications') }}">{{ __('Mijn posts') }}</a></li>
+                            <li><a class="" href="{{ route('myfavorites') }}">{{ __('Favorieten') }}</li>
+                            <li><a class="" href="{{ route('user') }}">{{ __('Mijn profiel') }}</a></li>
+                            <li><a class="" href="{{ URL::to('/profile', Auth::user()->id) }}">{{ __('Bekijk mijn online profiel') }}</a></li>
+                        </ul>
+                    @else 
+                        <ul class="d-flex flex-column justify-content-around">
+                            <li class="nav-item ml-0">
+                                <a class="nav-link black-text btn login-btn mt-0" href="{{ route('register') }}">{{ __('Registreer') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link black-text btn mt-3 login-btn" data-toggle="modal" data-target="#loginModal">{{ __('Login') }}</a>
+                            </li>
+                        </ul>
+                    @endauth 
                 </div>
             </div>
-            <div class="col-md-4 p-2">
 
-            </div>
-            <div class="col-md-4 p-2">
-
+            <div class="row d-flex justify-content-center border-white mb-2">
+                <p class="white-text mb-0 mt-2">© All rights reserved - Bachelor Project Reno Simons</p>
             </div>
         </div>
     </div>
