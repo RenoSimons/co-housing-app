@@ -10,7 +10,7 @@
         <h4>Vul onderstaande informatie in om in contact te komen met de persoon die een plek heeft op basis van jouw benodigdheden</h4>
 
         <div class="mt-4">
-            <form action="{{ url('/publishpost') }}" method="post">
+            <form action="{{ url('/publishpost') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('POST') }}
                 <div class="d-md-flex">
@@ -91,16 +91,34 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row p-3 mt-4">
-                    <h4 class="header-dark p-2 mb-0">Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
+                    <h4 class="header-dark p-2 mb-0 w-100">Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
                     <textarea class="form-control" name="intro" rows="10" required></textarea>
-                    <div>
-                        <button class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>
+                </div>
+
+                <div class="p-3 mt-4">
+                    <h4 class="header-dark p-2 mb-2 rounded">Upload een foto van jezelf</h4>
+                    <!-- Uploaded image area-->
+                    <div class="w-50">
+                        <div class="image-area mt-2">
+                            <img id="output" src="{{URL::asset('/images/upload_img.png')}}" alt="empty image" class="img-fluid rounded shadow-sm mx-auto d-block">
+                        </div>
+                        <!-- Upload image input-->
+                        <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                            <input id="upload" type="file" accept="image/*" name="file" onchange="loadFile(event)" class="form-control d-none border-0" required>
+                            <label id="upload-label" for="upload" class="font-weight-light text-muted d-none">Open bestand...</label>
+                            <div class="input-group-append">
+                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4 dark-pill"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small>Open bestand</small></label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div>
+                    <button class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>
+                </div>
             </form>
-        </div>   
+        </div>
         @else
         <div class="">
             <h4>Sorry, maximum 1 voorstel per persoon is mogelijk</h4>
@@ -108,13 +126,23 @@
             <a href="{{ route('myapplications') }}" class="read-more-btn mt-4">Ga naar mijn posts</a>
         </div>
         @endif
-    </div>  
+    </div>
 </div>
 
 <script>
-    $('.date').datepicker({  
-       format: 'dd-mm-yyyy'
-    }); 
+    $('.date').datepicker({
+        format: 'dd-mm-yyyy'
+    });
+
+    var loadFile = function(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+        $('#save-image').removeAttr("disabled");
+    };
 </script>
 
 @endsection

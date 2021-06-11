@@ -1877,6 +1877,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1915,6 +1923,11 @@ __webpack_require__.r(__webpack_exports__);
         });
         friend.session.open = true;
         friend.session.unreadCount = 0;
+        axios.post("/markread", {
+          friend_id: friend.id
+        }).then(function (res) {
+          console.log(res);
+        });
       } else {
         this.createSession(friend);
       }
@@ -2072,7 +2085,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.read();
     this.getAuth();
     this.getAllMessages();
     Echo["private"]("Chat.".concat(this.friend.session.id)).listen("PrivateChatEvent", function (e) {
@@ -2790,9 +2802,25 @@ $(document).scroll(function (evt) {
   }
 });
 $(document).ready(function () {
-  $('.first-button').on('click', function () {
-    $('.animated-icon1').toggleClass('open');
+  $.ajax({
+    type: 'POST',
+    url: "/getusershomepage",
+    data: {},
+    success: function success(response) {
+      var totalPersons = response.length;
+      var person1 = response[Math.floor(Math.random() * totalPersons)];
+      var person2 = response[Math.floor(Math.random() * totalPersons)];
+      var content = appendContent(person1, person2);
+      $('#user-box-1').html(content[0]);
+      $('#user-box-2').html(content[1]);
+    }
   });
+
+  function appendContent(person1, person2) {
+    var content1 = "\n                <a href=\"/profile/".concat(person1.user_id, "\">\n                  <div class=\"d-flex align-center justify-content-center d-lg-justify-content-start \">\n                          <div class=\"circle-user\">\n                              <img class=\"\" src=\"/storage/user_images/").concat(person1.img_url, "\" alt=\"Avatar\">\n                          </div>\n                          <div class=\"speech-bubble ml-4 p-2 w-50\">\n                          <h5>").concat(person1.name, "</h5>\n                              <p class=\"m-0\">").concat(person1.intro.substring(0, 241), "</p>\n                          </div>\n                      </div>\n                </a>\n          ");
+    var content2 = "\n                  <a href=\"/profile/".concat(person2.user_id, "\">\n                      <div class=\"d-flex align-center justify-content-center d-lg-justify-content-end mt-4 mt-lg-0\">\n                              <div class=\"circle-user\">\n                                  <img class=\"\" src=\"/storage/user_images/").concat(person2.img_url, "\" alt=\"Avatar\">\n                              </div>\n                              <div class=\"speech-bubble ml-4 p-2 w-50\">\n                              <h5>").concat(person2.name, "</h5>\n                                  <p class=\"m-0\">").concat(person2.intro.substring(0, 241), "</p>\n                              </div>\n                        \n                      </div> \n                    </a>\n          ");
+    return [content1, content2];
+  }
 });
 var header = window.location.pathname; // Particle animation
 
@@ -3138,7 +3166,68 @@ var currentUrl = window.location.pathname;
 
 if (currentUrl !== "/") {
   $('.navbar').removeClass('sticky');
-}
+} // Nav icon toggle mobile
+
+
+$('.first-button').on('click', function () {
+  $('.animated-icon1').toggleClass('open');
+});
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+window.onload = function () {
+  $.ajax({
+    type: 'POST',
+    url: "/getnotificationcount",
+    data: {},
+    success: function success(response) {
+      if (response > 0) {
+        $('.notification-circle').css('display', 'flex');
+      } else {
+        $(".drop2").append("<a class=\"dropdown-item\" href=\"/messages\">Geen nieuwe notificaties</a>");
+      }
+    }
+  });
+}; // Toggle notification bell menu
+
+
+$('#notify-belll').click(function (e) {
+  if ($('.drop2').hasClass('show')) {
+    $('.drop2').removeClass('show');
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: "/clearnotifications",
+      data: {},
+      success: function success(response) {
+        $('.notification-circle').css('display', 'none');
+        $(".drop2").empty();
+        $(".drop2").append("<a class=\"dropdown-item\" href=\"/messages\">Geen nieuwe notificaties</a>");
+      }
+    });
+  } else {
+    $('.drop2').addClass('show');
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: "/getnotifications",
+      data: {},
+      success: function success(response) {
+        response.forEach(function (element) {
+          var htmlElement = "<a class=\"dropdown-item\" href=\"/messages\">".concat(element.message, "</a>");
+          $(".drop2").append(htmlElement);
+        });
+      }
+    });
+  }
+
+  if ($(".drop2").children().length > 0) {
+    console.log("more");
+  }
+});
 
 /***/ }),
 
@@ -46495,58 +46584,85 @@ var render = function() {
           _c(
             "ul",
             { staticClass: "people" },
-            _vm._l(_vm.friends, function(friend) {
-              return _c(
-                "li",
-                {
-                  key: friend.id,
-                  staticClass: "person",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.openChat(friend)
-                    }
-                  }
-                },
-                [
+            [
+              _vm.friends.length == 0
+                ? _c("div", [
+                    _c("h4", [_vm._v("Je hebt nog geen connecties gelegd")]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "Reageer op een zoekertje of contacteer een persoon"
+                      )
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.friends, function(friend) {
+                return _c("div", { key: friend.id }, [
                   friend.id !== _vm.auth.id
                     ? _c("div", [
-                        _c("div", { staticClass: "d-flex" }, [
-                          _c("p", { staticClass: "mb-0" }, [
-                            _c("span", { staticClass: "name" }, [
-                              _vm._v(" " + _vm._s(friend.name))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          friend.session && friend.session.unreadCount > 0
-                            ? _c("span", { staticClass: "ml-2" }, [
-                                _vm._v(_vm._s(friend.session.unreadCount))
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        friend.online
-                          ? _c("p", [
-                              _c(
-                                "small",
-                                {
-                                  staticClass: "preview",
-                                  staticStyle: { color: "#00b0ff" }
-                                },
-                                [_vm._v("Online")]
-                              )
-                            ])
-                          : _c("p", [
-                              _c("small", { staticClass: "preview" }, [
-                                _vm._v("Offline")
-                              ])
-                            ])
+                        _c(
+                          "li",
+                          {
+                            staticClass: "person",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.openChat(friend)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "d-flex justify-content-between" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "mb-0 d-flex justify-content-between w-100"
+                                  },
+                                  [
+                                    _c("span", { staticClass: "name" }, [
+                                      _vm._v(" " + _vm._s(friend.name))
+                                    ]),
+                                    _vm._v(" "),
+                                    friend.has_unread_message == 1
+                                      ? _c("div", {
+                                          staticClass:
+                                            "notification-circle-chat ml-1"
+                                        })
+                                      : _vm._e()
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            friend.online
+                              ? _c("p", [
+                                  _c(
+                                    "small",
+                                    {
+                                      staticClass: "preview",
+                                      staticStyle: { color: "#00b0ff" }
+                                    },
+                                    [_vm._v("Online")]
+                                  )
+                                ])
+                              : _c("p", [
+                                  _c("small", { staticClass: "preview" }, [
+                                    _vm._v("Offline")
+                                  ])
+                                ])
+                          ]
+                        )
                       ])
                     : _vm._e()
-                ]
-              )
-            }),
-            0
+                ])
+              })
+            ],
+            2
           )
         ]),
         _vm._v(" "),

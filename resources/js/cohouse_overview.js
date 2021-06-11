@@ -41,6 +41,5 @@ $('#icon-collapse').click(function() {
             $('.collapser').css({'display':'none'}) 
         }, 500);
     }
-   
-    
 })
+

@@ -115,7 +115,9 @@ class CoHousingController extends Controller
 
         if($sessionCheck2 !== null) {
             $has_session = 'true';
-        } 
+        }
+        
+        //dd($poster_details);
 
         DB::table('rent_offers')->where('id', $id)->update(['views' => $newViewCount]);
 

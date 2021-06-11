@@ -92,10 +92,10 @@
         </div>
         <div class="col-md-12 col-lg-4 right-column" id="map-button">
             <div class="row">
-                <a href="#map-frontpage" class="text-decoration-none">
-                    <div class="map-cta d-flex align-center dark-bg p-3 mb-5">
+                <a href="#map-frontpage"  class="text-decoration-none fixed-width-btn">
+                    <div class="map-cta translate d-flex align-center dark-bg p-3 mb-5">
                         <img src="{{URL::asset('/images/icons/map.png')}}" class="map-icon">
-                        <h2 class="m-0 ml-4">Bekijk de kaart met cohousings</h2>
+                        <h2 class="m-0 ml-4">Bekijk de kaart met beschikbare co-housings</h2>
                     </div>
                 </a>
             </div>
@@ -325,15 +325,32 @@
 </div>
 
 <div class="container fifth-section mt-5 mb-5 p-0">
-    <div id="map-frontpage">
+    <div class="d-flex align-center">
+        <img src="{{URL::asset('/images/icons/map-grey.png')}}" alt="statistieken" class="stat-icon ml-3 ml-md-0">
+        <h2 class="mb-0 ml-4 grey-text-header">Kaart met beschikbare co-housings</h2>
+    </div>
+    <div id="map-frontpage" class="mt-4">
 
+    </div>
+</div>
+
+<div class="container sixth-section p-0">
+    <div class="d-flex align-center">
+        <img src="{{URL::asset('/images/icons/person-search.png')}}" alt="statistieken" class="stat-icon ml-3 ml-md-0">
+        <h2 class="mb-0 ml-4 grey-text-header">Personen op zoek naar een co-house</h2>
+    </div>
+    <div class="mt-4 user-box-wrapper">
+        <div class="user-box col-md-12 col-lg-6" id="user-box-1">
+        </div>
+        <div class="user-box col-md-12 col-lg-6" id="user-box-2">
+        </div>
     </div>
 </div>
 
 <div class="container mt-5 fourth-section p-sm-2 p-md-0">
     <div class="d-flex align-center">
-        <img src="{{URL::asset('/images/icons/stats.png')}}" alt="statistieken" class="stat-icon">
-        <h2 class="mb-0 ml-4">Statistieken</h2>
+        <img src="{{URL::asset('/images/icons/stats-grey.png')}}" alt="statistieken" class="stat-icon">
+        <h2 class="mb-0 ml-4 grey-text-header">Statistieken</h2>
     </div>
     <div class="d-sm-block d-md-flex justify-content-md-between mt-4">
         <div class="d-flex stat-row">

@@ -7,6 +7,7 @@ use App\Events\MsgReadEvent;
 use App\Events\PrivateChatEvent;
 use App\Http\Resources\ChatResource;
 use App\Models\Session;
+use App\Models\Connection;
 use Carbon\Carbon;
 
 use App\Events\MessageSent;
@@ -47,5 +48,9 @@ class ChatController extends Controller
         $session->deleteChats();
         $session->chats->count() == 0 ? $session->deleteMessages() : '';
         return response('cleared', 200);
+    }
+
+    public function markRead(Request $request) {
+        $updateMsgStatus = Connection::where('user2_id',  auth()->id())->where('user_id', $request->friend_id)->update(['has_message' => 0]);
     }
 }

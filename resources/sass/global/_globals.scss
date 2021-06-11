@@ -91,6 +91,10 @@ html {
             transform:translate(20%, 5%);
         }
     }
+
+    #map-button {
+        padding-right: 300px;
+    }
 }
 
 .align-center {
@@ -153,3 +157,35 @@ html {
 .hide-overflow {
     overflow-x: hidden;
 }
+
+@media only screen and (max-width: 600px)  {
+    .grey-text-header {
+        font-size: 20px;
+    }
+}
+
+.grey-text-header {
+    color: #808080;
+    letter-spacing: 3px;
+}
+
+.fixed-width-btn {
+    min-width:260px;
+}
+
+@media only screen and (max-width: 450px) {
+    .fixed-width-btn {
+        width:  100%;
+    }
+}
+
+.trans-1 {
+    transition: 1s;
+}
+
+.size-icons {
+    z-index: 999;
+}
+
+
+

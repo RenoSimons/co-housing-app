@@ -72,10 +72,19 @@
                         @else
 
                         @auth
-                            <img src="{{URL::asset('/images/icons/bell.png')}}" class="search-icons d-none d-md-flex mb-1 mr-md-4" alt="notificatie bel">
-                        @endauth
-                        
                         <li class="nav-item dropdown">
+                            <div class="d-flex">
+                                <img src="{{URL::asset('/images/icons/bell.png')}}" data-toggle="drop2" class="search-icons mr-0 d-none d-md-flex mb-1" id="notify-belll" alt="notificatie bel">
+                                <div class="notification-circle"></div>
+                            </div>
+                            <div class="dropdown-menu drop2" aria-labelledby="notify-belll">
+
+                            </div>
+                        </li>
+
+                        @endauth
+
+                        <li class="ml-4 nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link black-text dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Mijn account
                             </a>
@@ -117,7 +126,7 @@
             </div>
         </nav>
         <div class="slider-box hide-overflow">
-            <div id="message-slider" class="d-flex hide-box">
+            <div id="message-slider" class="d-flex hide-box w-md-100">
                 <img src="{{URL::asset('/images/icons/uitroepteken.png')}}" class="exclamation-mark" alt="uitroepteken">
                 <span class="ml-2" id="message-text"></span>
             </div>
@@ -127,35 +136,35 @@
             @yield('content')
         </main>
         @guest
-            <!-- Login modal -->
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header d-flex justify-content-between">
-                            <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
-                            <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <x-loginModal />
-                        </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8">
-                                    @if (Route::has('password.request'))
-                                    <a class="btn  white-text" href="{{ route('password.request') }}">
-                                        {{ __('Paswoord Vergeten?') }}
-                                    </a>
-                                    @endif
-                                </div>
+        <!-- Login modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <x-loginModal />
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8">
+                                @if (Route::has('password.request'))
+                                <a class="btn  white-text" href="{{ route('password.request') }}">
+                                    {{ __('Paswoord Vergeten?') }}
+                                </a>
+                                @endif
                             </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                         </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                     </div>
                 </div>
             </div>
+        </div>
         @endguest
     </div>
 
@@ -175,27 +184,27 @@
                         <li><a class="" href="{{ route('findrenter') }}">{{ __('Stel te huur') }}</a></li>
                         <li><a class="" href="{{ route('application') }}">{{ __('Stel jezelf voor') }}</a></li>
                         @auth <li><a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li> @endauth
-                    </ul>             
+                    </ul>
                 </div>
                 <div class="col-md-4 p-2 d-flex justify-content-center">
                     @auth
-                        <ul class="d-flex flex-column justify-content-between">
-                            <li><a class="" href="{{ route('messages') }}">{{ __('Mijn berichten') }}</a></li>
-                            <li><a class="" href="{{ route('myapplications') }}">{{ __('Mijn posts') }}</a></li>
-                            <li><a class="" href="{{ route('myfavorites') }}">{{ __('Favorieten') }}</li>
-                            <li><a class="" href="{{ route('user') }}">{{ __('Mijn profiel') }}</a></li>
-                            <li><a class="" href="{{ URL::to('/profile', Auth::user()->id) }}">{{ __('Bekijk mijn online profiel') }}</a></li>
-                        </ul>
-                    @else 
-                        <ul class="d-flex flex-column justify-content-around">
-                            <li class="nav-item ml-0">
-                                <a class="nav-link black-text btn login-btn mt-0" href="{{ route('register') }}">{{ __('Registreer') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                    <a class="nav-link black-text btn mt-3 login-btn" data-toggle="modal" data-target="#loginModal">{{ __('Login') }}</a>
-                            </li>
-                        </ul>
-                    @endauth 
+                    <ul class="d-flex flex-column justify-content-between">
+                        <li><a class="" href="{{ route('messages') }}">{{ __('Mijn berichten') }}</a></li>
+                        <li><a class="" href="{{ route('myapplications') }}">{{ __('Mijn posts') }}</a></li>
+                        <li><a class="" href="{{ route('myfavorites') }}">{{ __('Favorieten') }}</li>
+                        <li><a class="" href="{{ route('user') }}">{{ __('Mijn profiel') }}</a></li>
+                        <li><a class="" href="{{ URL::to('/profile', Auth::user()->id) }}">{{ __('Bekijk mijn online profiel') }}</a></li>
+                    </ul>
+                    @else
+                    <ul class="d-flex flex-column justify-content-around">
+                        <li class="nav-item ml-0">
+                            <a class="nav-link black-text btn login-btn mt-0" href="{{ route('register') }}">{{ __('Registreer') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link black-text btn mt-3 login-btn" data-toggle="modal" data-target="#loginModal">{{ __('Login') }}</a>
+                        </li>
+                    </ul>
+                    @endauth
                 </div>
             </div>
 
