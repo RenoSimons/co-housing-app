@@ -73,7 +73,7 @@ $(document).scroll( function(evt) {
 $(document).ready(function () {
   $.ajax({
       type: 'POST',
-      url: "/getusershomepage",
+      url: "https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage",
       data: {},
 
       success: function (response) {

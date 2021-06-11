@@ -39,7 +39,7 @@
                             @endif
                         </div>
                         <!-- Upload image input-->
-                        <form action="{{ url('/store') }}" method="post" enctype="multipart/form-data">
+                        <form action="https://co-housing-app-3i8mx.ondigitalocean.app/store" method="post" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('POST') }}
                             <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">

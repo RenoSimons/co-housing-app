@@ -10,7 +10,7 @@
                     <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
                 </div>
                 <div class="card-body mt-3 p-1">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="https://co-housing-app-3i8mx.ondigitalocean.app/login">
                         @csrf
 
                         <div class="form-group row">

@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body p-1">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="https://co-housing-app-3i8mx.ondigitalocean.app/login">
                         @csrf
 
                         <div class="form-group row">
