@@ -1,3 +1,5 @@
+import { in_production } from "./app";
+
 // Only on homepage a sticky nav
 const currentUrl = window.location.pathname;
 
@@ -20,7 +22,7 @@ $.ajaxSetup({
 window.onload = function() {
     $.ajax({
         type: 'POST',
-        url: "/getnotificationcount",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getnotificationcount' : '/getnotificationcount'),
         data: {},
 
         success: function (response) {
@@ -40,7 +42,7 @@ $('#notify-belll').click(function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/clearnotifications",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearotifications' : 'clearnotifications'),
             data: {},
 
             success: function (response) {
@@ -56,7 +58,7 @@ $('#notify-belll').click(function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/getnotifications",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getnotifications' : '/getnotifications'),
             data: {},
 
             success: function (response) {

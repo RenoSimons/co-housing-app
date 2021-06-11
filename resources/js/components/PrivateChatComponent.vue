@@ -39,6 +39,8 @@
 
 <script>
     import PrivateMessageComponent from "./PrivateMessageComponent";
+    import { in_production } from "../app";
+
     export default {
         data() {
             return {
@@ -52,12 +54,12 @@
                 friend.session.open = false;
             },
             getAuth() {
-                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getUser").then(res => {
+                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getUser' : '/getUser')).then(res => {
                     this.auth = res.data;
                 });
             },
             getFriends() {
-                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getFriends").then(res => {
+                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getfriends' : '/getfriends')).then(res => {
                     this.friends = res.data.data;
                     this.friends.forEach(
                         friend => (friend.session ? this.listenForEverySession(friend) : "")
@@ -72,8 +74,8 @@
                     friend.session.open = true;
                     friend.session.unreadCount = 0;
                     
-                    axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/markread", { friend_id: friend.id }).then(res => {
-                        console.log(res);
+                    axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/markread' : '/markread'), { friend_id: friend.id }).then(res => {
+                        //console.log(res);
                     });
                 } else {
                     
@@ -81,7 +83,7 @@
                 }
             },
             createSession(friend) {
-                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/session/create", { friend_id: friend.id }).then(res => {
+                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/session/create' : '/session/create'), { friend_id: friend.id }).then(res => {
                     (friend.session = res.data.data), (friend.session.open = true);
                 });
             },

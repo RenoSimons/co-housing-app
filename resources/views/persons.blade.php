@@ -13,7 +13,7 @@
             <div class="filters shadow-sm rounded p-3">
                 <h4 class="header-dark p-3 rounded">Vind personen</h4>
                 <hr>
-                <form action="https://co-housing-app-3i8mx.ondigitalocean.app/personen/filter" method="post" class="mt-3">
+                <form action="{{ url('/personen/filter') }}" method="post" class="mt-3" id="person-filter-1">
                     @csrf
                     {{ method_field('POST') }}
 

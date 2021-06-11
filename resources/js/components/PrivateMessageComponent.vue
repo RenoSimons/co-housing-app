@@ -59,6 +59,8 @@
 
 
 <script>
+import { in_production } from "../app";
+
     export default {
         props: ['friend'],
         data() {
@@ -117,20 +119,19 @@
         },
         methods: {
             getAuth() {
-                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getUser").then(res => {
+                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getUser' : '/getUser')).then(res => {
                     this.auth = res.data;
                 });
             },
             getAllMessages() {
                 axios
-                    .post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/chats`)
+                    .post( (in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/chats` : `/session/${this.friend.session.id}/chats`))
                     .then(res => (this.chats = res.data.data));
             },
             send() {
                 if (this.message) {
                     this.pushToChats(this.message);
-                    axios
-                        .post(`https://co-housing-app-3i8mx.ondigitalocean.app/send/${this.friend.session.id}`, {
+                    axios.post((in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/session/send/${this.friend.session.id}` : `/session/send/${this.friend.session.id}`), {
                             message: this.message,
                             to_user: this.friend.id
                         })
@@ -152,19 +153,18 @@
                 this.$emit('close');
             },
             clear() {
-                axios.post(`https://co-housing-app-3i8mx.ondigitalocean.appsession/${this.friend.session.id}/clear`).then(res => {
+                axios.post().then(res => {
                     this.chats = [];
                 })
             },
             block() {
                 this.session.block = true;
-                axios
-                    .post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/block`)
+                axios.post( (in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/block` : `/session/${this.friend.session.id}/block`))
                     .then(res => (this.session.blocked_by = this.auth.id));
             },
             unblock() {
-                this.session.block = false;
-                axios.post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/unblock`).then(
+                axios.post( (in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/unblock` : `/session/${this.friend.session.id}/unblock`))
+                .then(
                     res => {
                         this.session.blocked_by = null;
                     }

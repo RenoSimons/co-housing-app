@@ -73,7 +73,7 @@
                         <p class="search-title">{{ $house_details->surface }}m²</p>
                     </div>
                 </div>
-                <div class="mt-2 ml-5 specs-column">
+                <div class="mt-2 ml-md-5 specs-column">
                     <div class="d-flex align-items-center">
                         <img src="{{URL::asset('/images/icons/wallet-filled-money-tool.png')}}" class="search-icons">
                         <p class="search-title"> €{{ $house_details->budget }} <small>/ maand</small></p>
@@ -102,7 +102,7 @@
             </div>
             <div class="mt-4">
                 <h4>Voorzieningen in de woning</h4>
-                <div class="mt-3 d-flex">
+                <div class="mt-3 wrap-mobile d-flex">
                     <div class="specs-column">
                         <div class="d-flex align-items-center mt-2">
                             <img src="{{URL::asset('/images/icons/toilet.png')}}" class="search-icons">
@@ -117,7 +117,7 @@
                             <p class="search-title"> Eigen badkamer: {{ $house_details->own_bathroom }}</p>
                         </div>
                     </div>
-                    <div class="ml-5 specs-column">
+                    <div class="ml-md-5 specs-column">
                         <div class="d-flex align-items-center mt-2">
                             <img src="{{URL::asset('/images/icons/pets.png')}}" class="search-icons">
                             <p class="search-title"> Huisdieren mogelijk: {{ $house_details->pets }}</p>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4 mb-5">
+            <div class="mt-2 mt-md-5 mb-2 mb-md-5">
                 <small>Zoekertje geplaatst op {{ $house_details->created_at }}</small>
             </div>
         </div>
@@ -152,22 +152,26 @@
                 <small class="very-small">Lid sinds {{$poster->created_at}} </small>
                 </p>
                 <p>
-                    @if(Auth::user()->id !== $poster_details->user_id )
-                        @if( $has_session == 'false')
-                            <button class="contact-btn">Contacteer verhuurder</button>
-                        @else
-                            <button class="contact-btn">Stuur een bericht</button>
+                    @guest
+                        <a href="{{ url('login') }}" class="contact-btn">Log in om te contacteren</a>
+                    @endguest
+
+                    @auth
+                        @if(Auth::user()->id == $poster_details->user_id )
+                            <p><span class="mb-2">Jij hebt dit zoekertje gepost</span></p> 
+                            <p><a href="/myapplications" class="read-more-btn">Pas mijn post aan</a></p>    
+                        @else  
+                            @if( $has_session == 'false')
+                                <button class="contact-btn">Contacteer verhuurder</button>
+                            @else
+                                <button class="contact-btn">Stuur een bericht</button>
+                            @endif
                         @endif
-                    @else  
-
-                        <p><span class="mb-2">Jij hebt dit zoekertje gepost</span></p> 
-                        <p><a href="/myapplications" class="read-more-btn">Pas mijn post aan</a></p>
-
-                    @endif
+                    @endauth
                 </p>
             </div>
             <!-- GOOGLE MAP -->
-            <div class="map-box mt-5 mb-5">
+            <div class="map-box mt-3 mt-md-5 mb-5">
                 <div id="map"></div>
 
                 <div class="d-none" id="lat">{{$house_details->lat}}</div>

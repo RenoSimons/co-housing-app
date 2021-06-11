@@ -22,7 +22,7 @@
         </div>
 
         <div class="mt-5">
-            <form action="https://co-housing-app-3i8mx.ondigitalocean.app/publish" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/publish') }}" method="post" enctype="multipart/form-data" id="publish-post2">
                 @csrf
                 {{ method_field('POST') }}
                 <div id="section1">

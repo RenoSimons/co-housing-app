@@ -106,6 +106,22 @@
         font-style: italic;
         font-size: 18px;
     }
+    
+    @media screen and (max-width: 700px) {
+        .specs, .wrap-mobile {
+            flex-wrap:wrap;
+        } 
+        
+        h4 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .presentation-img {
+            width:100%;
+        }
+    }
+       
 
     .specs-column {
         min-width: 220px;
@@ -201,6 +217,37 @@
 
         .row {
             margin: 0;
+        }
+
+        .modal {
+            .modal-content {
+                width: 100%;
+                margin: auto;
+    
+                .modal-header {
+                    padding: 5px;
+                }
+    
+                .modal-body {
+                    max-height: 500px;
+    
+                    .carousel-control-prev, .carousel-control-next {
+                        color:black !important;
+                    }
+    
+                    .carousel-img {
+                        max-height: 400px;
+                    }
+                }
+            }
+        }
+    
+        #carousel-modal, #contact-modal {
+            transform: translate(-0%,20%);
+        }
+
+        .carousel-thumbnail {
+            width: 100%;
         }
     }
       
