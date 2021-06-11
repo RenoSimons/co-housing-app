@@ -1846,6 +1846,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrivateMessageComponent */ "./resources/js/components/PrivateMessageComponent.vue");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 //
 //
 //
@@ -1885,6 +1886,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1901,14 +1903,14 @@ __webpack_require__.r(__webpack_exports__);
     getAuth: function getAuth() {
       var _this = this;
 
-      axios.post("/getUser").then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getUser' : '/getUser').then(function (res) {
         _this.auth = res.data;
       });
     },
     getFriends: function getFriends() {
       var _this2 = this;
 
-      axios.post("/getFriends").then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getfriends' : '/getfriends').then(function (res) {
         _this2.friends = res.data.data;
 
         _this2.friends.forEach(function (friend) {
@@ -1923,17 +1925,16 @@ __webpack_require__.r(__webpack_exports__);
         });
         friend.session.open = true;
         friend.session.unreadCount = 0;
-        axios.post("/markread", {
+        axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/markread' : '/markread', {
           friend_id: friend.id
-        }).then(function (res) {
-          console.log(res);
+        }).then(function (res) {//console.log(res);
         });
       } else {
         this.createSession(friend);
       }
     },
     createSession: function createSession(friend) {
-      axios.post("/session/create", {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/session/create' : '/session/create', {
         friend_id: friend.id
       }).then(function (res) {
         friend.session = res.data.data, friend.session.open = true;
@@ -1995,6 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 //
 //
 //
@@ -2055,6 +2057,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['friend'],
   data: function data() {
@@ -2115,14 +2118,14 @@ __webpack_require__.r(__webpack_exports__);
     getAuth: function getAuth() {
       var _this2 = this;
 
-      axios.post("/getUser").then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getUser' : '/getUser').then(function (res) {
         _this2.auth = res.data;
       });
     },
     getAllMessages: function getAllMessages() {
       var _this3 = this;
 
-      axios.post("/session/".concat(this.friend.session.id, "/chats")).then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/session/".concat(this.friend.session.id, "/chats") : "/session/".concat(this.friend.session.id, "/chats")).then(function (res) {
         return _this3.chats = res.data.data;
       });
     },
@@ -2131,7 +2134,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.message) {
         this.pushToChats(this.message);
-        axios.post("/send/".concat(this.friend.session.id), {
+        axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/session/send/".concat(this.friend.session.id) : "/session/send/".concat(this.friend.session.id), {
           message: this.message,
           to_user: this.friend.id
         }).then(function (res) {
@@ -2156,7 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
     clear: function clear() {
       var _this5 = this;
 
-      axios.post("session/".concat(this.friend.session.id, "/clear")).then(function (res) {
+      axios.post().then(function (res) {
         _this5.chats = [];
       });
     },
@@ -2164,15 +2167,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this6 = this;
 
       this.session.block = true;
-      axios.post("/session/".concat(this.friend.session.id, "/block")).then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/session/".concat(this.friend.session.id, "/block") : "/session/".concat(this.friend.session.id, "/block")).then(function (res) {
         return _this6.session.blocked_by = _this6.auth.id;
       });
     },
     unblock: function unblock() {
       var _this7 = this;
 
-      this.session.block = false;
-      axios.post("session/".concat(this.friend.session.id, "/unblock")).then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/session/".concat(this.friend.session.id, "/unblock") : "/session/".concat(this.friend.session.id, "/unblock")).then(function (res) {
         _this7.session.blocked_by = null;
       });
     },
@@ -2193,6 +2195,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _showResponseMsg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./showResponseMsg */ "./resources/js/showResponseMsg.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+
  //Handle the save buttons state
 
 $.ajaxSetup({
@@ -2212,7 +2216,7 @@ $('#toggle-profile').click(function () {
 
   $.ajax({
     type: 'POST',
-    url: "/visibility",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/visibility' : '/visibility',
     data: {
       is_private: is_private_int
     },
@@ -2233,7 +2237,7 @@ $('#toggle-profile').click(function () {
 $('#save-personal-details').click(function () {
   $.ajax({
     type: 'POST',
-    url: "/updatedetails",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/updatedetails' : '/updatedetails',
     data: {
       insta_link: $('#instaInput').val(),
       fb_link: $('#fbInput').val(),
@@ -2249,7 +2253,7 @@ $('#save-personal-details').click(function () {
 $('#save-intro').click(function () {
   $.ajax({
     type: 'POST',
-    url: "/introtext",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/introtext' : '/introtext',
     data: {
       intro_text: $('#intro-form4').val()
     },
@@ -2263,7 +2267,7 @@ $('#save-intro').click(function () {
 $('#save-hobbies').click(function () {
   $.ajax({
     type: 'POST',
-    url: "/hobbies",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/hobbies' : '/hobbies',
     data: {
       hobby_text: $('#hobby-form').val()
     },
@@ -2277,7 +2281,7 @@ $('#save-hobbies').click(function () {
 $('#save-status').click(function () {
   $.ajax({
     type: 'POST',
-    url: "/status",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/status' : '/status',
     data: {
       status: $('#status-form').val()
     },
@@ -2399,8 +2403,21 @@ var app = new Vue({
     PrivateMessageComponent: _components_PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_1__.default,
     PrivateChatComponent: _components_PrivateChatComponent__WEBPACK_IMPORTED_MODULE_2__.default
   }
-});
+}); //Change href forms for production or develop over js
+
 var in_production = false;
+window.addEventListener('load', function () {
+  $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
+  $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
+  $('#login-form-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login');
+  $('#login-form-2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login');
+  $('#register-form-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register');
+  $('#register-form-2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register');
+  $('#publish-post').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish');
+  $('#publish-post2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish');
+  $('#person-filter-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/personen/filter' : '/personen/filter');
+  $('#store1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/store' : '/store');
+});
 
 __webpack_require__(/*! ./nav */ "./resources/js/nav.js");
 
@@ -2500,6 +2517,8 @@ $(function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detect_mobile.js */ "./resources/js/detect_mobile.js");
 /* harmony import */ var _showResponseMsg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./showResponseMsg */ "./resources/js/showResponseMsg.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+
 
  // Get the images in javascript for carousel
 
@@ -2513,7 +2532,7 @@ var url = window.location.pathname.split('/');
 var id = url[url.length - 1];
 $.ajax({
   type: 'POST',
-  url: "/cohousings/getimages",
+  url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages',
   data: {
     id: id
   },
@@ -2574,7 +2593,7 @@ $('#submit-contact-form').click(function (e) {
   e.preventDefault();
   $.ajax({
     type: 'POST',
-    url: "/session/create",
+    url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/session/create' : '/session/create',
     data: {
       receiver_id: $('#poster_id').html(),
       message: $('#first_message').val()
@@ -2688,7 +2707,7 @@ $(".heart-icon, .garbage-icon").click(function (e) {
   console.log(_app__WEBPACK_IMPORTED_MODULE_1__.in_production);
   $.ajax({
     type: 'POST',
-    url: "/favorite",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/favorite' : '/favorite',
     data: {
       id: id
     },
@@ -2746,6 +2765,8 @@ $(document).scroll(function (evt) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detect_mobile.js */ "./resources/js/detect_mobile.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+
  // Scroll down on icon click
 
 $('#scroll-icon').click(function () {
@@ -2811,7 +2832,7 @@ $(document).scroll(function (evt) {
 $(document).ready(function () {
   $.ajax({
     type: 'POST',
-    url: "/getusershomepage",
+    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage',
     data: {},
     success: function success(response) {
       var totalPersons = response.length;
@@ -2959,6 +2980,8 @@ particlesJS('particles-js', {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _showResponseMsg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./showResponseMsg */ "./resources/js/showResponseMsg.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+
 
 $.ajaxSetup({
   headers: {
@@ -2996,7 +3019,7 @@ $('#save-edit-application').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/editpost",
+      url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/editpost' : '/editpost',
       data: {
         location: $('#edit-location').children("option:selected").val(),
         type_building: $('#type_building').children("option:selected").val(),
@@ -3023,7 +3046,7 @@ $('.delete-btn').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/deletepost",
+      url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/deletepost' : '/deletepost',
       data: {},
       success: function success(response) {
         // Show succes message
@@ -3038,7 +3061,7 @@ $('.delete-btn').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/deleteoffer",
+      url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/deleteoffer' : '/deleteoffer',
       data: {
         id: deleteId
       },
@@ -3125,7 +3148,7 @@ $('.save-btn2').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/editoffer",
+      url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/editoffer' : '/editoffer',
       data: {
         //Modal id is the same as post offer id
         id: modal_id,
@@ -3166,9 +3189,13 @@ $('.save-btn2').click(function (e) {
 /*!*****************************!*\
   !*** ./resources/js/nav.js ***!
   \*****************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// Only on homepage a sticky nav
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+ // Only on homepage a sticky nav
+
 var currentUrl = window.location.pathname;
 
 if (currentUrl !== "/") {
@@ -3188,7 +3215,7 @@ $.ajaxSetup({
 window.onload = function () {
   $.ajax({
     type: 'POST',
-    url: "/getnotificationcount",
+    url: _app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getnotificationcount' : '/getnotificationcount',
     data: {},
     success: function success(response) {
       if (response > 0) {
@@ -3207,7 +3234,7 @@ $('#notify-belll').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/clearnotifications",
+      url: _app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearotifications' : 'clearnotifications',
       data: {},
       success: function success(response) {
         $('.notification-circle').css('display', 'none');
@@ -3220,7 +3247,7 @@ $('#notify-belll').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: "/getnotifications",
+      url: _app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getnotifications' : '/getnotifications',
       data: {},
       success: function success(response) {
         response.forEach(function (element) {

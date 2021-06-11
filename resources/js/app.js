@@ -21,7 +21,24 @@ const app = new Vue({
     components: {PrivateMessageComponent, PrivateChatComponent}
 });
 
+//Change href forms for production or develop over js
+
 export const in_production = false;
+
+window.addEventListener('load', function () {
+    $('.search-form').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse') )
+    $('#filter-houses').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse') )
+    $('#login-form-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login') )
+    $('#login-form-2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login') )
+    $('#register-form-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register') )
+    $('#register-form-2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register') )
+    $('#publish-post').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish') )
+    $('#publish-post2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish') )
+    $('#person-filter-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/personen/filter' : '/personen/filter') )
+    $('#store1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/store' : '/store') )
+    
+  })
+
 
 require('./nav');
 require('./showResponseMsg');

@@ -9,7 +9,7 @@
     <hr>
 
     <div class=" shadow-sm mt-md-4">
-        <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="w-100 p-3">
+        <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="w-100 p-3" id="filter-houses">
             {{ method_field('GET') }}
             <div id="filter-box" class="d-md-flex justify-content-between align center trans-1">
                 <div class="form-group collapser">

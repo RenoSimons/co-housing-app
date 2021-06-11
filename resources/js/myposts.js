@@ -1,4 +1,5 @@
 import { showResponseMsg } from "./showResponseMsg";
+import { in_production } from "./app";
 
 $.ajaxSetup({
     headers: {
@@ -37,7 +38,7 @@ $('#save-edit-application').click( function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/editpost",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/editpost' : '/editpost'),
             data: {
                 location: $('#edit-location').children("option:selected").val(),
                 type_building: $('#type_building').children("option:selected").val(),
@@ -67,7 +68,7 @@ $('.delete-btn').click( function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/deletepost",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/deletepost' : '/deletepost'), 
             data: {},
 
             success: function (response) {
@@ -85,7 +86,7 @@ $('.delete-btn').click( function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/deleteoffer",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/deleteoffer' : '/deleteoffer'),
             data: {
                 id: deleteId
             },
@@ -179,7 +180,7 @@ $('.save-btn2').click( function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "/editoffer",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/editoffer' : '/editoffer'), 
             data: {
                 //Modal id is the same as post offer id
                 id: modal_id,

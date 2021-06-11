@@ -1,4 +1,5 @@
 import {showResponseMsg} from './showResponseMsg';
+import { in_production } from "./app";
 
 //Handle the save buttons state
 $.ajaxSetup({
@@ -19,7 +20,7 @@ $('#toggle-profile').click(function() {
 
     $.ajax({
         type: 'POST',
-        url: "/visibility",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/visibility' : '/visibility'),
         data: {
             is_private: is_private_int ,
         },
@@ -42,7 +43,7 @@ $('#toggle-profile').click(function() {
 $('#save-personal-details').click(function() {
     $.ajax({
         type: 'POST',
-        url: "/updatedetails",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/updatedetails' : '/updatedetails'),
         data: {
             insta_link: $('#instaInput').val(),
             fb_link: $('#fbInput').val(),
@@ -63,7 +64,7 @@ $('#save-personal-details').click(function() {
 $('#save-intro').click(function() {
     $.ajax({
         type: 'POST',
-        url: "/introtext",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/introtext' : '/introtext'),
         data: {
             intro_text: $('#intro-form4').val(),
         },
@@ -81,7 +82,7 @@ $('#save-intro').click(function() {
 $('#save-hobbies').click(function() {
     $.ajax({
         type: 'POST',
-        url: "/hobbies",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/hobbies' : '/hobbies'),
         data: {
             hobby_text: $('#hobby-form').val(),
         },
@@ -100,7 +101,7 @@ $('#save-hobbies').click(function() {
 $('#save-status').click(function() {
     $.ajax({
         type: 'POST',
-        url: "/status",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/status' : '/status'),
         data: {
             status: $('#status-form').val(),
         },

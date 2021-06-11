@@ -1,5 +1,7 @@
 import {check} from './detect_mobile.js';
 import {showResponseMsg} from './showResponseMsg';
+import { in_production } from "./app";
+
 // Get the images in javascript for carousel
 const imagesArray = []
 
@@ -14,7 +16,7 @@ const id = url[url.length - 1];
 
 $.ajax({
     type: 'POST',
-    url: "/cohousings/getimages",
+    url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages'),
     data: {
         id: id
     },
@@ -94,7 +96,7 @@ $('#submit-contact-form').click(function(e) {
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: "/session/create",
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/session/create' : '/session/create'),
         data: {
             receiver_id: $('#poster_id').html(),
             message: $('#first_message').val()

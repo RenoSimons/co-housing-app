@@ -433,7 +433,7 @@
 
         $.ajax({
             type: 'GET',
-            url: "https://co-housing-app-3i8mx.ondigitalocean.app/getcoordinates",
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getcoordinates' : '/getcoordinates'),
 
             success: function(response) {
                 coordinates = response;
@@ -450,7 +450,7 @@
                     marker.addListener("click", () => {
                         $.ajax({
                             type: 'POST',
-                            url: "https://co-housing-app-3i8mx.ondigitalocean.app/getmarkerdata",
+                            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getmarkerdata' : '/getmarkerdata'),
                             data: {
                                 id: coordinates.id
                             },

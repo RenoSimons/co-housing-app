@@ -10,7 +10,7 @@
                     <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
                 </div>
                 <div class="card-body mt-3 p-1">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" id="login-form-2">
                         @csrf
 
                         <div class="form-group row">

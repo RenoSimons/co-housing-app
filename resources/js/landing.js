@@ -1,4 +1,5 @@
 import {check} from './detect_mobile.js';
+import { in_production } from "./app";
 
 // Scroll down on icon click
 $('#scroll-icon').click(function() {
@@ -73,7 +74,7 @@ $(document).scroll( function(evt) {
 $(document).ready(function () {
   $.ajax({
       type: 'POST',
-      url: "/getusershomepage",
+      url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage'),
       data: {},
 
       success: function (response) {
