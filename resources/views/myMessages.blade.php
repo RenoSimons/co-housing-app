@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid-md container-lg mt-2 mt-md-5" id="app">
+<div class="container-fluid-md container-lg mt-2 p-0 mt-md-5" id="app">
   <div class="row d-flex justify-content-around">
     <div class="col-md-3">
       <x-accountNavigation />

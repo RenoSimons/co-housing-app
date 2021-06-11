@@ -1,4 +1,5 @@
 import { showResponseMsg } from "./showResponseMsg";
+import { in_production } from "./app";
 
 $(".heart-icon, .garbage-icon").click(function(e) {
     $.ajaxSetup({
@@ -12,6 +13,7 @@ $(".heart-icon, .garbage-icon").click(function(e) {
     let icon = $(this).attr('class');
     let favoriteCardId = $(this).parent().parent().parent().attr('id');
 
+    console.log(in_production )
     $.ajax({
         type:'POST',
         url: "/favorite",

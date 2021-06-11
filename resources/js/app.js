@@ -21,6 +21,8 @@ const app = new Vue({
     components: {PrivateMessageComponent, PrivateChatComponent}
 });
 
+export const in_production = false;
+
 require('./nav');
 require('./showResponseMsg');
 require('./button_behaviour');

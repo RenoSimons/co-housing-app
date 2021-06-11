@@ -7,7 +7,7 @@
             <div class="row">      
                 <h1 class="animatad-title">Vind co-house</h1>
                 <div class="search-card">
-                    <form action="{{ url('/cohousings/filterhouses') }}" method="GET" class="search-form mt-5 mb-5">
+                    <form action="https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses" method="GET" class="search-form mt-5 mb-5">
                         {{ method_field('GET') }}
                         <div class="col-md-6 ">
                             <div class="form-group">
@@ -433,7 +433,7 @@
 
         $.ajax({
             type: 'GET',
-            url: "/getcoordinates",
+            url: "https://co-housing-app-3i8mx.ondigitalocean.app/getcoordinates",
 
             success: function(response) {
                 coordinates = response;
@@ -450,13 +450,13 @@
                     marker.addListener("click", () => {
                         $.ajax({
                             type: 'POST',
-                            url: "/getmarkerdata",
+                            url: "https://co-housing-app-3i8mx.ondigitalocean.app/getmarkerdata",
                             data: {
                                 id: coordinates.id
                             },
 
                             success: function(response) {
-                                let urlString = "http://" + window.location.host + "/storage/house_images/";
+                                let urlString = window.location.host + "/storage/house_images/";
                                 let imagesArray = [];
                                 let images = JSON.stringify(response[0])
                                 let imageString = images.split(',');

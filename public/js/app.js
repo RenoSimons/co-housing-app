@@ -2374,6 +2374,9 @@ $('#hobby-form').keyup(function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "in_production": () => (/* binding */ in_production)
+/* harmony export */ });
 /* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chat-scroll */ "./node_modules/vue-chat-scroll/dist/vue-chat-scroll.js");
 /* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_chat_scroll__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/PrivateMessageComponent */ "./resources/js/components/PrivateMessageComponent.vue");
@@ -2397,6 +2400,7 @@ var app = new Vue({
     PrivateChatComponent: _components_PrivateChatComponent__WEBPACK_IMPORTED_MODULE_2__.default
   }
 });
+var in_production = false;
 
 __webpack_require__(/*! ./nav */ "./resources/js/nav.js");
 
@@ -2668,6 +2672,8 @@ var check = false;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _showResponseMsg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./showResponseMsg */ "./resources/js/showResponseMsg.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./resources/js/app.js");
+
 
 $(".heart-icon, .garbage-icon").click(function (e) {
   $.ajaxSetup({
@@ -2679,6 +2685,7 @@ $(".heart-icon, .garbage-icon").click(function (e) {
   var id = $(this).attr('id');
   var icon = $(this).attr('class');
   var favoriteCardId = $(this).parent().parent().parent().attr('id');
+  console.log(_app__WEBPACK_IMPORTED_MODULE_1__.in_production);
   $.ajax({
     type: 'POST',
     url: "/favorite",

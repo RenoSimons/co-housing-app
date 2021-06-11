@@ -10212,6 +10212,7 @@ h3 {
 }
 .sixth-section .user-box .circle-user {
   width: 150px;
+  max-height: 170px;
 }
 .sixth-section .user-box .circle-user img {
   width: 150px;
@@ -10681,6 +10682,18 @@ h3 {
   font-style: italic;
   font-size: 18px;
 }
+@media screen and (max-width: 700px) {
+  #co-house-detail-wrapper .specs, #co-house-detail-wrapper .wrap-mobile {
+    flex-wrap: wrap;
+  }
+  #co-house-detail-wrapper h4 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #co-house-detail-wrapper .presentation-img {
+    width: 100%;
+  }
+}
 #co-house-detail-wrapper .specs-column {
   min-width: 220px;
 }
@@ -10759,6 +10772,25 @@ h3 {
   }
   #co-house-detail-wrapper .row {
     margin: 0;
+  }
+  #co-house-detail-wrapper .modal .modal-content {
+    width: 100%;
+    margin: auto;
+  }
+  #co-house-detail-wrapper .modal .modal-content .modal-header {
+    padding: 5px;
+  }
+  #co-house-detail-wrapper .modal .modal-content .modal-body {
+    max-height: 500px;
+  }
+  #co-house-detail-wrapper .modal .modal-content .modal-body .carousel-control-prev, #co-house-detail-wrapper .modal .modal-content .modal-body .carousel-control-next {
+    color: black !important;
+  }
+  #co-house-detail-wrapper .modal .modal-content .modal-body .carousel-img {
+    max-height: 400px;
+  }
+  #co-house-detail-wrapper #carousel-modal, #co-house-detail-wrapper #contact-modal {
+    transform: translate(0%, 20%);
   }
 }
 
