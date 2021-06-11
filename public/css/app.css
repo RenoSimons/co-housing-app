@@ -10792,6 +10792,9 @@ h3 {
   #co-house-detail-wrapper #carousel-modal, #co-house-detail-wrapper #contact-modal {
     transform: translate(0%, 20%);
   }
+  #co-house-detail-wrapper .carousel-thumbnail {
+    width: 100%;
+  }
 }
 
 #favorites .favorite-card {
