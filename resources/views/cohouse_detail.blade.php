@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" id="co-house-detail-wrapper">
-    <div class="row mt-2 mt-ml-2 ml-md-0 mt-md-5 d-flex justify-content-between w-100">
+    <div class="row mt-4 mt-ml-2 ml-md-0 mt-md-5 d-flex justify-content-between w-100">
         <div class="d-flex">
             <img src="{{URL::asset('/images/icons/pin.png')}}" class="search-icons">
             <h4>{{ $house_details->province }}</h4>
@@ -152,10 +152,17 @@
                 <small class="very-small">Lid sinds {{$poster->created_at}} </small>
                 </p>
                 <p>
-                    @if( $has_session == 'false')
-                        <button class="contact-btn">Contacteer verhuurder</button>
-                    @else
-                        <button class="contact-btn">Ga naar jullie chat</button>
+                    @if(Auth::user()->id !== $poster_details->user_id )
+                        @if( $has_session == 'false')
+                            <button class="contact-btn">Contacteer verhuurder</button>
+                        @else
+                            <button class="contact-btn">Stuur een bericht</button>
+                        @endif
+                    @else  
+
+                        <p><span class="mb-2">Jij hebt dit zoekertje gepost</span></p> 
+                        <p><a href="/myapplications" class="read-more-btn">Pas mijn post aan</a></p>
+
                     @endif
                 </p>
             </div>

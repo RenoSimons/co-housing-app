@@ -5,6 +5,7 @@ use App\Models\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
@@ -39,6 +40,26 @@ class ApplicationController extends Controller
         ]);
 
         $Application->save();
+
+        // Remove previous profile picture
+        $user = $request->user(); 
+
+        $fileName = $user->details->where('user_id', $user->id)->pluck('img_url');
+        Storage::disk('user_images')->delete($fileName[0]);
+   
+        // Check for file
+        if ( !is_null ($request->file('file')) ) {
+           
+            // Generate laravel url
+            $unique_photo_url = $request->file->hashName();
+            
+            $request->file->store('user_images', 'public');
+
+            $affected = $user->details
+            ->update(['img_url' => $unique_photo_url]);
+        }
+
+       
 
         return redirect('/myapplications');
     }

@@ -4,16 +4,24 @@
             <div class="left">
                 <div class="top"></div>
                 <ul class="people">
-                        <li class="person" @click.prevent="openChat(friend)"  v-for="friend in friends" :key="friend.id">
+                    <div v-if="friends.length == 0">
+                        <h4>Je hebt nog geen connecties gelegd</h4>
+                        <p>Reageer op een zoekertje of contacteer een persoon</p>
+                    </div> 
+                    <div v-for="friend in friends" :key="friend.id">
                         <div v-if="friend.id !== auth.id">
-                            <div class="d-flex">
-                                <p class="mb-0"><span class="name"> {{friend.name}}</span></p> 
-                                <span class="ml-2" v-if="friend.session && friend.session.unreadCount > 0">{{friend.session.unreadCount}}</span>
-                            </div>
-                            <p v-if="friend.online"><small  class="preview" style="color:#00b0ff" >Online</small></p>
-                            <p v-else><small  class="preview">Offline</small></p>
+                            <li class="person" @click.prevent="openChat(friend)" >
+                                <div class="d-flex justify-content-between">
+                                    <div class="mb-0 d-flex justify-content-between w-100">
+                                        <span class="name"> {{friend.name}}</span>
+                                        <div v-if="friend.has_unread_message == 1" class="notification-circle-chat ml-1"></div>
+                                    </div> 
+                                </div>
+                                <p v-if="friend.online"><small  class="preview" style="color:#00b0ff" >Online</small></p>
+                                <p v-else><small  class="preview">Offline</small></p>
+                            </li>
                         </div>
-                    </li>
+                    </div>
                 </ul>
             </div>
             <div id="chat-box">
@@ -63,7 +71,12 @@
                     );
                     friend.session.open = true;
                     friend.session.unreadCount = 0;
+                    
+                    axios.post("/markread", { friend_id: friend.id }).then(res => {
+                        console.log(res);
+                    });
                 } else {
+                    
                     this.createSession(friend);
                 }
             },

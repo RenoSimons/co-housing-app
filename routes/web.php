@@ -11,11 +11,13 @@ use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\CoHousingController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\NotificationController;
 
 //CHAT CONTROLLERS
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\SessionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/getcoordinates', [HomeController::class, 'getCoordinates']);
 Route::post('/getmarkerdata', [HomeController::class, 'getMarkerData']);
+Route::post('/getusershomepage', [HomeController::class, 'getUsersHomepage']);
 
 // ZOEKPORTAAL
 Route::get('/cohousings', [CoHousingController::class, 'index'])->name('cohousings');
@@ -71,15 +74,16 @@ Route::post('/deleteoffer', [FindRenterController::class, 'delete'])->middleware
 
 // MESSAGING
 Route::post('getFriends', [AccountController::class, 'getFriends']);
+Route::post('/markread', [ChatController::class, 'markRead']);
 Route::post('/getUser', [AccountController::class, 'getUser']);
 Route::post('/session/getsession', [AccountController::class, 'test']);
 Route::post('/session/create', [SessionController::class, 'create'])->name('create');
 Route::post('/session/{session}/chats', [ChatController::class, 'chats']);
-Route::post('/session/{session}/read', [ChatController::class, 'read']);
-Route::post('/session/{session}/clear', [ChatController::class, 'clear']);
+Route::post('/session/read', [ChatController::class, 'read']);
 Route::post('/session/{session}/block', [BlockController::class, 'block']);
 Route::post('/session/{session}/unblock', [BlockController::class, 'unblock']);;
 Route::post('/send/{session}', [ChatController::class, 'send']);
+Route::post('/session/markread', [ChatController::class, 'markRead']);
 
 // ACCOUNT DASHBOARD
 Route::get('/messages', [AccountController::class, 'chat'])->middleware('auth')->name('messages');
@@ -87,3 +91,8 @@ Route::get('/profile/{id}', [PublicProfileController::class, 'showProfile'])->mi
 Route::get('/myapplications', [AccountController::class, 'showMyApplications'])->middleware('auth')->name('myapplications');
 Route::get('/user', [AccountDetailController::class, 'index'])->middleware('auth')->name('user');
 Route::get('/myfavorites', [AccountController::class, 'showFavorites'])->middleware('auth')->name('myfavorites');
+
+// CLEAR NOTIFICATIONS
+Route::post('/getnotifications', [NotificationController::class, 'getNotifications'])->middleware('auth');
+Route::post('/clearnotifications', [NotificationController::class, 'clearNotifications'])->middleware('auth');
+Route::post('/getnotificationcount', [NotificationController::class, 'getNotificationCount'])->middleware('auth');

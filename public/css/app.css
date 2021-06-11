@@ -10016,6 +10016,13 @@ h3 {
   width: 100vw;
   margin: 0;
 }
+.landing-section .animatad-title {
+  position: absolute;
+  transform: translateY(-70px);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 5px;
+  text-transform: capitalize;
+}
 .landing-section .left-column {
   display: flex;
   justify-content: center;
@@ -10166,9 +10173,10 @@ h3 {
   overflow: hidden;
 }
 
-.fourth-section .stat-icon {
+.stat-icon {
   width: 50px;
 }
+
 .fourth-section .stat-card {
   background-color: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.8);
@@ -10199,6 +10207,42 @@ h3 {
   justify-content: space-between;
 }
 
+.sixth-section a {
+  text-decoration: none;
+}
+.sixth-section .user-box .circle-user {
+  width: 150px;
+}
+.sixth-section .user-box .circle-user img {
+  width: 150px;
+  border-radius: 50%;
+}
+.sixth-section .user-box .speech-bubble {
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.4em;
+  height: 75%;
+  width: 75%;
+  color: rgba(255, 255, 255, 0.8);
+}
+.sixth-section .user-box .speech-bubble p {
+  font-size: 11.5px;
+}
+.sixth-section .user-box .speech-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.825em solid transparent;
+  border-right-color: #323232;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -0.512em;
+  margin-left: -0.825em;
+}
+
 .second-section .center-row {
   justify-content: center !important;
 }
@@ -10222,7 +10266,25 @@ h3 {
   width: 100%;
 }
 
+.landing-section .animatad-title {
+  position: absolute;
+  transform: translateY(-40px);
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 5px;
+  text-transform: capitalize;
+}
+
 @media (min-width: 576px) {
+  .landing-section .animatad-title {
+    position: absolute;
+    transform: translateY(-40px);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 5px;
+    text-transform: capitalize;
+  }
+
   .second-section .promo-card {
     width: 80% !important;
   }
@@ -10241,7 +10303,34 @@ h3 {
   }
 
   .fourth-section .stat-row .stat-card {
-    width: 250px !important;
+    width: 230px !important;
+  }
+
+  .landing-section .animatad-title {
+    position: absolute;
+    transform: translateY(-30px);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    margin-left: 20px;
+  }
+
+  .sixth-section .user-box-wrapper {
+    display: block;
+  }
+  .sixth-section .user-box-wrapper .user-box .circle-user {
+    width: 200px;
+    height: 200px;
+    border-radius: 45%;
+    display: flex;
+    align-items: center;
+  }
+  .sixth-section .user-box-wrapper .user-box .circle-user img {
+    width: 200px;
+  }
+  .sixth-section .user-box-wrapper .user-box .speech-bubble p {
+    font-size: 13px;
   }
 }
 @media (min-width: 992px) {
@@ -10250,16 +10339,6 @@ h3 {
     justify-content: center;
     align-items: center;
     margin-top: 0px;
-  }
-  .landing-section .animatad-title {
-    position: absolute;
-    transform: translateY(-70px);
-    font-size: 45px;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 5px;
-    font-style: italic;
-    text-transform: capitalize;
-    font-weight: bold;
   }
   .landing-section .right-column {
     transform: translateX(-30%);
@@ -10283,6 +10362,15 @@ h3 {
   .landing-section .search-card .search-btn {
     margin-top: 42.5px !important;
     width: 100% !important;
+  }
+
+  .fourth-section .stat-row .stat-card {
+    width: 300px !important;
+  }
+}
+@media screen and (min-width: 989px) {
+  .sixth-section .user-box-wrapper {
+    display: flex;
   }
 }
 @-webkit-keyframes breathing {
@@ -10453,7 +10541,7 @@ h3 {
   cursor: pointer;
 }
 #offer-wrapper .collapse-icon {
-  width: 30px;
+  width: 20px;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -10817,7 +10905,7 @@ h3 {
   transform: scale(1.2);
 }
 
-.contact-btn {
+.contact-btn, .contact-btn2 {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, 0.8);
@@ -10827,7 +10915,7 @@ h3 {
   border: none;
   transition: 0.25s;
 }
-.contact-btn:hover {
+.contact-btn:hover, .contact-btn2:hover {
   width: 100%;
   color: white;
 }
@@ -11063,12 +11151,54 @@ h3 {
     width: 100%;
   }
 }
+.dropdown-box {
+  position: absolute;
+}
+
 .dropdown-menu {
   background-color: #323232;
   border: none !important;
 }
 .dropdown-menu a {
   color: rgba(255, 255, 255, 0.8);
+}
+
+#notify-belll {
+  z-index: 999;
+}
+#notify-belll:hover {
+  cursor: pointer;
+}
+
+.drop2 {
+  margin-top: 25px !important;
+  transform: translateX(-150px) !important;
+  min-width: 450px !important;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.notification-circle {
+  border-radius: 10px;
+  border: 1px solid grey;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  margin-left: 3px;
+  display: none;
+}
+
+.notification-circle-chat {
+  border-radius: 10px;
+  border: 1px solid grey;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  margin-left: 3px;
+}
+
+.dropdown-menu-right {
+  margin-top: 16px !important;
 }
 
 #loginModal .modal-content {
@@ -11202,8 +11332,15 @@ h3 {
 }
 
 @media only screen and (min-width: 767px) {
+  .footer {
+    height: 170px;
+  }
   .footer .logo-footer {
     width: 80px !important;
+  }
+
+  .cp-text {
+    font-size: 12px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -11213,6 +11350,10 @@ h3 {
 
   h4 {
     font-size: 15px;
+  }
+
+  .cp-text {
+    font-size: 10px;
   }
 }
 @media only screen and (max-width: 493px) {
@@ -11327,6 +11468,10 @@ html {
     width: 20%;
     transform: translate(20%, 5%);
   }
+
+  #map-button {
+    padding-right: 300px;
+  }
 }
 .align-center {
   align-items: center;
@@ -11383,4 +11528,31 @@ html {
 
 .hide-overflow {
   overflow-x: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .grey-text-header {
+    font-size: 20px;
+  }
+}
+.grey-text-header {
+  color: #808080;
+  letter-spacing: 3px;
+}
+
+.fixed-width-btn {
+  min-width: 260px;
+}
+
+@media only screen and (max-width: 450px) {
+  .fixed-width-btn {
+    width: 100%;
+  }
+}
+.trans-1 {
+  transition: 1s;
+}
+
+.size-icons {
+  z-index: 999;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use App\Models\Session;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +19,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
+            'has_unread_message' => $this->has_messages($this->id),
             'online' => false,
             'session' => $this->session_details($this->id),
             'image' => $this->image,
@@ -30,5 +31,12 @@ class UserResource extends JsonResource
         //$session = Session::whereIn('user1_id', [auth()->id(), $id])->orWhereIn('user2_id', [auth()->id(), $id])->first();
 
         return new SessionResource($session);
+    }
+
+    private function has_messages($id)
+    {
+        $users = User::where('id', $id)->get();
+
+        return $users[0]->connections[0]->has_message;
     }
 }

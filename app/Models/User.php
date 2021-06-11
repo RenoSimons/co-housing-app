@@ -12,6 +12,7 @@ use App\Models\RentOffer;
 use App\Models\Favorite;
 use App\Models\Message;
 use App\Models\Connection;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -85,5 +86,12 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function notificationCount()
+    {
+        $notifications = DB::table('notifications')->where('user_id', auth()->id())->get();
+        //$count = count($notifications);
+        return $this->hasMany(Notification::class);
     }
 }

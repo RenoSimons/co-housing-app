@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $total_users = count(DB::table('users')->get());
         $total_houses = count(DB::table('rent_offers')->get());
-        $total_connections = count(DB::table('connections')->get()) / 2;
+        $total_connections = count(DB::table('connections')->get());
         
         return view('home', ['total_users' => $total_users,
                             'total_houses' => $total_houses,
@@ -44,5 +44,16 @@ class HomeController extends Controller
         ->get();
 
         return response()->json([$img_data, $text_data]);
+    }
+
+    public function getUsersHomepage() {
+        $applications = DB::table('applications')
+        ->join('account_details', 'applications.user_id', '=', 'account_details.user_id')
+        ->join('users', 'applications.user_id', '=', 'users.id')
+        ->select('applications.*', 'account_details.img_url', 'users.name')
+        ->limit(10)
+        ->get();
+
+        return response()->json($applications);
     }
 }

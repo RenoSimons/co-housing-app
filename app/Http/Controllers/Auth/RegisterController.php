@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\AccountDetail;
+use App\Models\Notification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,6 +74,11 @@ class RegisterController extends Controller
 
         AccountDetail::create([
             'user_id' => $user->id
+        ]);
+
+        Notification::create([
+            'user_id' => $user->id,
+            'message' => 'Reno Simons heet u van harte welkom!'
         ]);
 
         return $user;

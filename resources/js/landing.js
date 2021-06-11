@@ -1,6 +1,8 @@
+import {check} from './detect_mobile.js';
+
 // Scroll down on icon click
 $('#scroll-icon').click(function() {
-    window.scrollTo(0, 861);
+    window.scrollTo(0, 659);
 })
 
 // Animations
@@ -12,7 +14,6 @@ $(document).scroll( function(evt) {
     scrollPosition = $(this).scrollTop();
 
     // Make account slide in
-
     function slideInAnimation() {
       $('.make-account-box, .make-account-text').css({'transform': 'translateX(0%)'})
     }
@@ -70,12 +71,56 @@ $(document).scroll( function(evt) {
 });
 
 $(document).ready(function () {
+  $.ajax({
+      type: 'POST',
+      url: "/getusershomepage",
+      data: {},
 
-  $('.first-button').on('click', function () {
+      success: function (response) {
+        let totalPersons = response.length;
 
-    $('.animated-icon1').toggleClass('open');
-  });
+        let person1 = response[Math.floor(Math.random() * totalPersons)];
+        let person2 = response[Math.floor(Math.random() * totalPersons)];
 
+        let content = appendContent(person1, person2);
+
+        $('#user-box-1').html(content[0]);
+        $('#user-box-2').html(content[1]);
+
+      }
+      
+  })
+
+  function appendContent(person1, person2) {
+    let content1 = `
+                <a href="/profile/${person1.user_id}">
+                  <div class="d-flex align-center justify-content-center d-lg-justify-content-start ">
+                          <div class="circle-user">
+                              <img class="" src="/storage/user_images/${person1.img_url}" alt="Avatar">
+                          </div>
+                          <div class="speech-bubble ml-4 p-2 w-50">
+                          <h5>${person1.name}</h5>
+                              <p class="m-0">${person1.intro.substring(0,241)}</p>
+                          </div>
+                      </div>
+                </a>
+          `
+    let content2 = `
+                  <a href="/profile/${person2.user_id}">
+                      <div class="d-flex align-center justify-content-center d-lg-justify-content-end mt-4 mt-lg-0">
+                              <div class="circle-user">
+                                  <img class="" src="/storage/user_images/${person2.img_url}" alt="Avatar">
+                              </div>
+                              <div class="speech-bubble ml-4 p-2 w-50">
+                              <h5>${person2.name}</h5>
+                                  <p class="m-0">${person2.intro.substring(0,241)}</p>
+                              </div>
+                        
+                      </div> 
+                    </a>
+          `
+    return ([content1, content2])
+  }
 });
 
 let header = window.location.pathname;

@@ -87,7 +87,6 @@
             }
         },
         created() {
-            this.read();
             this.getAuth();
             this.getAllMessages();
             Echo.private(`Chat.${this.friend.session.id}`).listen(

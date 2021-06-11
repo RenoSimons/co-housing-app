@@ -48,10 +48,9 @@ class AccountController extends Controller
     {
         $user_id = $request->user()->id;
         $connection_ids = Connection::where('user_id', $user_id)->pluck('user2_id');
-        $connections = User::whereIn('id', $connection_ids)->get();
-
-        return UserResource::collection($connections);
-        //return response()->json($connections);
+        $users = User::whereIn('id', $connection_ids)->get();
+        
+        return UserResource::collection($users);
     }
 
     public function getUser(Request $request) {

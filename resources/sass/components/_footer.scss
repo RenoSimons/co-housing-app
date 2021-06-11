@@ -29,9 +29,14 @@
 
 @media only screen and (min-width: 767px) {
     .footer {
+        height: 170px;
         .logo-footer {
             width: 80px !important;
         }
+    }
+
+    .cp-text {
+        font-size: 12px;
     }
 }
 
@@ -45,6 +50,10 @@
 
     h4 {
         font-size: 15px;
+    }
+
+    .cp-text {
+        font-size: 10px;
     }
 }
 
