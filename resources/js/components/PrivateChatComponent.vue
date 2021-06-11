@@ -52,12 +52,12 @@
                 friend.session.open = false;
             },
             getAuth() {
-                axios.post("/getUser").then(res => {
+                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getUser").then(res => {
                     this.auth = res.data;
                 });
             },
             getFriends() {
-                axios.post("/getFriends").then(res => {
+                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getFriends").then(res => {
                     this.friends = res.data.data;
                     this.friends.forEach(
                         friend => (friend.session ? this.listenForEverySession(friend) : "")
@@ -72,7 +72,7 @@
                     friend.session.open = true;
                     friend.session.unreadCount = 0;
                     
-                    axios.post("/markread", { friend_id: friend.id }).then(res => {
+                    axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/markread", { friend_id: friend.id }).then(res => {
                         console.log(res);
                     });
                 } else {
@@ -81,7 +81,7 @@
                 }
             },
             createSession(friend) {
-                axios.post("/session/create", { friend_id: friend.id }).then(res => {
+                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/session/create", { friend_id: friend.id }).then(res => {
                     (friend.session = res.data.data), (friend.session.open = true);
                 });
             },

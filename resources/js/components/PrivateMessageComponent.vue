@@ -117,20 +117,20 @@
         },
         methods: {
             getAuth() {
-                axios.post("/getUser").then(res => {
+                axios.post("https://co-housing-app-3i8mx.ondigitalocean.app/getUser").then(res => {
                     this.auth = res.data;
                 });
             },
             getAllMessages() {
                 axios
-                    .post(`/session/${this.friend.session.id}/chats`)
+                    .post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/chats`)
                     .then(res => (this.chats = res.data.data));
             },
             send() {
                 if (this.message) {
                     this.pushToChats(this.message);
                     axios
-                        .post(`/send/${this.friend.session.id}`, {
+                        .post(`https://co-housing-app-3i8mx.ondigitalocean.app/send/${this.friend.session.id}`, {
                             message: this.message,
                             to_user: this.friend.id
                         })
@@ -152,26 +152,26 @@
                 this.$emit('close');
             },
             clear() {
-                axios.post(`session/${this.friend.session.id}/clear`).then(res => {
+                axios.post(`https://co-housing-app-3i8mx.ondigitalocean.appsession/${this.friend.session.id}/clear`).then(res => {
                     this.chats = [];
                 })
             },
             block() {
                 this.session.block = true;
                 axios
-                    .post(`/session/${this.friend.session.id}/block`)
+                    .post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/block`)
                     .then(res => (this.session.blocked_by = this.auth.id));
             },
             unblock() {
                 this.session.block = false;
-                axios.post(`session/${this.friend.session.id}/unblock`).then(
+                axios.post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/unblock`).then(
                     res => {
                         this.session.blocked_by = null;
                     }
                 );
             },
             read() {
-                axios.post(`/session/${this.friend.session.id}/read`);
+                axios.post(`https://co-housing-app-3i8mx.ondigitalocean.app/session/${this.friend.session.id}/read`);
             }
         },
     };
