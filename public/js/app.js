@@ -2705,12 +2705,12 @@ $(".heart-icon, .garbage-icon").click(function (e) {
   var id = $(this).attr('id');
   var icon = $(this).attr('class');
   var favoriteCardId = $(this).parent().parent().parent().attr('id');
-  console.log(_app__WEBPACK_IMPORTED_MODULE_1__.in_production);
   $.ajax({
     type: 'POST',
     url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/favorite' : '/favorite',
     data: {
-      id: id
+      id: id,
+      offer_id: favoriteCardId
     },
     success: function success(response) {
       var id = response[0];
