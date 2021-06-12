@@ -42,7 +42,7 @@ $('#notify-belll').click(function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearotifications' : 'clearnotifications'),
+            url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearnotifications' : 'clearnotifications'),
             data: {},
 
             success: function (response) {

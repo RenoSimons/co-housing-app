@@ -59,7 +59,7 @@
                 });
             },
             getFriends() {
-                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getfriends' : '/getfriends')).then(res => {
+                axios.post((in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getFriends' : '/getFriends')).then(res => {
                     this.friends = res.data.data;
                     this.friends.forEach(
                         friend => (friend.session ? this.listenForEverySession(friend) : "")

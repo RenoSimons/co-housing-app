@@ -13,7 +13,7 @@ $.ajaxSetup({
 
 const url = window.location.pathname.split('/');
 const id = url[url.length - 1];
-
+console.log(window.location.pathname);
 $.ajax({
     type: 'POST',
     url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages'),

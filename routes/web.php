@@ -73,7 +73,7 @@ Route::post('/editoffer', [FindRenterController::class, 'edit'])->middleware('au
 Route::post('/deleteoffer', [FindRenterController::class, 'delete'])->middleware('auth')->name('deleteoffer');
 
 // MESSAGING
-Route::post('getFriends', [AccountController::class, 'getFriends']);
+Route::post('/getFriends', [AccountController::class, 'getFriends']);
 Route::post('/markread', [ChatController::class, 'markRead']);
 Route::post('/getUser', [AccountController::class, 'getUser']);
 Route::post('/session/getsession', [AccountController::class, 'test']);

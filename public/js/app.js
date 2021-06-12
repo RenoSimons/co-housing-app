@@ -1910,7 +1910,7 @@ __webpack_require__.r(__webpack_exports__);
     getFriends: function getFriends() {
       var _this2 = this;
 
-      axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getfriends' : '/getfriends').then(function (res) {
+      axios.post(_app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getFriends' : '/getFriends').then(function (res) {
         _this2.friends = res.data.data;
 
         _this2.friends.forEach(function (friend) {
@@ -2405,7 +2405,7 @@ var app = new Vue({
   }
 }); //Change href forms for production or develop over js
 
-var in_production = true;
+var in_production = false;
 window.addEventListener('load', function () {
   $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
   $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
@@ -2413,7 +2413,7 @@ window.addEventListener('load', function () {
   $('#login-form-2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login');
   $('#register-form-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register');
   $('#register-form-2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register');
-  $('#publish-post').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish');
+  $('#publish-post').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publishpost');
   $('#publish-post2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish');
   $('#person-filter-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/personen/filter' : '/personen/filter');
   $('#store1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/store' : '/store');
@@ -2530,6 +2530,7 @@ $.ajaxSetup({
 });
 var url = window.location.pathname.split('/');
 var id = url[url.length - 1];
+console.log(window.location.pathname);
 $.ajax({
   type: 'POST',
   url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages',
@@ -3234,7 +3235,7 @@ $('#notify-belll').click(function (e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: _app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearotifications' : 'clearnotifications',
+      url: _app__WEBPACK_IMPORTED_MODULE_0__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/clearnotifications' : 'clearnotifications',
       data: {},
       success: function success(response) {
         $('.notification-circle').css('display', 'none');
