@@ -147,6 +147,23 @@
             <p>Deze persoon is momenteel niet op zoek naar een co-house</p>
             @endif
         </div>
+        <!-- Contact modal-->
+        <div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content pb-1">
+                    <div class="modal-header d-flex justify-content-between">
+                        <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body pt-0 mb-2">
+                        <span class="hidden" id="poster_id">{{ $username->id }}</span>
+                        <h4>Stuur een bericht naar {{ $username->name }}</h4>
+                        <x-contactModal class="mt-2 mb-2" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @else
     <div class="container">

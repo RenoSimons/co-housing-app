@@ -178,6 +178,18 @@
     }
 }
 
+@media screen and (max-width: 700px) {
+    .page-login-btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #login-toggle-btn, #register-toggle-btn {
+        transform: scale(0.8);
+    }
+}
+
 .send-chat-btn {
     height: 33px;
     background-color: white;

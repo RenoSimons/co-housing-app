@@ -60,13 +60,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link black-text btn login-btn" data-toggle="modal" data-target="#loginModal">{{ __('Login') }}</a>
+                            <a class="nav-link black-text btn login-btn" data-toggle="modal" data-target="#loginModal" id="login-toggle-btn">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item ml-0 ml-md-3">
-                            <a class="nav-link black-text btn login-btn" href="{{ route('register') }}">{{ __('Registreer') }}</a>
+                            <a class="nav-link black-text btn login-btn" href="{{ route('register') }}" id="register-toggle-btn">{{ __('Registreer') }}</a>
                         </li>
                         @endif
                         @else
@@ -140,7 +140,7 @@
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between">
+                    <div class="modal-header d-flex justify-content-between align-center">
                         <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
                         <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -82,6 +82,11 @@ $(document).ready(function () {
 
         let person1 = response[Math.floor(Math.random() * totalPersons)];
         let person2 = response[Math.floor(Math.random() * totalPersons)];
+      
+
+        while (person1.id == person2.id) {
+          person2 = response[Math.floor(Math.random() * totalPersons)];
+        }
 
         let content = appendContent(person1, person2);
 

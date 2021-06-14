@@ -22,13 +22,14 @@ class ChatController extends Controller
 
         $chat = $message->createForReceive($session->id, $request->to_user, auth()->id());
         
-        broadcast(new PrivateChatEvent($message->content, $chat));
+        //broadcast(new PrivateChatEvent($message->content, $chat));
 
         return response($chat->id, 200);
     }
 
     public function chats(Session $session)
     {
+        //dd($session->id);
         return ChatResource::collection($session->chats->where('session_id', $session->id));
 
     }

@@ -13,7 +13,7 @@ $.ajaxSetup({
 
 const url = window.location.pathname.split('/');
 const id = url[url.length - 1];
-console.log(window.location.pathname);
+
 $.ajax({
     type: 'POST',
     url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages'),
@@ -90,6 +90,16 @@ $('.dark-overlay, .image-box').click(function() {
 $('.contact-btn').click(function() {
     $('#contact-modal').modal('toggle');
 })
+
+$('#first_message').keyup(function() {
+    let length = $(this).val().length;
+
+    if (length > 0) {
+        $('#submit-contact-form').attr('disabled', false)
+    } else {
+        $('#submit-contact-form').attr('disabled', true)
+    }
+});
 
 $('#submit-contact-form').click(function(e) {
 

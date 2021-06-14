@@ -35,6 +35,12 @@ class SessionController extends Controller
                 'content' => $request->message
             ]);
 
+            $updateMsgStatus = Connection::where('user2_id',  auth()->id())->where('user_id', $request->receiver_id)->update(['has_message' => 1]);
+
+            $notifyController->makeNotification($request->receiver_id, auth()->id());
+
+            $chat = $message->createForReceive($session->id, $request->receiver_id, auth()->id());
+
         } else {
             if ($session1 !== null) {
                 $session = $session1;
@@ -44,20 +50,18 @@ class SessionController extends Controller
             if ($session2 !== null) {
                 $session = $session2;
             }
-
+            
             $message = $session->messages()->create([
                 'content' => $request->message
             ]);
 
             $updateMsgStatus = Connection::where('user2_id',  auth()->id())->where('user_id', $request->receiver_id)->update(['has_message' => 1]);
-
+            //dd($session->id);
             // Make a notification
             $notifyController->makeNotification($request->receiver_id, auth()->id());
 
             $chat = $message->createForReceive($session->id, $request->receiver_id, auth()->id());
         }
-
-       
 
         return response()->json('Bericht succesvol verzonden');
     }

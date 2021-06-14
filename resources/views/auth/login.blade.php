@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" id="login-form">
+<div class="container mt-4 mt-md-5 mb-4 mb-md-0" id="login-form">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card p-5">
-                <div class="login-card-header d-flex">
+                <div class="login-card-header d-flex align-center">
                     <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
                     <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
                 </div>

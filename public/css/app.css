@@ -10845,6 +10845,12 @@ h3 {
 #public-profile-wrapper #applicationModal .modal-content {
   background-color: rgba(255, 255, 255, 0.9);
 }
+#public-profile-wrapper #contact-modal {
+  transform: translate(-6%, 20%);
+}
+#public-profile-wrapper #contact-modal .modal-content {
+  width: 140%;
+}
 
 .search-btn {
   background-color: rgba(0, 0, 0, 0.8);
@@ -11018,6 +11024,16 @@ h3 {
   background-color: white;
 }
 
+@media screen and (max-width: 700px) {
+  .page-login-btn {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #login-toggle-btn, #register-toggle-btn {
+    transform: scale(0.8);
+  }
+}
 .send-chat-btn {
   height: 33px;
   background-color: white;

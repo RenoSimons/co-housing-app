@@ -93,7 +93,7 @@
         <div class="col-md-12 col-lg-4 right-column" id="map-button">
             <div class="row">
                 <a href="#map-frontpage"  class="text-decoration-none fixed-width-btn">
-                    <div class="map-cta translate d-flex align-center dark-bg p-3 mb-5">
+                    <div class="map-cta translate d-flex align-center dark-bg p-3 mb-2 mb-md-5">
                         <img src="{{URL::asset('/images/icons/map.png')}}" class="map-icon">
                         <h2 class="m-0 ml-4">Bekijk de kaart met beschikbare co-housings</h2>
                     </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="scroll-down d-flex justify-content-center w-100 mt-5">
-            <img src="{{URL::asset('/images/icons/scroll-down.png')}}" id="scroll-icon" alt="scroll naar beneden" class="scroll-img">
+            <img src="{{URL::asset('/images/icons/scroll-down.png')}}" id="scroll-icon" alt="scroll naar beneden" class="scroll-img d-none d-md-flex">
         </div>
     </div>
 </div>
@@ -339,7 +339,7 @@
         <img src="{{URL::asset('/images/icons/person-search.png')}}" alt="statistieken" class="stat-icon ml-3 ml-md-0">
         <h2 class="mb-0 ml-4 grey-text-header">Personen op zoek naar een co-house</h2>
     </div>
-    <div class="mt-4 user-box-wrapper">
+    <div class="mt-5 user-box-wrapper">
         <div class="user-box col-md-12 col-lg-6" id="user-box-1">
         </div>
         <div class="user-box col-md-12 col-lg-6" id="user-box-2">
@@ -378,6 +378,7 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
 
 <script type="application/javascript">
+
     // Get the javascript map and locations
     $(document).ready(function() {
         let check = false;
@@ -401,14 +402,9 @@
             });
         }
 
+        let in_production = false;
+
         let map;
-        var stylesArray = [
-            {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [{ "color": "#CCFFFF" }]
-            }
-        ]
         initMap();
 
         function initMap() {
@@ -416,7 +412,6 @@
                 center: new google.maps.LatLng(50.8465573, 4.351697),
                 zoom: 8,
                 mapId: 'dark',
-                styles: stylesArray
             }
 
             map = new google.maps.Map(document.getElementById("map-frontpage"), mapOptions);
@@ -456,7 +451,7 @@
                             },
 
                             success: function(response) {
-                                let urlString = window.location.host + "/storage/house_images/";
+                                let urlString = (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/storage/house_images/' : '/storage/house_images/');
                                 let imagesArray = [];
                                 let images = JSON.stringify(response[0])
                                 let imageString = images.split(',');

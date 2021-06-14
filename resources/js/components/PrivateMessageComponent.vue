@@ -131,7 +131,7 @@ import { in_production } from "../app";
             send() {
                 if (this.message) {
                     this.pushToChats(this.message);
-                    axios.post((in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/session/send/${this.friend.session.id}` : `/session/send/${this.friend.session.id}`), {
+                    axios.post((in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app/send/${this.friend.session.id}` : `/send/${this.friend.session.id}`), {
                             message: this.message,
                             to_user: this.friend.id
                         })

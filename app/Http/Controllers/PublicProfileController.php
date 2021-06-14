@@ -14,7 +14,7 @@ class PublicProfileController extends Controller
     public function showProfile($id) {
 
         // Get the user details
-        $userName = User::where('id', $id)->select('name', 'created_at')->first();
+        $userName = User::where('id', $id)->select('id','name', 'created_at')->first();
         
         $userDetails = AccountDetail::where('user_id', $id)->get();
     

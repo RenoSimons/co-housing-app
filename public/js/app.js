@@ -2134,7 +2134,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.message) {
         this.pushToChats(this.message);
-        axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/session/send/".concat(this.friend.session.id) : "/session/send/".concat(this.friend.session.id), {
+        axios.post(_app__WEBPACK_IMPORTED_MODULE_0__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/send/".concat(this.friend.session.id) : "/send/".concat(this.friend.session.id), {
           message: this.message,
           to_user: this.friend.id
         }).then(function (res) {
@@ -2407,8 +2407,8 @@ var app = new Vue({
 
 var in_production = false;
 window.addEventListener('load', function () {
-  $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
-  $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse');
+  $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
+  $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
   $('#login-form-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login');
   $('#login-form-2').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login');
   $('#register-form-1').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register');
@@ -2530,7 +2530,6 @@ $.ajaxSetup({
 });
 var url = window.location.pathname.split('/');
 var id = url[url.length - 1];
-console.log(window.location.pathname);
 $.ajax({
   type: 'POST',
   url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages',
@@ -2589,6 +2588,15 @@ $('.dark-overlay, .image-box').click(function () {
 
 $('.contact-btn').click(function () {
   $('#contact-modal').modal('toggle');
+});
+$('#first_message').keyup(function () {
+  var length = $(this).val().length;
+
+  if (length > 0) {
+    $('#submit-contact-form').attr('disabled', false);
+  } else {
+    $('#submit-contact-form').attr('disabled', true);
+  }
 });
 $('#submit-contact-form').click(function (e) {
   e.preventDefault();
@@ -2839,6 +2847,11 @@ $(document).ready(function () {
       var totalPersons = response.length;
       var person1 = response[Math.floor(Math.random() * totalPersons)];
       var person2 = response[Math.floor(Math.random() * totalPersons)];
+
+      while (person1.id == person2.id) {
+        person2 = response[Math.floor(Math.random() * totalPersons)];
+      }
+
       var content = appendContent(person1, person2);
       $('#user-box-1').html(content[0]);
       $('#user-box-2').html(content[1]);
@@ -3206,6 +3219,14 @@ if (currentUrl !== "/") {
 
 $('.first-button').on('click', function () {
   $('.animated-icon1').toggleClass('open');
+}); // Close the nav if click on login
+
+$('#login-toggle-btn').click(function () {
+  console.log('show');
+
+  if ($('.navbar-collapse').hasClass('show')) {
+    $('.navbar-collapse').toggleClass('show');
+  }
 });
 $.ajaxSetup({
   headers: {

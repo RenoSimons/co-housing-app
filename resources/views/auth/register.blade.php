@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-2 mt-md-5" id="register-form">
+<div class="container mt-4 mt-md-5 mb-5 mb-md-0" id="register-form">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card p-5">
-                <div class="login-card-header d-flex">
+                <div class="login-card-header align-center d-flex">
                     <img class="unknown-user mr-5" src="{{URL::asset('/images/icons/logo.png')}}">
                     <h4 class="modal-title" id="exampleModalLongTitle">Registreer</h4>
                 </div>
@@ -64,8 +64,8 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn page-login-btn">
+                        <div class="d-flex justify-content-md-center">
+                            <button type="submit" class="btn page-login-btn mt-3">
                                 {{ __('Registreer') }}
                             </button>
                         </div>

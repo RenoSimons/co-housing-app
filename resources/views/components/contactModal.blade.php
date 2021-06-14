@@ -5,7 +5,7 @@
         </div>
 
         <div class="d-flex justify-content-start mt-4">
-            <button class="btn contact-btn2 w-25" id="submit-contact-form">
+            <button disabled class="btn contact-btn2 w-25" id="submit-contact-form">
                 {{ __('Verstuur') }}
             </button>
         </div>

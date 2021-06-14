@@ -11,6 +11,15 @@ if (currentUrl !== "/") {
 $('.first-button').on('click', function () {
     $('.animated-icon1').toggleClass('open');
 });
+
+// Close the nav if click on login
+$('#login-toggle-btn').click(function() {
+    console.log('show')
+    if ($('.navbar-collapse').hasClass('show')) {
+        $('.navbar-collapse').toggleClass('show');
+    }
+})
+
   
 
 $.ajaxSetup({

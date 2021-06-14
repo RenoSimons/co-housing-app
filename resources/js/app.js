@@ -26,8 +26,8 @@ const app = new Vue({
 export const in_production = false;
 
 window.addEventListener('load', function () {
-    $('.search-form').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse') )
-    $('#filter-houses').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouse') )
+    $('.search-form').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses') )
+    $('#filter-houses').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses') )
     $('#login-form-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login') )
     $('#login-form-2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login') )
     $('#register-form-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register') )

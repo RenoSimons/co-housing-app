@@ -86,7 +86,7 @@ class CoHousingController extends Controller
             })
             ->get();
 
-            return view('cohouses', ['rentoffers' => $rentOffers]);
+        return view('cohouses', ['rentoffers' => $rentOffers]);
       
     }
 
