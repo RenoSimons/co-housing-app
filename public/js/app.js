@@ -2405,7 +2405,7 @@ var app = new Vue({
   }
 }); //Change href forms for production or develop over js
 
-var in_production = true;
+var in_production = false;
 window.addEventListener('load', function () {
   $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
   $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
@@ -2779,7 +2779,7 @@ __webpack_require__.r(__webpack_exports__);
  // Scroll down on icon click
 
 $('#scroll-icon').click(function () {
-  window.scrollTo(0, 659);
+  window.scrollTo(0, 620);
 }); // Animations
 
 var scrollPosition = 0;

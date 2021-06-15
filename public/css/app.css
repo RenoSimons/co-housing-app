@@ -10211,11 +10211,13 @@ h3 {
   text-decoration: none;
 }
 .sixth-section .user-box .circle-user {
-  width: 150px;
+  width: 170px;
   max-height: 170px;
 }
 .sixth-section .user-box .circle-user img {
   width: 150px;
+  max-height: 170px;
+  min-height: 150px;
   border-radius: 50%;
 }
 .sixth-section .user-box .speech-bubble {
@@ -10329,6 +10331,7 @@ h3 {
   }
   .sixth-section .user-box-wrapper .user-box .circle-user img {
     width: 200px;
+    max-height: 200px;
   }
   .sixth-section .user-box-wrapper .user-box .speech-bubble p {
     font-size: 13px;
@@ -10568,6 +10571,14 @@ h3 {
   #offer-wrapper .collapser {
     display: none;
   }
+  #offer-wrapper .page-link {
+    height: 36px !important;
+    /* margin: 0; */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+  }
 }
 @media only screen and (max-width: 989px) {
   #offer-wrapper .sizing-icons {
@@ -10579,7 +10590,8 @@ h3 {
 }
 #offer-wrapper .card .card-img-top {
   width: 100%;
-  height: 225px;
+  min-height: 255px;
+  max-height: 350px;
 }
 #offer-wrapper .card .card-overlay {
   position: absolute;
@@ -10593,6 +10605,21 @@ h3 {
   border-radius: 5px;
   opacity: 0.8;
   margin-left: 20px;
+}
+
+.page-link {
+  background-color: #323232 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: #323232 !important;
+}
+
+.page-item {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #323232 !important;
 }
 
 #co-house-detail-wrapper #main-img, #co-house-detail-wrapper .centered {

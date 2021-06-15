@@ -3,7 +3,7 @@ import { in_production } from "./app";
 
 // Scroll down on icon click
 $('#scroll-icon').click(function() {
-    window.scrollTo(0, 659);
+    window.scrollTo(0, 620);
 })
 
 // Animations

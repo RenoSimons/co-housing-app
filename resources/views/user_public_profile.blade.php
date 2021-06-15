@@ -58,7 +58,11 @@
                 </div>
 
                 <div class="d-flex ml-2 mt-4 justify-content-center">
+                    @if ($username->id !== Auth()->id())
                     <button class="contact-btn w-75 mb-4">Contacteer</button>
+                    @else
+                    <a href="/user" class="save-btn p-2 mb-4">Wijzig mijn profiel</a>
+                    @endif
                 </div>
             </div>
         </div>

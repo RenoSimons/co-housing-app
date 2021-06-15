@@ -36,7 +36,19 @@
         .collapser {
             display:none;
         }
-    }
+
+        .page-link {
+            height: 36px !important;
+            /* margin: 0; */
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            font-size: 13px !important;
+        }
+
+    }     
+
+    
 
     @media only screen and (max-width: 989px)  {
         .sizing-icons {
@@ -48,7 +60,8 @@
         transition: 0.5s;
         .card-img-top {
             width: 100%;
-            height: 225px;
+            min-height: 255px;
+            max-height: 350px;
         }
         .card-overlay {
             position: absolute;
@@ -66,3 +79,19 @@
         }
     }
 }
+
+.page-link {
+    background-color: $dark !important;
+    color: $white !important;
+    border-color: $dark !important;
+}
+
+.page-item {
+    background-color: $white !important;
+}
+
+.active {
+    background-color: $white !important;
+    color: $dark !important;
+}
+

@@ -219,7 +219,7 @@
                     <a class='btn save-btn mt-3 hidden mr-3' id="b1">Vorige</a>
                     <a class='btn save-btn mt-3' id="b2">Volgende</a>
                     <a class='btn save-btn mt-3 hidden' id="b21">Volgende</a>
-                    <button type="submit" class='btn save-btn mt-3 hidden' id="b3">Publiceer</button>
+                    <button type="submit" disabled class='btn save-btn mt-3 hidden' id="b3">Publiceer</button>
                 </div>
             </form>
         </div>
@@ -284,6 +284,7 @@
 
         $('#gallery-photo-add').on('change', function() {
             imagesPreview(this, 'div.gallery');
+            $('#b3').attr('disabled', false);
         });
     });
 

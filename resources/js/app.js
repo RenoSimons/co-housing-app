@@ -23,7 +23,7 @@ const app = new Vue({
 
 //Change href forms for production or develop over js
 
-export const in_production = true;
+export const in_production = false;
 
 window.addEventListener('load', function () {
     $('.search-form').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses') )

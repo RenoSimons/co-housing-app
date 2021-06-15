@@ -14,7 +14,7 @@ use Carbon\Carbon;
 class CoHousingController extends Controller
 {
     public function index() {
-        $rentOffers = RentOffer::get();
+        $rentOffers = RentOffer::paginate(6);
 
         return view('cohouses', ['rentoffers' => $rentOffers]);
     }

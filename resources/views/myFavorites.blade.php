@@ -27,7 +27,7 @@
                         </div>
                         <div class="p-3">
                             <div class="d-flex justify-content-between align-content-middle">
-                                <a href="" class="read-more-btn">Bekijk zoekertje</a>
+                                <a href="/cohousings/{{ $favorite->id }}" class="read-more-btn">Bekijk zoekertje</a>
                                 <img src="{{URL::asset('/images/icons/garbage-can-black.png')}}" id="{{$favorite_ids[$key]}}" class="garbage-icon">
                             </div>
                         </div>

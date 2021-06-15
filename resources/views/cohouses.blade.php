@@ -132,15 +132,20 @@
                             <h5 class="card-title small-view smaller">{{ $rentoffer->housemates }}</h5>
                         </div>
                     </div>
-                    <div class="text mt-2">
+                    <div class="text mt-2" style="min-height: 102px;">
                         <p>{{ Str::limit($rentoffer->title, 200) }}</p>
                     </div>
-                    <div class="action-btn">
-                        <a href="/cohousings/{{ $rentoffer->id }}" class="read-more-btn dark-bg">Lees meer</a>
+                    <div class="">
+                        <div class="action-btn mt-1">
+                            <a href="/cohousings/{{ $rentoffer->id }}" class="read-more-btn dark-bg">Lees meer</a>
+                        </div>
                     </div>
                 </div>
             </div>
             @endforeach
+
+            {!! $rentoffers->links() !!}
+
         @else
         <div class="p-3">
             <h4>Sorry, geen cohousings gevonden op basis van jouw filter</h4>
