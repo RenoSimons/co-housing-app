@@ -32,7 +32,7 @@ window.addEventListener('load', function () {
     $('#login-form-2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/login' : '/login') )
     $('#register-form-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register') )
     $('#register-form-2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/register' : '/register') )
-    $('#publish-post').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publishpost') )
+    $('#publish-post').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publishpost' : '/publishpost') )
     $('#publish-post2').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/publish' : '/publish') )
     $('#person-filter-1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/personen/filter' : '/personen/filter') )
     $('#store1').attr('action', (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/store' : '/store') )
