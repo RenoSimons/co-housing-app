@@ -40,7 +40,7 @@ class ChatController extends Controller
 
         foreach ($chats as $chat) {
             $chat->update(['read_at' => Carbon::now()]);
-            broadcast(new MsgReadEvent(new ChatResource($chat), $chat->session_id));
+            //broadcast(new MsgReadEvent(new ChatResource($chat), $chat->session_id));
         }
     }
 

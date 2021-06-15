@@ -36,7 +36,6 @@ class UserResource extends JsonResource
     private function has_messages($id)
     {
         $users = User::where('id', $id)->get();
-        dd("test");
 
         return $users[0]->connections[0]->has_message;
     }

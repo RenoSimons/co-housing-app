@@ -119,7 +119,7 @@ $(document).ready(function () {
                               </div>
                               <div class="speech-bubble ml-4 p-2 w-50">
                               <h5>${person2.name}</h5>
-                                  <p class="m-0">${person2.intro.substring(0,241)}</p>
+                                  <p class="m-0">${person2.intro.substring(0,241)}...</p>
                               </div>
                         
                       </div> 
