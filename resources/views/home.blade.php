@@ -402,7 +402,7 @@
             });
         }
 
-        const in_production = false;
+        const in_production = true;
 
         let map;
         initMap();
