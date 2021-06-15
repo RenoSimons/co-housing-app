@@ -95,24 +95,28 @@
                     <h4 class="header-dark p-2 mb-0 w-100">Schrijf een aantrekkelijke intro tekst over jezelf waarin je jezelf voorstelt als huurder</h4>
                     <textarea class="form-control" name="intro" rows="10" required></textarea>
                 </div>
-
-                <div class="p-3 mt-4">
-                    <h4 class="header-dark p-2 mb-2 rounded">Upload een foto van jezelf</h4>
-                    <!-- Uploaded image area-->
-                    <div class="w-50">
-                        <div class="image-area mt-2">
-                            <img id="output" src="{{URL::asset('/images/upload_img.png')}}" alt="empty image" class="img-fluid rounded shadow-sm mx-auto d-block">
-                        </div>
-                        <!-- Upload image input-->
-                        <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                            <input id="upload" type="file" accept="image/*" name="file" onchange="loadFile(event)" class="form-control d-none border-0" required>
-                            <label id="upload-label" for="upload" class="font-weight-light text-muted d-none">Open bestand...</label>
-                            <div class="input-group-append">
-                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4 dark-pill"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small>Open bestand</small></label>
+                @if( strlen( Auth::user()->avatar()) == 0 )
+                    <div class="p-3 mt-4">
+                        <h4 class="header-dark p-2 mb-2 rounded">Upload een foto van jezelf</h4>
+                        <!-- Uploaded image area-->
+                        <div class="w-50">
+                            <div class="image-area mt-2">
+                                <img id="output" src="{{URL::asset('/images/upload_img.png')}}" alt="empty image" class="img-fluid rounded shadow-sm mx-auto d-block">
+                            </div>
+                            <!-- Upload image input-->
+                            <div class="input-group mt-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                                <input id="upload" type="file" accept="image/*" name="file" onchange="loadFile(event)" class="form-control d-none border-0" required>
+                                <label id="upload-label" for="upload" class="font-weight-light text-muted d-none">Open bestand...</label>
+                                <div class="input-group-append">
+                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4 dark-pill"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small>Open bestand</small></label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    <p>Je hebt al een foto van jezelf geupload bij je account. Deze verschijnt automatisch mee in je zoekertje</p>
+                    <p>Om deze foto te wijzigen ga je naar 'Mijn profiel'</p>
+                @endif
 
                 <div>
                     <button class='btn save-btn mt-3' type="submit">Publiceer applicatie</button>

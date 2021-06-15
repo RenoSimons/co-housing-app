@@ -84,7 +84,7 @@ class CoHousingController extends Controller
             ->when($budget, function ($query) use ($minBudget, $maxBudget) {
                 return $query->where('budget','<=', $maxBudget)->where('budget','>=', $minBudget);
             })
-            ->get();
+            ->paginate(6);
 
         return view('cohouses', ['rentoffers' => $rentOffers]);
       
