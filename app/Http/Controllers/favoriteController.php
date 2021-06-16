@@ -13,7 +13,7 @@ class favoriteController extends Controller
 
         // Check if user has favorited this post
         $check = $user->favorites->where('offer_id', '=', $request->id)->first();
-        
+        dd($check);
         if( ! $check) {
             // Save if not favorited
             DB::table('favorites')->insert([
