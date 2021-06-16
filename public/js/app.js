@@ -2715,6 +2715,7 @@ $(".heart-icon, .garbage-icon").click(function (e) {
   var id = $(this).attr('id');
   var icon = $(this).attr('class');
   var favoriteCardId = $(this).parent().parent().parent().attr('id');
+  console.log(id);
   $.ajax({
     type: 'POST',
     url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? "https://co-housing-app-3i8mx.ondigitalocean.app/favorite" : '/favorite',
@@ -2723,6 +2724,7 @@ $(".heart-icon, .garbage-icon").click(function (e) {
       offer_id: favoriteCardId
     },
     success: function success(response) {
+      console.log(response);
       var id = response[0];
       var isFavorited = response[1];
       var messageText = "";
