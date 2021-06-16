@@ -12,10 +12,11 @@ $(".heart-icon, .garbage-icon").click(function(e) {
     let id = $(this).attr('id');
     let icon = $(this).attr('class');
     let favoriteCardId = $(this).parent().parent().parent().attr('id');
-
+    let slug = window.location.pathname;
+ 
     $.ajax({
         type:'POST',
-        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/favorite' : '/favorite'), 
+        url: (in_production ? `https://co-housing-app-3i8mx.ondigitalocean.app${slug}/favorite` : '/favorite'), 
         data:{ id:id, offer_id: favoriteCardId },
 
         success:function(response) {
