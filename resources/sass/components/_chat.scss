@@ -14,6 +14,12 @@
                 margin-bottom: 20px;
                 cursor: pointer;
             }
+
+            @media  screen and (max-width: 1200px) {
+                .person {
+                    max-width:150px;
+                }
+            }
         }
     }
     .right {

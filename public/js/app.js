@@ -2403,7 +2403,7 @@ var app = new Vue({
     PrivateMessageComponent: _components_PrivateMessageComponent__WEBPACK_IMPORTED_MODULE_1__.default,
     PrivateChatComponent: _components_PrivateChatComponent__WEBPACK_IMPORTED_MODULE_2__.default
   }
-}); //Change href forms for production or develop over js
+}); //Change href forms for production url
 
 var in_production = true;
 window.addEventListener('load', function () {

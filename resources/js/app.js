@@ -21,7 +21,7 @@ const app = new Vue({
     components: {PrivateMessageComponent, PrivateChatComponent}
 });
 
-//Change href forms for production or develop over js
+//Change href forms for production url
 
 export const in_production = true;
 

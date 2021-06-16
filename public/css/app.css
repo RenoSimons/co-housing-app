@@ -11312,6 +11312,11 @@ h3 {
   margin-bottom: 20px;
   cursor: pointer;
 }
+@media screen and (max-width: 1200px) {
+  #chat-window .left .people .person {
+    max-width: 150px;
+  }
+}
 #chat-window .right .chat, #chat-window .right .top {
   width: 100%;
 }

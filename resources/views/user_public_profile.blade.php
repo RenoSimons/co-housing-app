@@ -79,7 +79,7 @@
         </div>
 
         <div class="hobbies mt-5">
-            <h4 class="header-dark p-2">Mijn hobbies en interesses</h4>
+            <h4 class="header-dark p-2">Mijn hobby's en interesses</h4>
             @if (strlen($user_details[0]['hobby_text']) > 0)
             <p>{{ $user_details[0]['hobby_text']}}</p>
             @else
@@ -100,7 +100,8 @@
                 <a href="" data-toggle="modal" data-target="#applicationModal" class="read-more-btn">Open het zoekertje van deze persoon</a>
             </div>
 
-            <div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            style="transform:translate(0, -50px);">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header pb-0 d-flex justify-content-between">
@@ -155,7 +156,7 @@
         <div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content pb-1">
-                    <div class="modal-header d-flex justify-content-between">
+                    <div class="modal-header d-flex justify-content-between p-0 pt-1 pr-1">
                         <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
