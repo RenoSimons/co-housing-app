@@ -72,30 +72,32 @@ $(document).scroll( function(evt) {
 });
 
 $(document).ready(function () {
-  $.ajax({
-      type: 'POST',
-      url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage'),
-      data: {},
+  if (window.location.pathname == '/') {
+    $.ajax({
+        type: 'POST',
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage'),
+        data: {},
 
-      success: function (response) {
-        let totalPersons = response.length;
+        success: function (response) {
+          let totalPersons = response.length;
 
-        let person1 = response[Math.floor(Math.random() * totalPersons)];
-        let person2 = response[Math.floor(Math.random() * totalPersons)];
-      
+          if(totalPersons >= 2) {
+            let person1 = response[Math.floor(Math.random() * totalPersons)];
+            let person2 = response[Math.floor(Math.random() * totalPersons)];
+          
 
-        while (person1.id == person2.id) {
-          person2 = response[Math.floor(Math.random() * totalPersons)];
+            while (person1.id == person2.id) {
+              person2 = response[Math.floor(Math.random() * totalPersons)];
+            }
+
+            let content = appendContent(person1, person2);
+
+            $('#user-box-1').html(content[0]);
+            $('#user-box-2').html(content[1]);
+          }
         }
-
-        let content = appendContent(person1, person2);
-
-        $('#user-box-1').html(content[0]);
-        $('#user-box-2').html(content[1]);
-
-      }
-      
-  })
+    })
+  }
 
   function appendContent(person1, person2) {
     let content1 = `
@@ -129,7 +131,6 @@ $(document).ready(function () {
   }
 });
 
-let header = window.location.pathname;
 
 // Particle animation
 particlesJS('particles-js',

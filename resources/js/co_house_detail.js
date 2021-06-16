@@ -14,47 +14,47 @@ $.ajaxSetup({
 const url = window.location.pathname.split('/');
 const id = url[url.length - 1];
 
-$.ajax({
-    type: 'POST',
-    url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages'),
-    data: {
-        id: id
-    },
+if (window.location.pathname.length >= 13 && window.location.pathname.includes("cohousings")) {
+    $.ajax({
+        type: 'POST',
+        url: (in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages'),
+        data: {
+            id: id
+        },
 
-    success: function(response) {
-        const images = response[0];
-        let urlString = "http://" + window.location.host + "/storage/house_images/";
+        success: function(response) {
+            const images = response[0];
+            let urlString = "http://" + window.location.host + "/storage/house_images/";
 
-        let images2 = JSON.stringify(images)
-        let imageString = images2.split(',');
+            let images2 = JSON.stringify(images)
+            let imageString = images2.split(',');
 
-        imageString.forEach(function(item, index) {
-            let newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '').replace('"', '');
-            imagesArray.push(newString);
-            appendCarousel(urlString + newString);
-        })
-        initCarousel()
-        //shuffle(imagesArray);
+            imageString.forEach(function(item, index) {
+                let newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '').replace('"', '');
+                imagesArray.push(newString);
+                appendCarousel(urlString + newString);
+            })
+            initCarousel()
+            //shuffle(imagesArray);
 
-        $('.carousel-thumbnail').each(function(index) {
-            $(this).attr('src', urlString + imagesArray[index])
-            console.log($(this).attr('src'))
-        });
+            $('.carousel-thumbnail').each(function(index) {
+                $(this).attr('src', urlString + imagesArray[index])
+            });
 
-        let picsLeft = 0;
+            let picsLeft = 0;
 
-        if (check) {
-            $('#box1, #box2 ,#box3').remove();
-            picsLeft = imagesArray.length - 1;
-            
-        } else {
-            picsLeft = imagesArray.length - 4;
+            if (check) {
+                $('#box1, #box2 ,#box3').remove();
+                picsLeft = imagesArray.length - 1;
+                
+            } else {
+                picsLeft = imagesArray.length - 4;
+            }
+
+            $('#pics-left').html(picsLeft);
         }
-
-        $('#pics-left').html(picsLeft);
-    }
-});
-
+    });
+}
 
 function appendCarousel(img) {
     let html = `

@@ -2530,40 +2530,42 @@ $.ajaxSetup({
 });
 var url = window.location.pathname.split('/');
 var id = url[url.length - 1];
-$.ajax({
-  type: 'POST',
-  url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages',
-  data: {
-    id: id
-  },
-  success: function success(response) {
-    var images = response[0];
-    var urlString = "http://" + window.location.host + "/storage/house_images/";
-    var images2 = JSON.stringify(images);
-    var imageString = images2.split(',');
-    imageString.forEach(function (item, index) {
-      var newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '').replace('"', '');
-      imagesArray.push(newString);
-      appendCarousel(urlString + newString);
-    });
-    initCarousel(); //shuffle(imagesArray);
 
-    $('.carousel-thumbnail').each(function (index) {
-      $(this).attr('src', urlString + imagesArray[index]);
-      console.log($(this).attr('src'));
-    });
-    var picsLeft = 0;
+if (window.location.pathname.length >= 13 && window.location.pathname.includes("cohousings")) {
+  $.ajax({
+    type: 'POST',
+    url: _app__WEBPACK_IMPORTED_MODULE_2__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/getimages' : '/cohousings/getimages',
+    data: {
+      id: id
+    },
+    success: function success(response) {
+      var images = response[0];
+      var urlString = "http://" + window.location.host + "/storage/house_images/";
+      var images2 = JSON.stringify(images);
+      var imageString = images2.split(',');
+      imageString.forEach(function (item, index) {
+        var newString = item.replace(/\\/g, '').replace('{"img_urls":"[', '').replace(']"}', '').replace('"', '').replace('"', '');
+        imagesArray.push(newString);
+        appendCarousel(urlString + newString);
+      });
+      initCarousel(); //shuffle(imagesArray);
 
-    if (_detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__.check) {
-      $('#box1, #box2 ,#box3').remove();
-      picsLeft = imagesArray.length - 1;
-    } else {
-      picsLeft = imagesArray.length - 4;
+      $('.carousel-thumbnail').each(function (index) {
+        $(this).attr('src', urlString + imagesArray[index]);
+      });
+      var picsLeft = 0;
+
+      if (_detect_mobile_js__WEBPACK_IMPORTED_MODULE_0__.check) {
+        $('#box1, #box2 ,#box3').remove();
+        picsLeft = imagesArray.length - 1;
+      } else {
+        picsLeft = imagesArray.length - 4;
+      }
+
+      $('#pics-left').html(picsLeft);
     }
-
-    $('#pics-left').html(picsLeft);
-  }
-});
+  });
+}
 
 function appendCarousel(img) {
   var html = "\n        <div class=\"carousel-item\" id=\"img".concat(imageId, "\">\n            <img class=\"d-block carousel-img w-100\" src=\"").concat(img, "\">\n        </div>\n    ");
@@ -2839,32 +2841,36 @@ $(document).scroll(function (evt) {
   }
 });
 $(document).ready(function () {
-  $.ajax({
-    type: 'POST',
-    url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage',
-    data: {},
-    success: function success(response) {
-      var totalPersons = response.length;
-      var person1 = response[Math.floor(Math.random() * totalPersons)];
-      var person2 = response[Math.floor(Math.random() * totalPersons)];
+  if (window.location.pathname == '/') {
+    $.ajax({
+      type: 'POST',
+      url: _app__WEBPACK_IMPORTED_MODULE_1__.in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/getusershomepage' : '/getusershomepage',
+      data: {},
+      success: function success(response) {
+        var totalPersons = response.length;
 
-      while (person1.id == person2.id) {
-        person2 = response[Math.floor(Math.random() * totalPersons)];
+        if (totalPersons >= 2) {
+          var person1 = response[Math.floor(Math.random() * totalPersons)];
+          var person2 = response[Math.floor(Math.random() * totalPersons)];
+
+          while (person1.id == person2.id) {
+            person2 = response[Math.floor(Math.random() * totalPersons)];
+          }
+
+          var content = appendContent(person1, person2);
+          $('#user-box-1').html(content[0]);
+          $('#user-box-2').html(content[1]);
+        }
       }
-
-      var content = appendContent(person1, person2);
-      $('#user-box-1').html(content[0]);
-      $('#user-box-2').html(content[1]);
-    }
-  });
+    });
+  }
 
   function appendContent(person1, person2) {
     var content1 = "\n                <a href=\"/profile/".concat(person1.user_id, "\">\n                  <div class=\"d-flex align-center justify-content-center d-lg-justify-content-start \">\n                          <div class=\"circle-user\">\n                              <img class=\"\" src=\"/storage/user_images/").concat(person1.img_url, "\" alt=\"Avatar\">\n                          </div>\n                          <div class=\"speech-bubble ml-4 p-2 w-50\">\n                          <h5>").concat(person1.name, "</h5>\n                              <p class=\"m-0\">").concat(person1.intro.substring(0, 241), "</p>\n                          </div>\n                      </div>\n                </a>\n          ");
     var content2 = "\n                  <a href=\"/profile/".concat(person2.user_id, "\">\n                      <div class=\"d-flex align-center justify-content-center d-lg-justify-content-end mt-4 mt-lg-0\">\n                              <div class=\"circle-user\">\n                                  <img class=\"\" src=\"/storage/user_images/").concat(person2.img_url, "\" alt=\"Avatar\">\n                              </div>\n                              <div class=\"speech-bubble ml-4 p-2 w-50\">\n                              <h5>").concat(person2.name, "</h5>\n                                  <p class=\"m-0\">").concat(person2.intro.substring(0, 241), "...</p>\n                              </div>\n                        \n                      </div> \n                    </a>\n          ");
     return [content1, content2];
   }
-});
-var header = window.location.pathname; // Particle animation
+}); // Particle animation
 
 particlesJS('particles-js', {
   "particles": {
