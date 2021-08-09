@@ -10,9 +10,6 @@ class favoriteController extends Controller
 {
     public function favoritePost(Request $request) {
         $user = $request->user();
-        var_dump($user);
-        return response()->json($user);
-        // Check if user has favorited this post
         $check = $user->favorites->where('offer_id', '=', $request->id)->first();
         
         if( ! $check) {
@@ -29,6 +26,6 @@ class favoriteController extends Controller
             $isFavorited = false;
         }
        
-        //return response()->json([$request->id, $isFavorited]);
+        return response()->json([$request->id, $isFavorited]);
     }
 }

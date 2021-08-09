@@ -2405,7 +2405,7 @@ var app = new Vue({
   }
 }); //Change href forms for production url
 
-var in_production = true;
+var in_production = false;
 window.addEventListener('load', function () {
   $('.search-form').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
   $('#filter-houses').attr('action', in_production ? 'https://co-housing-app-3i8mx.ondigitalocean.app/cohousings/filterhouses' : '/cohousings/filterhouses');
